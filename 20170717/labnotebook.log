@@ -1,0 +1,729 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.30)  17 JUL 2017 21:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**labnotebook.tex
+(./labnotebook.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen106
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks16
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(./labnotebook.aux)
+\openout1 = `labnotebook.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count100
+\scratchdimen=\dimen114
+\scratchbox=\box28
+\nofMPsegments=\count101
+\nofMParguments=\count102
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count103
+\MPscratchDim=\dimen115
+\MPnumerator=\count104
+\makeMPintoPDFobject=\count105
+\everyMPtoPDFconversion=\toks21
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package epstopdf Info: Source file: <FinfTimel2.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31821 bytes
+(epstopdf)             Output file: <FinfTimel2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:39
+(epstopdf)                    size: 12181 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel2-eps-converted-t
+o.pdf FinfTimel2.eps>
+(epstopdf)             \includegraphics on input line 15.
+Package epstopdf Info: Output file is already uptodate.
+
+<FinfTimel2-eps-converted-to.pdf, id=1, 361.35pt x 216.81pt>
+File: FinfTimel2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel2-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel2-eps-converted-to.pdf used on input line 15.
+
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 15--16
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel3.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 30814 bytes
+(epstopdf)             Output file: <FinfTimel3-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:39
+(epstopdf)                    size: 11775 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel3-eps-converted-t
+o.pdf FinfTimel3.eps>
+(epstopdf)             \includegraphics on input line 18.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel3-eps-converted-to.pdf, id=2, 361.35pt x 216.81pt>
+File: FinfTimel3-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel3-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel3-eps-converted-to.pdf used on input line 18.
+
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 18--19
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel4.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 30597 bytes
+(epstopdf)             Output file: <FinfTimel4-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:39
+(epstopdf)                    size: 11759 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel4-eps-converted-t
+o.pdf FinfTimel4.eps>
+(epstopdf)             \includegraphics on input line 21.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel4-eps-converted-to.pdf, id=3, 361.35pt x 216.81pt>
+File: FinfTimel4-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel4-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel4-eps-converted-to.pdf used on input line 21.
+
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 21--22
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel5.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31217 bytes
+(epstopdf)             Output file: <FinfTimel5-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:40
+(epstopdf)                    size: 11976 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel5-eps-converted-t
+o.pdf FinfTimel5.eps>
+(epstopdf)             \includegraphics on input line 24.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel5-eps-converted-to.pdf, id=4, 361.35pt x 216.81pt>
+File: FinfTimel5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel5-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel5-eps-converted-to.pdf used on input line 24.
+
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 24--25
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel26.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31134 bytes
+(epstopdf)             Output file: <FinfTimel26-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:40
+(epstopdf)                    size: 11778 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel26-eps-converted-
+to.pdf FinfTimel26.eps>
+(epstopdf)             \includegraphics on input line 27.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel26-eps-converted-to.pdf, id=5, 361.35pt x 216.81pt>
+File: FinfTimel26-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel26-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel26-eps-converted-to.pdf used on input line 27
+.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 27--28
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel27.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31405 bytes
+(epstopdf)             Output file: <FinfTimel27-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:40
+(epstopdf)                    size: 11891 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel27-eps-converted-
+to.pdf FinfTimel27.eps>
+(epstopdf)             \includegraphics on input line 30.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel27-eps-converted-to.pdf, id=6, 361.35pt x 216.81pt>
+File: FinfTimel27-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel27-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel27-eps-converted-to.pdf used on input line 30
+.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 30--31
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel28.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31665 bytes
+(epstopdf)             Output file: <FinfTimel28-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:40
+(epstopdf)                    size: 12029 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel28-eps-converted-
+to.pdf FinfTimel28.eps>
+(epstopdf)             \includegraphics on input line 33.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel28-eps-converted-to.pdf, id=7, 361.35pt x 216.81pt>
+File: FinfTimel28-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel28-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel28-eps-converted-to.pdf used on input line 33
+.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 33--34
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel29.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31669 bytes
+(epstopdf)             Output file: <FinfTimel29-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:40
+(epstopdf)                    size: 12038 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel29-eps-converted-
+to.pdf FinfTimel29.eps>
+(epstopdf)             \includegraphics on input line 36.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel29-eps-converted-to.pdf, id=8, 361.35pt x 216.81pt>
+File: FinfTimel29-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel29-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel29-eps-converted-to.pdf used on input line 36
+.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 36--37
+[][] 
+ []
+
+Package epstopdf Info: Source file: <FinfTimel30.eps>
+(epstopdf)                    date: 2017-07-17 21:13:04
+(epstopdf)                    size: 31228 bytes
+(epstopdf)             Output file: <FinfTimel30-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 21:30:41
+(epstopdf)                    size: 11858 bytes
+(epstopdf)             Command: <repstopdf --outfile=FinfTimel30-eps-converted-
+to.pdf FinfTimel30.eps>
+(epstopdf)             \includegraphics on input line 39.
+Package epstopdf Info: Output file is already uptodate.
+<FinfTimel30-eps-converted-to.pdf, id=9, 361.35pt x 216.81pt>
+File: FinfTimel30-eps-converted-to.pdf Graphic file (type pdf)
+
+<use FinfTimel30-eps-converted-to.pdf>
+Package pdftex.def Info: FinfTimel30-eps-converted-to.pdf used on input line 39
+.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 39--40
+[][] 
+ []
+
+<bestfinfselectorplott470l0.png, id=10, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l0.png Graphic file (type png)
+
+<use bestfinfselectorplott470l0.png>
+Package pdftex.def Info: bestfinfselectorplott470l0.png used on input line 50.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 50--51
+[][] 
+ []
+
+<bestfinfselectorplott470l1.png, id=12, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l1.png Graphic file (type png)
+
+<use bestfinfselectorplott470l1.png>
+Package pdftex.def Info: bestfinfselectorplott470l1.png used on input line 53.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 53--54
+[][] 
+ []
+
+<bestfinfselectorplott470l2.png, id=13, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l2.png Graphic file (type png)
+
+<use bestfinfselectorplott470l2.png>
+Package pdftex.def Info: bestfinfselectorplott470l2.png used on input line 56.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 56--57
+[][] 
+ []
+
+<bestfinfselectorplott470l3.png, id=14, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l3.png Graphic file (type png)
+
+<use bestfinfselectorplott470l3.png>
+Package pdftex.def Info: bestfinfselectorplott470l3.png used on input line 59.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 59--60
+[][] 
+ []
+
+<bestfinfselectorplott470l4.png, id=15, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l4.png Graphic file (type png)
+
+<use bestfinfselectorplott470l4.png>
+Package pdftex.def Info: bestfinfselectorplott470l4.png used on input line 62.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 62--63
+[][] 
+ []
+
+<bestfinfselectorplott470l5.png, id=16, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l5.png Graphic file (type png)
+
+<use bestfinfselectorplott470l5.png>
+Package pdftex.def Info: bestfinfselectorplott470l5.png used on input line 65.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 65--66
+[][] 
+ []
+
+<bestfinfselectorplott470l6.png, id=17, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l6.png Graphic file (type png)
+
+<use bestfinfselectorplott470l6.png>
+Package pdftex.def Info: bestfinfselectorplott470l6.png used on input line 68.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 68--69
+[][] 
+ []
+
+<bestfinfselectorplott470l12.png, id=18, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l12.png Graphic file (type png)
+
+<use bestfinfselectorplott470l12.png>
+Package pdftex.def Info: bestfinfselectorplott470l12.png used on input line 71.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 71--72
+[][] 
+ []
+
+<bestfinfselectorplott470l13.png, id=19, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l13.png Graphic file (type png)
+
+<use bestfinfselectorplott470l13.png>
+Package pdftex.def Info: bestfinfselectorplott470l13.png used on input line 74.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 74--75
+[][] 
+ []
+
+<bestfinfselectorplott470l16.png, id=20, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l16.png Graphic file (type png)
+
+<use bestfinfselectorplott470l16.png>
+Package pdftex.def Info: bestfinfselectorplott470l16.png used on input line 77.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 77--78
+[][] 
+ []
+
+<bestfinfselectorplott470l18.png, id=21, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l18.png Graphic file (type png)
+
+<use bestfinfselectorplott470l18.png>
+Package pdftex.def Info: bestfinfselectorplott470l18.png used on input line 80.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 80--81
+[][] 
+ []
+
+<bestfinfselectorplott470l20.png, id=22, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l20.png Graphic file (type png)
+
+<use bestfinfselectorplott470l20.png>
+Package pdftex.def Info: bestfinfselectorplott470l20.png used on input line 83.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 83--84
+[][] 
+ []
+
+<bestfinfselectorplott470l21.png, id=23, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l21.png Graphic file (type png)
+
+<use bestfinfselectorplott470l21.png>
+Package pdftex.def Info: bestfinfselectorplott470l21.png used on input line 86.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 86--87
+[][] 
+ []
+
+<bestfinfselectorplott470l22.png, id=24, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l22.png Graphic file (type png)
+
+<use bestfinfselectorplott470l22.png>
+Package pdftex.def Info: bestfinfselectorplott470l22.png used on input line 89.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 89--90
+[][] 
+ []
+
+<bestfinfselectorplott470l23.png, id=25, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l23.png Graphic file (type png)
+
+<use bestfinfselectorplott470l23.png>
+Package pdftex.def Info: bestfinfselectorplott470l23.png used on input line 92.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 92--93
+[][] 
+ []
+
+<bestfinfselectorplott470l24.png, id=26, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l24.png Graphic file (type png)
+
+<use bestfinfselectorplott470l24.png>
+Package pdftex.def Info: bestfinfselectorplott470l24.png used on input line 95.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 95--96
+[][] 
+ []
+
+<bestfinfselectorplott470l26.png, id=27, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l26.png Graphic file (type png)
+
+<use bestfinfselectorplott470l26.png>
+Package pdftex.def Info: bestfinfselectorplott470l26.png used on input line 98.
+
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 98--99
+[][] 
+ []
+
+<bestfinfselectorplott470l27.png, id=28, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l27.png Graphic file (type png)
+
+<use bestfinfselectorplott470l27.png>
+Package pdftex.def Info: bestfinfselectorplott470l27.png used on input line 101
+.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 101--102
+[][] 
+ []
+
+<bestfinfselectorplott470l28.png, id=29, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l28.png Graphic file (type png)
+
+<use bestfinfselectorplott470l28.png>
+Package pdftex.def Info: bestfinfselectorplott470l28.png used on input line 104
+.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 104--105
+[][] 
+ []
+
+<bestfinfselectorplott470l29.png, id=30, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l29.png Graphic file (type png)
+
+<use bestfinfselectorplott470l29.png>
+Package pdftex.def Info: bestfinfselectorplott470l29.png used on input line 107
+.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 107--108
+[][] 
+ []
+
+<bestfinfselectorplott470l30.png, id=31, 462.528pt x 346.896pt>
+File: bestfinfselectorplott470l30.png Graphic file (type png)
+
+<use bestfinfselectorplott470l30.png>
+Package pdftex.def Info: bestfinfselectorplott470l30.png used on input line 110
+.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 110--111
+[][] 
+ []
+
+
+Overfull \hbox (5.8579pt too wide) in paragraph at lines 115--115
+[]\OT1/cmr/bx/n/14.4 Checking the ex-po-nen-tial con-ver-gence of a cou-
+ []
+
+
+Overfull \hbox (4.80139pt too wide) in paragraph at lines 119--120
+[]\OT1/cmr/m/n/10 Here are the four plots I gen-er-ated. Us-ing nmaxFin-fOver-T
+ime[]finf[]highrez.csv
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./FinfTimel2-eps-conve
+rted-to.pdf> <./FinfTimel3-eps-converted-to.pdf>] [3 <./FinfTimel4-eps-converte
+d-to.pdf> <./FinfTimel5-eps-converted-to.pdf>] [4 <./FinfTimel26-eps-converted-
+to.pdf> <./FinfTimel27-eps-converted-to.pdf>] [5 <./FinfTimel28-eps-converted-t
+o.pdf> <./FinfTimel29-eps-converted-to.pdf>]
+<subtractoffsett470l3.png, id=101, 462.528pt x 346.896pt>
+File: subtractoffsett470l3.png Graphic file (type png)
+
+<use subtractoffsett470l3.png>
+Package pdftex.def Info: subtractoffsett470l3.png used on input line 123.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 123--124
+[][] 
+ []
+
+<subtractoffsett470l4i1.png, id=102, 462.528pt x 346.896pt>
+File: subtractoffsett470l4i1.png Graphic file (type png)
+
+<use subtractoffsett470l4i1.png>
+Package pdftex.def Info: subtractoffsett470l4i1.png used on input line 127.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 127--128
+[][] 
+ []
+
+<subtractoffsett470l4i3.png, id=103, 462.528pt x 346.896pt>
+File: subtractoffsett470l4i3.png Graphic file (type png)
+
+<use subtractoffsett470l4i3.png>
+Package pdftex.def Info: subtractoffsett470l4i3.png used on input line 132.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (117.52686pt too wide) in paragraph at lines 132--133
+[][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 140.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 140.
+ [6 <./FinfTimel30-eps-converted-to.pdf>] [7 <./bestfinfselectorplott470l0.png>
+] [8 <./bestfinfselectorplott470l1.png>] [9 <./bestfinfselectorplott470l2.png>]
+ [10 <./bestfinfselectorplott470l3.png>] [11 <./bestfinfselectorplott470l4.png>
+] [12 <./bestfinfselectorplott470l5.png>] [13 <./bestfinfselectorplott470l6.png
+>] [14 <./bestfinfselectorplott470l12.png>] [15 <./bestfinfselectorplott470l13.
+png>] [16 <./bestfinfselectorplott470l16.png>] [17 <./bestfinfselectorplott470l
+18.png>] [18 <./bestfinfselectorplott470l20.png>] [19 <./bestfinfselectorplott4
+70l21.png>] [20 <./bestfinfselectorplott470l22.png>] [21 <./bestfinfselectorplo
+tt470l23.png>] [22 <./bestfinfselectorplott470l24.png>] [23 <./bestfinfselector
+plott470l26.png>]
+[24 <./bestfinfselectorplott470l27.png>] [25 <./bestfinfselectorplott470l28.png
+>] [26 <./bestfinfselectorplott470l29.png>] [27 <./bestfinfselectorplott470l30.
+png>] [28 <./subtractoffsett470l3.png>] [29 <./subtractoffsett470l4i1.png>]
+[30 <./subtractoffsett470l4i3.png>] (./labnotebook.aux) ) 
+Here is how much of TeX's memory you used:
+ 2285 strings out of 493029
+ 33854 string characters out of 6136234
+ 94931 words of memory out of 5000000
+ 5766 multiletter control sequences out of 15000+600000
+ 7954 words of font info for 29 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,6n,23p,598b,211s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb>
+Output written on labnotebook.pdf (30 pages, 607008 bytes).
+PDF statistics:
+ 233 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+

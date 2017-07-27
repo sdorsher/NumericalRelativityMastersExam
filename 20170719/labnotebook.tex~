@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx,amsmath}
+\begin{document}
+\title{}
+\author{}
+\maketitle
+
+Trying to make a smooth time evolution curve.
+By looking for a way to fill in spikes and step discontinuities with missing points.
+By choosing the best starting order based on which creates the best linear region.
+One way to do this might be to do a fit on a segment of the curve, though it is difficult to determine starting and stop points for the fit automatically. It would be possible to iterate over all of them and pick out minimum xisq/dof. just want a line on a semilog plot.
+The other way is to look for the most linear set of three points used in the extrapolation. How would you define most linear? smallest residual? smallest relative residual? sum them over three points?
+
+Frank says to check a couple of points first by hand.
+
+\begin{table}
+\begin{tabular}{ll}
+Starting index & finf\\
+2 & 4.18128309016e-05\\
+3 & mode failed\\
+4 & 4.18128307505e-05\\
+5 & 4.18128308245e-05\\
+6 & 4.1812830828e-05\\
+\end{tabular}
+\end{table}
+
+
+
+
+\end{document}

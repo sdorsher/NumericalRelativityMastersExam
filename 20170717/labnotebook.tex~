@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage{graphicx,amsmath}
+\begin{document}
+\title{Further explanation of discontinuities in time evolution in finf}
+\author{Steven Dorsher}
+\maketitle
+
+\section{Higher resolution in time at perihelion and aphelion}
+
+Higher resolution in time at perihelion and aphelion reveals narrower spikes and features in other modes. This cannot be explained by only resolution issues due to mode spatial resolution or else it would be primarily present at aphelion and higher mode, and that is not the case. It is possible that aphelion and perihelion, and that high mode and low mode features are two different phenomena. 
+
+\section{Examining plots of the best finf method}
+
+\section{
