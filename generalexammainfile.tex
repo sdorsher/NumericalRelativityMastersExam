@@ -1,0 +1,197 @@
+\documentclass[12pt,letterpaper]{lsuetd}
+\usepackage{setspace,graphics,dsfont,verbatim,paralist,indentfirst}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{9.0in}
+\addtolength{\evensidemargin}{-0.50in}
+\addtolength{\oddsidemargin}{-0.50in}
+\addtolength{\textwidth}{1.00in}
+\setlength{\parindent}{1.75em}
+\setlength{\parskip}{0ex}
+\setcounter{tocdepth}{2}
+
+\makeatletter
+
+\begin{document}
+\renewcommand\@pnumwidth{1.55em}
+\renewcommand\@tocrmarg{9.55em}
+\renewcommand*\l@chapter{\@dottedtocline{0}{1.5em}{2.3em}}
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{3.1em}}
+\let\l@table\l@figure
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+\begin{center}
+%The title page is first created.
+INSERT TITLE OF THESIS/DISSERTATION IN ALL CAPS
+
+\vfill
+\doublespacing
+A Thesis/Dissertation \\
+\singlespacing
+Submitted to the Graduate Faculty of the \\
+Louisiana State University and \\
+Agricultural and Mechanical College \\
+in partial fulfillment of the \\
+requirements for the degree of \\
+Master of Science\\
+\doublespacing
+in \\
+                                       
+Physics\\
+\singlespacing
+\vfill
+
+by \\
+Steven (Susan) Dorsher \\
+B.S., Massachusetts Institute of Technology, 2004  \\
+M.S., The Ohio State University, 2006  \\
+M.S., University of Minnesota, 2013  \\
+%If necessary, copy and paste the previous line here to include a master's degree.
+December, 2017
+\end{center}
+\pagebreak
+%The Copyright Page and Dedication sections can be added here, if desired.
+
+%\chapter*{Copyright Page}
+%\doublespacing
+%\vspace{0.55ex}
+%Insert the appropriate text for the copyright page here.
+%\addcontentsline{toc}{chapter}{\hspace{-1.5em} {COPYRIGHT PAGE} \vspace{12pt}}
+%\pagebreak
+
+%\chapter*{Dedication}
+%\doublespacing
+%\vspace{0.55ex}
+%Insert the appropriate text for the dedication or epigraph page here.  This part of the ETD must not exceed one page.
+%\addcontentsline{toc}{chapter}{\hspace{-1.5em} {DEDICATION} \vspace{12pt}}
+%\pagebreak
+
+\chapter*{Acknowledgments}
+\doublespacing
+\vspace{0.55ex}
+I would like to thank Peter Diener and Frank L\"{o}ffler for their guidance. Peter Diener especially has been very important to me, both as an advisor and personally. I would also like to thank Gabriela Gonzalez for the excellent opportunity to work on LIGO during the time of three detections, which provided me the funding I needed to continue the work detailed in this document. My parents, Paul and Joanne Dorsher, also deserve a mention, both for extraordinary moral support and for the financial support they provided that helped make this possible. 
+
+%The code below adds the Acknowledgments section to the Table of Contents.
+\addcontentsline{toc}{chapter}{\hspace{-1.5em} {ACKNOWLEDGMENTS} \vspace{12pt}}
+\pagebreak
+%The Preface section can now be added, if desired.
+
+%\chapter*{Preface}
+%\doublespacing
+%\vspace{0.55ex}
+%Insert the appropriate text for the preface here.
+%\addcontentsline{toc}{chapter}{\hspace{-1.5em} {PREFACE} \vspace{12pt}}
+%\pagebreak
+
+\singlespacing
+\tableofcontents
+\pagebreak
+
+%The code below generates the List of Tables and adds it to the Table of Contents.
+\renewcommand\@pnumwidth{1.55em}
+\renewcommand\@tocrmarg{8.55em}
+\addcontentsline{toc}{chapter}{\hspace{-1.5em} LIST OF TABLES \vspace{12pt}}
+\listoftables
+\pagebreak
+%The code below generates the List of Figures and adds it to the Table of Contents.
+\addcontentsline{toc}{chapter}{\hspace{-1.5em} LIST OF FIGURES \vspace{12pt}}
+\listoffigures
+\pagebreak
+%The List of Nomenclature may be included here, if desired.
+
+%\chapter*{List of Nomenclature}
+%\doublespacing
+%\vspace{0.55ex}
+%Provide the definitions of the symbols used in your thesis or dissertation here.
+%\addcontentsline{toc}{chapter}{\hspace{-1.5em} LIST OF NOMENCLATURE \vspace{12pt}}
+%\pagebreak
+
+%The code below adds the Abstract and places it within the Table of Contents.
+\renewenvironment{abstract}{{\hspace{-2.2em} \huge \textbf{\abstractname}} \par}{\pagebreak}
+\addcontentsline{toc}{chapter}{\hspace{-1.5em} ABSTRACT}
+\begin{abstract}
+\vspace{0.55ex}
+\doublespacing
+Insert the text of your abstract here.  Make sure there is one blank line between the end of the Abstract text and the ``end'' command below to maintain double--spaced lines.
+
+\end{abstract}
+
+\pagenumbering{arabic}
+\addtocontents{toc}{\vspace{12pt} \hspace{-1.8em} CHAPTER \vspace{-1em}}
+\singlespacing
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\chapter{Introduction}
+\doublespacing
+\input{chapter1}
+\pagebreak
+\singlespacing
+\chapter{A simple numerical solution for a PDE using the Discontinuous Galerkin method}
+\doublespacing
+\input{chapter2}
+\pagebreak
+\singlespacing
+\chapter{A scalar field on a Schwarzschild background without a source}
+\doublespacing
+\input{chapter3}
+\pagebreak
+\singlespacing
+\chapter{Elliptical orbits on a Schwarzschild spacetime}
+\doublespacing
+\input{chapter4}
+\pagebreak
+\singlespacing
+\chapter{Extrapolating the self force to infinite Disctontinuous Galerkin order}
+\doublespacing
+\input{chapter5}
+\pagebreak
+\singlespacing
+\chapter{Extrapolating the mode-summed self-force to include contributions from an infinite number of spherical harmonic modes}
+\doublespacing
+\input{chapter6}
+\pagebreak
+\singlespacing
+\chapter{Future work: generic orbits via the osculating orbits framework}
+\doublespacing
+\input{chapter7}
+\pagebreak
+\singlespacing
+%To insert additional chapters, copy the previous five lines, using chapterX as the argument of the 
+%\input command for Chapter X, where X=6,7,8,...
+\addtocontents{toc}{\vspace{12pt}}
+\addcontentsline{toc}{chapter}{\hspace{-1.6em} REFERENCES}
+\begin{thebibliography}{999}
+\vspace{0.9em}
+\input{bibliography}
+\end{thebibliography}
+%\pagebreak
+%\singlespacing
+%\addtocontents{toc}{\vspace{12pt} \hspace{-1.8em} APPENDIX \vspace{-1em}}
+%\appendix
+%\chapter{Title of Appendix A}
+%\vspace{0.5em}
+%\input{appendixA}
+%\pagebreak
+%\chapter{Title of Appendix B}
+%\vspace{0.5em}
+%\input{appendixB}
+%\pagebreak
+%If you need to insert additional appendices, copy the previous four lines, using appendixY as the
+%argument of the \input commnd for Appendix Y, for Y=C,D,E,...
+
+%Finally, the vita section is created and included in the Table of Contents.
+\chapter*{Vita}
+\doublespacing
+\setlength{\parindent}{1.75em}
+\vspace{0.2em}
+\addtocontents{toc}{\vspace{12pt}}
+\addcontentsline{toc}{chapter}{\hspace{-1.5em} VITA}
+Insert the text of your vita, which is basically a description of yourself and your academic career.
+
+
+\end{document}
+
+
+
+
+
