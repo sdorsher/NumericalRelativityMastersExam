@@ -9,48 +9,12 @@ Note that it is not always possible to choose three points such that they lie on
 
 \begin{figure}
   \includegraphics{/home/sdorsher/LabNotebook/20170714/finfovertimel3discontinuities}
-  \caption{$F_{\inf}$ calculated in this manner, evolved over one full orbital cycle, shows some discontinuities in some l-modes.}
+  \caption{Starting order was chosen by iterating from the lowest order to the first order for which the ``mode failed'', and chosing the maximum starting order that succeded. When $F_{\inf}$ is evolved over one full orbital cycle, some l-modes shows discontinuities at some times. l=3}
 \end{figure}
 
 
 
 
-t472
-\begin{table}
-\begin{tabular}{ll}
-Starting index & finf\\
-2 & 4.18128309016e-05\\
-3 & mode failed\\
-4 & 4.18128307505e-05\\
-5 & 4.18128308245e-05\\
-6 & 4.1812830828e-05\\
-\end{tabular}
-\end{table}
-
-
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170719/extrapolate7t472l3i2}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170719/extrapolate7t472l2i3}
-  \caption{Note that the three points used in the extrapolation are not on a line on a semilog scale-- it is not possible to fit an exponential through them. That is why this mode failed.}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170719/extrapolate7lt472l2i5}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170719/extrapolate7t472l2i6}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170719/manuallyChosenBestFinft472}
-\end{figure}
-
-
-\section{l=2}
 \begin{table}
   \begin{tabular}{lll}
     time & starting order & finf\\
@@ -61,52 +25,35 @@ Starting index & finf\\
     632 & 4 & mode failed\\
     632 & 5 & 2.40975299291e-05\\
     632 & 6 & 2.40975299148e-05\\
-    \hline
-    634 & 0 & mode failed (however, 6 selected)\\
-    634 & 1 & 2.39990698129e-05\\
-    634 & 2 & 2.39990699318e-05\\
-    634 & 3 & 2.39990698774e-05\\
-    634 & 4 & mode failed\\
-    634 & 5 & 2.39990697065e-05\\
-    634 & 6 & 2.39990696758e-05\\
-    \hline
-    636 & 0 & mode failed (however, 6 selected)\\
-    636 & 1 & 2.391047416e-05\\
-    636 & 2 & 2.39104742806e-05\\
-    636 & 3 & 2.39104742249e-05\\
-    636 & 4 & 2.39104737911e-05\\
-    636 & 5 & 2.39104739924e-05\\
-    636 & 6 & 2.39104739079e-05\\
   \end{tabular}
+  \caption{Manual starting indices and $F_{\inf}$ values for t=632, l=2.}
+  \label{manual}
 \end{table}
 
 \begin{figure}
   \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i1}
+  \caption{Fluctuation in one of the points chosen in the extrapolation, due to roundoff or truncation error, causes the extrapolation to predict a value of $F_{\inf}$ that is subtly wrong, leading to curvature in the semilog plot after $F_{\inf}$ subtraction. t=632, l=2, i=1}
 \end{figure}
 
 \begin{figure}
   \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i2}
+  \caption{Roundoff error is visible at high DG orders. t=632, l=2, i=2}
 \end{figure}
 
 \begin{figure}
   \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i3}
+  \caption{The incorrect value of $F_{\inf}$ has been chosen due to roundoff error, perhaps due to finite precision in the root finding algorithm, leading to a negative values, that show as a ``V'' in the semilog plot. t=632, l=3, i=3}
 \end{figure}
 
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i5}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t634l2i6}
-\end{figure}
 
 \begin{figure}
   \includegraphics{/home/sdorsher/LabNotebook/20170720/bestFinfManuallyChosent632l2}
+\caption{Manual correction for the discontinuities in the l=2 mode, using the manually determined $F_{\inf}$ data from Table~\ref{manual}. }
 \end{figure}
 
 \subsection{ Checking for discontinuities in $F_{\inf}$ for each each l-mode}
 
-There are no discontinuities in $F_{\inf}$ for any of the l-modes when the median approach is used. See mode zero for an example.
+In the median approach, the starting orders that did not ``fail'' at each time and for each mode are ordered by their $F_{\inf}$ values. The median value of $F_{\inf}$ is selected, presumably discarding those effected by roundoff and those effected by failure to converge. However, there is no guarantee that it selects those in this regime, since in principle a mode could both be in the roundoff limit and have not converged yet. Yet when this is done, there are no discontinuities in $F_{\inf}$ for any of the l-modes when the median approach is used. See mode zero for an example.
 
 \begin{figure}
   \includegraphics{/home/sdorsher/LabNotebook/20170727/finfovertimel0}
@@ -115,12 +62,11 @@ There are no discontinuities in $F_{\inf}$ for any of the l-modes when the media
 
 
 \subsection{Determining $F_{\inf}$ using maximum likelihood fits to subsegments of lines in semilog space}
-Fit subsegments of lines in semilog space on DG order convergence plot after subtracting Finf for each possible starting order. pick starting order and starting and ending index of line segment with best possible chi-sq per dof (closest to one). use that finf. veto modes and starting indices that fail the alpha ratio test.
+A better motivated approach, is to fit subsegments of lines in semilog space onthe DG order convergence plot, and find the most linear, longest linear, region. A fit with the ``best'' value of the reduced chi squared should be a good approximation to this. The reduced chi squared is the value of the sum of the residuals of the fit squared divided by the number of degrees of freedom, which in this case is the number of points in the fit minus two, since there are two degrees of freedom in a linear fit. The expectation value of the reduced chi squared, in the limit of a large number of degrees of freedom, is one. I loop over starting and ending points of the fit, and over starting orders, and choose the starting order with the best fit line segment in the sense that that line segment has a reduced chi squared closest to one. An example of such an automatically chosen starting index is given in Figure~\ref{autoconverge}, where there is a long exponentially converging region.
 
-take standard deviation of surface plot as well as average.
 \begin{figure}
   \includegraphics{fittingtechniqet370l0}
-  \caption{l=0 mode with fit-chosen starting index produces convergence plot with nice long exponentially converging region}
+  \caption{l=0 mode with line-segment fit-chosen starting order produces convergence plot with long exponentially converging region}
 \end{figure}
 
 
