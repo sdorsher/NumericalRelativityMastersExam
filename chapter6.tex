@@ -4,9 +4,19 @@ The Discontinuous Galerkin method results in truncation error that scales as $h^
 Note that it is not always possible to choose three points such that they lie on a converging exponential form, for instance, if they are not monotonic, or if they curve in the wrong direction. In these cases, I say that the ``mode failed'', and discard the result for that mode with that starting order for the extrapolation. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. 
 
 \begin{figure}
+  \includegraphics{alphafunction}
+  \caption{$g(\alpha)$}
+\end{figure}
+
+
+
+\begin{figure}
 \includegraphics{extrapolate7plot}
 \caption{DG convergence with order, extrapolated from highlighted points to infinite order along exponential form, which appears as a straight line in the semilog plot.}
 \end{figure}
+
+
+
 
 
 
