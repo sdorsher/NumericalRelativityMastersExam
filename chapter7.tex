@@ -1,28 +1,9 @@
-NEED A PLOT OF FINF AS A FUNCTION OF L
-
-
-\subsection{Relative error as a function of mode}
-We can understand why it is so hard to produce good fits by examining the relative error between different fitting techniques as a function of mode. Look at the relative error between the fit method and the median method. Absolute error grows with l, suggesting that it might make sense to try using a weighted fit. Since the self force over l scales as a power law that goes as $l^{-2}$ to the first order, I suggest a weight that scales as $l^-{2}$. A weighted fit is of the form
-
-\begin{equation}
-  \chi^2=\sum\frac{(f(x_i)-y_i)^2}{\sigma_i}
-\end{equation}
-
-where $\sigma_i$ is a weight related to the ``error'' or ``uncertainty'', in this case the truncation or roundoff error depending which regime the mode is in. 
-
-%\begin{figure}
-%  \includegraphics{relErrorIncreaseslMode}
-%  \caption{Relative error between fit and median techniques increases with l-mode}
-%\end{figure}
-
+INCLUDE CITATION AND FUNCTIONAL FORM, FUNCTIONAL FORM OF MODE SUM
 
 \begin{figure}
-  \includegraphics{absErrorIncreaseslmode}
-  \caption{Absolute error between fit and median techniques increases with l-mode}
+  \includegraphics{finffit570}
+  \caption{Three term fit of l-mode vs $F_{\inf}$. Note how the fit is bad at high l. There are an infinite number of additional terms that can be added to the fit to account for this deviation. However, it is also fundamentally difficult to fit an exponentially converging function. See Chapter~\ref{sigmachap}.}
 \end{figure}
-
-
-NEED SOMETHING SHOWING FIT ITSELF. NEED TO REORDER AND RECAPTION NEXT SECTION
 
 \begin{figure}
   \includegraphics{relErrBigSmallRangeOverTime.eps}
