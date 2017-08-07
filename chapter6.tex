@@ -1,14 +1,17 @@
+The Discontinuous Galerkin method results in truncation error that scales as $h^{N+1}$, where $h$ is the element size and $N$ is the order of the interpolating polynomials within the element.~\cite{dghesthaven} The self force is given by the radial derivative of the 
+
+
 Note that it is not always possible to choose three points such that they lie on a converging exponential form, for instance, if they are not monotonic, or if they curve in the wrong direction. In these cases, I say that the ``mode failed'', and discard the result for that mode with that starting order for the extrapolation. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. 
 
 \begin{figure}
-\includegraphics{/home/sdorsher/LabNotebook/20170713/extrapolate7plot}
+\includegraphics{extrapolate7plot}
 \caption{DG convergence with order, extrapolated from highlighted points to infinite order along exponential form, which appears as a straight line in the semilog plot.}
 \end{figure}
 
 
 
 \begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170714/finfovertimel3discontinuities}
+  \includegraphics{finfovertimel3discontinuities}
   \caption{Starting order was chosen by iterating from the lowest order to the first order for which the ``mode failed'', and chosing the maximum starting order that succeded. When $F_{\inf}$ is evolved over one full orbital cycle, some l-modes shows discontinuities at some times. l=3}
 \end{figure}
 
@@ -31,23 +34,23 @@ Note that it is not always possible to choose three points such that they lie on
 \end{table}
 
 \begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i1}
+  \includegraphics{extrapolate7t632l2i1}
   \caption{Fluctuation in one of the points chosen in the extrapolation, due to roundoff or truncation error, causes the extrapolation to predict a value of $F_{\inf}$ that is subtly wrong, leading to curvature in the semilog plot after $F_{\inf}$ subtraction. t=632, l=2, i=1}
 \end{figure}
 
 \begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i2}
+  \includegraphics{extrapolate7t632l2i2}
   \caption{Roundoff error is visible at high DG orders. t=632, l=2, i=2}
 \end{figure}
 
 \begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170720/extrapolate7t632l2i3}
+  \includegraphics{extrapolate7t632l2i3}
   \caption{The incorrect value of $F_{\inf}$ has been chosen due to roundoff error, perhaps due to finite precision in the root finding algorithm, leading to a negative values, that show as a ``V'' in the semilog plot. t=632, l=3, i=3}
 \end{figure}
 
 
 \begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170720/bestFinfManuallyChosent632l2}
+  \includegraphics{bestFinfManuallyChosent632l2}
 \caption{Manual correction for the discontinuities in the l=2 mode, using the manually determined $F_{\inf}$ data from Table~\ref{manual}. }
 \end{figure}
 
@@ -56,7 +59,7 @@ Note that it is not always possible to choose three points such that they lie on
 In the median approach, the starting orders that did not ``fail'' at each time and for each mode are ordered by their $F_{\inf}$ values. The median value of $F_{\inf}$ is selected, presumably discarding those effected by roundoff and those effected by failure to converge. However, there is no guarantee that it selects those in this regime, since in principle a mode could both be in the roundoff limit and have not converged yet. Yet when this is done, there are no discontinuities in $F_{\inf}$ for any of the l-modes when the median approach is used. See mode zero for an example.
 
 \begin{figure}
-  \includegraphics{/home/sdorsher/LabNotebook/20170727/finfovertimel0}
+  \includegraphics{finfovertimel0}
   \caption{An example of no discontinuities in $F_{\inf}$ for any of the l-modes. Mode $l=0$.}
 \end{figure}
 
