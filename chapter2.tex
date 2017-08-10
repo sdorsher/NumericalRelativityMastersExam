@@ -1,5 +1,6 @@
 \section{Reduction to coupled first order differential equations}
 
+
 The fundamental problem we wish to solve is to evolve the wave equation on Schwarzschild spacetime with a source. However, to begin to address this problem, I implemented a one dimensional wave equation solver in C++ using the Discontinuous Galerkin method in flat spacetime. The wave equation in flat spacetime is given, in several different forms, by
 \begin{eqnarray}
   \Box\psi=0\\
@@ -21,12 +22,15 @@ This system of equations can be rewritten
 where $u$ is the state vector consisting of $u=(\psi,\rho,\phi)$, and $A$ and $B$ are matrices. RHS stands for Right Hand Side. The C++ code has been implemented for wave equations of this generalized form, which encompases wave equations on a Schwarzschild spacetime.
 
 
+\section{Method of Lines}
 
-\section{Spatial grids}
+The method of lines is a method for solving partial differential equations in which spatial dimensions are discritized and time (conventionally) is evolved with numerical integration. We use this technique to solve the wave equation. 
+
+\subsection{Spatial grids}
 Our code solves a wave equation, which must first calculate a spatial derivative then integrate in time to solve a differential equation. For the spatial derivative part of the scheme, we make use of the Discontinuous Galerkin method to compute spatial derivatives, as a replacement for a finite difference scheme. Its has three primary benefits. One is that it naturally handles discontinuities in the evolved field, which is important to the effective source approach that we use when calculating orbits with a source in curved spacetime. The second is that its accuracy scales exponentially with increasing polynomial order. The third is that its accuracy scales as a power law with decreasing element size, giving a second strong way to reduce the truncation error.
 
 
-\subsection{Finite difference schemes}
+\subsubsection{Finite difference schemes}
 The classic solution to the spatial derivative problem is the finite difference scheme. In a one dimensional finite difference scheme, space is discretized into points on a line. The spatial derivative is calculated using a stencil of points that is symmetric about the point where one wants to know the spatial derivative, and extends $n-1$ points beyond to either side, where $n$ is the order of the expansion. The spatial derivative is calculated from a weighted sum of the points included in the stencil, where some of the weights are negative. A stencil with $2n-1$ points in it, in one dimension, corresponds to an $n$th order expansion. It is possible to expand any order of derivative to any order of expansion. A first derivative, to second order accuracy, given by:
 \begin{equation}
   D_r^{(2)}=\frac{1}{h}(-\frac{1}{2}f_{-1}+\frac{1}{2}f_1)
@@ -43,7 +47,7 @@ This derivative is symmetric, while the first derivative is antisymmetric.
 
 It is possible to extend these stencils to two and three dimensions. When considering parallelization using OpenMP, issues of synchronization must be considered. When parallelizing over many nodes, the spatial grid gets divided into blocks. At the ends of each block, the boundary cells need information from the neighboring cells to calculate the spatial derivative. For an order $n$ derivative, $n-1$ boundary cells are synchronized into buffer zones both to the left and to the right at each time step. In our code, this is not necessary, since we have parallelized with OpenMP, which uses shared memory within one node, across several (16) cores.
 
-\subsection{The Disctontinuous Galerkin method}
+\subsubsection{The Disctontinuous Galerkin method}
 The Discontinuous Galerkin method breaks space into segments called elements. Within each element, the value of the field is represented by the sum of $n$ interpolating polynomials of order $n$, where $n$ is the order of the element. There are $n+1$ unevenly spaced nodes in the element, clustered toward the edges. At each node, exactly one of the interpolating polynomials takes on a value of one while the others are zero. An interpolating Lagrange polynomial has a functional form:
 \begin{equation}
   \ell_i(r)=\prod_{j=1,j\ne i}^{n}\frac{r-\xi_j}{\xi_i-\xi_j}
@@ -70,7 +74,7 @@ The Discontinuous Galerkin method helps damp error introduced by discontinuities
 This flux, based upon the state vector interior to ($u^-$) and exterior to ($u^+$) the element, at each end of the element, is distributed across the whole element from end to end via the lift matrix~\cite{dghesthaven}.
 
 
-\section{Time evolution}
+\subsection{Time evolution}
 
 Time evolution in our code is handled by a fourth order low storage Runga Kutta method. Instead of the standard fourth order Runga Kutta method, this method takes five sub-timesteps, but only the most recent sub-timestep needs to be stored.
 
