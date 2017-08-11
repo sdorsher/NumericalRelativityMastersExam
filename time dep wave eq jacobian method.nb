@@ -1,0 +1,1817 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     54760,       1809]
+NotebookOptionsPosition[     51141,       1679]
+NotebookOutlinePosition[     51477,       1694]
+CellTagsIndexPosition[     51434,       1691]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.694450376548379*^9, 3.6944503829645863`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.69436609517889*^9, 3.694366097385119*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"frule2", "=", 
+  RowBox[{
+   RowBox[{"f", "[", "r", "]"}], "\[Rule]", 
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     RowBox[{"2", "*", 
+      RowBox[{"M", "/", "r"}]}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.694366117323839*^9, 3.6943661840218287`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", "r", "]"}], "\[Rule]", 
+  RowBox[{"1", "-", 
+   FractionBox[
+    RowBox[{"2", " ", "M"}], "r"]}]}]], "Output",
+ CellChangeTimes->{
+  3.694366184599305*^9, 3.6943679135442467`*^9, 3.6943713509307003`*^9, 
+   3.694438824243308*^9, 3.694439892651555*^9, 3.6944470541910563`*^9, {
+   3.69445189979216*^9, 3.694451911304945*^9}, 3.6944521950680847`*^9, 
+   3.694470345417698*^9, 3.694531640347487*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"waveeqtortoise4", "=", 
+  RowBox[{
+   RowBox[{"2", "*", 
+    RowBox[{"M", "/", 
+     RowBox[{"r", "^", "3"}]}], "*", 
+    RowBox[{"f", "[", "r", "]"}], "*", 
+    RowBox[{"psi", "[", 
+     RowBox[{"t", ",", "x"}], "]"}]}], "+", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"psi", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "2"}], "}"}]}], "]"}], "-", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"psi", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "2"}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6943661908946753`*^9, 3.694366295550564*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"2", " ", "M", " ", 
+    RowBox[{"f", "[", "r", "]"}], " ", 
+    RowBox[{"psi", "[", 
+     RowBox[{"t", ",", "x"}], "]"}]}], 
+   SuperscriptBox["r", "3"]], "-", 
+  RowBox[{
+   SuperscriptBox["psi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"0", ",", "2"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "+", 
+  RowBox[{
+   SuperscriptBox["psi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"2", ",", "0"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.694366304419427*^9, 3.694367913573646*^9, 3.694371350947646*^9, 
+   3.694438826960053*^9, 3.694439892677465*^9, 3.694447054218848*^9, {
+   3.694451899905298*^9, 3.694451911324545*^9}, 3.694452195089579*^9, 
+   3.694470345539743*^9, 3.694531640471231*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lambdarule", "=", 
+  RowBox[{"t", "\[Rule]", "lambda"}]}]], "Input",
+ CellChangeTimes->{3.69436665577695*^9}],
+
+Cell[BoxData[
+ RowBox[{"t", "\[Rule]", "lambda"}]], "Output",
+ CellChangeTimes->{
+  3.69436635236549*^9, 3.694366656907464*^9, 3.694367913576633*^9, 
+   3.694371350961854*^9, 3.69443882921029*^9, 3.694439892696959*^9, 
+   3.694447054221713*^9, {3.694451899930086*^9, 3.694451911345524*^9}, 
+   3.6944521951076317`*^9, 3.694470345562957*^9, 3.694531640497229*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"xrule", "=", 
+  RowBox[{"x", "\[Rule]", 
+   RowBox[{"a", "+", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"xp", "[", "lambda", "]"}], "-", "a"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"xip", "-", "a"}], ")"}]}], "*", 
+     RowBox[{"(", 
+      RowBox[{"xi", "-", "a"}], ")"}]}], "+", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"b", "-", 
+             RowBox[{"xp", "[", "lambda", "]"}]}], ")"}], "*", 
+           RowBox[{"(", 
+            RowBox[{"xip", "-", "a"}], ")"}]}], "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"xp", "[", "lambda", "]"}], "-", "a"}], ")"}], "*", 
+           RowBox[{"(", 
+            RowBox[{"b", "-", "xip"}], ")"}]}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"xip", "-", "a"}], ")"}]}], "/", 
+       RowBox[{"(", 
+        RowBox[{"b", "-", "xip"}], ")"}]}], "/", 
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}]}], "*", 
+     RowBox[{"(", 
+      RowBox[{"xi", "-", "a"}], ")"}], "*", 
+     RowBox[{"(", 
+      RowBox[{"xi", "-", "xip"}], ")"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.69436635508845*^9, 3.694366377665744*^9}}],
+
+Cell[BoxData[
+ RowBox[{"x", "\[Rule]", 
+  RowBox[{"a", "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "a"}], "+", "xi"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "a"}], "+", 
+       RowBox[{"xp", "[", "lambda", "]"}]}], ")"}]}], 
+    RowBox[{
+     RowBox[{"-", "a"}], "+", "xip"}]], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "a"}], "+", "xi"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"xi", "-", "xip"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "a"}], "+", "xip"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"b", "-", 
+          RowBox[{"xp", "[", "lambda", "]"}]}], ")"}]}], "-", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"b", "-", "xip"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "a"}], "+", 
+          RowBox[{"xp", "[", "lambda", "]"}]}], ")"}]}]}], ")"}]}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "a"}], "+", "b"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"b", "-", "xip"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "a"}], "+", "xip"}], ")"}]}]]}]}]], "Output",
+ CellChangeTimes->{
+  3.694366379794581*^9, 3.694367913608562*^9, 3.694371350977573*^9, 
+   3.694438832057336*^9, 3.6944398927178383`*^9, 3.69444705424969*^9, {
+   3.6944518999555607`*^9, 3.694451911370816*^9}, 3.694452195125986*^9, 
+   3.694470345585856*^9, 3.694531640527236*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"a", ",", "Constant"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"b", ",", "Constant"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"xip", ",", "Constant"}], "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x", "/.", "xrule"}]], "Input",
+ CellChangeTimes->{{3.694366413921509*^9, 3.69436641520357*^9}}],
+
+Cell[BoxData[
+ RowBox[{"a", "+", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "xi"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", 
+      RowBox[{"xp", "[", "lambda", "]"}]}], ")"}]}], 
+   RowBox[{
+    RowBox[{"-", "a"}], "+", "xip"}]], "+", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "xi"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"xi", "-", "xip"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "a"}], "+", "xip"}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{"b", "-", 
+         RowBox[{"xp", "[", "lambda", "]"}]}], ")"}]}], "-", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"b", "-", "xip"}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "a"}], "+", 
+         RowBox[{"xp", "[", "lambda", "]"}]}], ")"}]}]}], ")"}]}], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "b"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"b", "-", "xip"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "xip"}], ")"}]}]]}]], "Output",
+ CellChangeTimes->{
+  3.694366416413004*^9, 3.694367913651712*^9, 3.694371351002625*^9, 
+   3.6944388423966837`*^9, 3.694439892751108*^9, 3.694447054287653*^9, {
+   3.694451899993287*^9, 3.694451911408893*^9}, 3.69445219515107*^9, 
+   3.694470345623259*^9, 3.6945316405645323`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jacobian", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"dxdlambda", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], ",", 
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}]}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.69437115809973*^9, 3.6943711823462877`*^9}, {
+   3.694371242457451*^9, 3.694371303028099*^9}, {3.6944387701837254`*^9, 
+   3.694438793619236*^9}, {3.6944446931839447`*^9, 3.694444728215126*^9}, {
+   3.694447140292551*^9, 3.694447224136941*^9}, 3.694447269081571*^9, {
+   3.694447334488729*^9, 3.694447352839797*^9}, 3.69444845585345*^9, {
+   3.694452146082398*^9, 3.694452150916297*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"dxdlambda", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], ",", 
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.694447227036297*^9, 3.694447274717145*^9, 3.694447356432403*^9, 
+   3.6944484624150333`*^9, {3.69445190001793*^9, 3.694451911431827*^9}, 
+   3.694452157385024*^9, 3.6944521951702538`*^9, 3.6944703456462917`*^9, 
+   3.694531640596654*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"invjacobian", "=", 
+  RowBox[{
+   RowBox[{"Inverse", "[", "jacobian", "]"}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.694371293672288*^9, 3.694371327658537*^9}, 
+   3.694447271976295*^9, 3.694452216282164*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"dxdlambda", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], 
+       RowBox[{"dxdxi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}]]}], ",", 
+     FractionBox["1", 
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}]]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6943713175398407`*^9, 3.694371351394052*^9}, 
+   3.694438802370028*^9, 3.6944398928009653`*^9, 3.694444745948814*^9, 
+   3.694447054343379*^9, 3.694447232601013*^9, 3.6944472773115788`*^9, 
+   3.694447359224299*^9, 3.694448482007853*^9, {3.694451900042821*^9, 
+   3.694451911452526*^9}, 3.694452162191945*^9, {3.694452195192108*^9, 
+   3.694452217352208*^9}, 3.694470345730171*^9, 3.694531640689836*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"coordtime", "=", 
+   RowBox[{"{", 
+    RowBox[{"lambda", ",", "xi"}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.694439435662159*^9, 3.6944394538356133`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"lambda", ",", "xi"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.694439682498479*^9, 3.69443989291038*^9, 3.694444746167953*^9, 
+   3.694447054453664*^9, 3.694447282162999*^9, 3.6944484848707848`*^9, {
+   3.694451900068075*^9, 3.694451911472546*^9}, 3.694452228592573*^9, 
+   3.694470345752961*^9, 3.694531640708173*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coordxt", "=", 
+  RowBox[{"{", 
+   RowBox[{"t", ",", "x"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.69443966313286*^9, 3.694439672207068*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"t", ",", "x"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.69443945516225*^9, 3.6944396728630753`*^9, 3.694439892933465*^9, 
+   3.694444746197081*^9, 3.694447054469429*^9, 3.69444728452223*^9, 
+   3.694448487054226*^9, {3.6944519000932493`*^9, 3.694451911495573*^9}, 
+   3.694452231102477*^9, 3.694470345776866*^9, 3.694531640724785*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"psirule", "=", 
+  RowBox[{
+   RowBox[{"psi", "[", 
+    RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", 
+   RowBox[{"psi", "[", 
+    RowBox[{"lambda", ",", "xi"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6944522428472443`*^9, 3.6944522799149017`*^9}, {
+  3.694452329436982*^9, 3.694452350871868*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"psi", "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", 
+  RowBox[{"psi", "[", 
+   RowBox[{"lambda", ",", "xi"}], "]"}]}]], "Output",
+ CellChangeTimes->{3.694452351636318*^9, 3.6944703458015947`*^9, 
+  3.6945316407404346`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dpsidtrule", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"psi", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", "t"}], "]"}], "\[Rule]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"psi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}], "*", 
+     RowBox[{
+      RowBox[{"invjacobian", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"psi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], "*", 
+     RowBox[{
+      RowBox[{"invjacobian", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.69445237215049*^9, 3.6944524667932034`*^9}, {
+   3.694452664280732*^9, 3.694452761350881*^9}, {3.694452819613912*^9, 
+   3.694452823127214*^9}, 3.694452864770245*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["psi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"1", ",", "0"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", 
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"dxdlambda", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+      RowBox[{
+       SuperscriptBox["psi", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"0", ",", "1"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}]}], 
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}]]}], "+", 
+   RowBox[{
+    SuperscriptBox["psi", 
+     TagBox[
+      RowBox[{"(", 
+       RowBox[{"1", ",", "0"}], ")"}],
+      Derivative],
+     MultilineFunction->None], "[", 
+    RowBox[{"lambda", ",", "xi"}], "]"}]}]}]], "Output",
+ CellChangeTimes->{3.6944528654472513`*^9, 3.694470345843257*^9, 
+  3.694531640756917*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"d2psidt2rule", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"psi", "[", 
+       RowBox[{"t", ",", "x"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "2"}], "}"}]}], "]"}], "->", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"D", "[", 
+            RowBox[{
+             RowBox[{"psi", "[", 
+              RowBox[{"t", ",", "x"}], "]"}], ",", "t"}], "]"}], ")"}], "/.", 
+          "dpsidtrule"}], ")"}], ",", "lambda"}], "]"}], "*", 
+      RowBox[{
+       RowBox[{"invjacobian", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"psi", "[", 
+             RowBox[{"t", ",", "x"}], "]"}], ",", "t"}], "]"}], "/.", 
+          "dpsidtrule"}], ")"}], ",", "xi"}], "]"}], "*", 
+      RowBox[{
+       RowBox[{"invjacobian", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.694452871184395*^9, 3.69445300447681*^9}, {
+  3.694453094219863*^9, 3.694453101469861*^9}, {3.6944531405136213`*^9, 
+  3.694453152707163*^9}, {3.694453365936097*^9, 3.694453379870401*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["psi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"2", ",", "0"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", 
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox[
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], "3"]], 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"dxdlambda", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{
+           SuperscriptBox["dxdxi", 
+            TagBox[
+             RowBox[{"(", 
+              RowBox[{"0", ",", "1"}], ")"}],
+             Derivative],
+            MultilineFunction->None], "[", 
+           RowBox[{"lambda", ",", "xi"}], "]"}]}], " ", 
+         RowBox[{
+          SuperscriptBox["psi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"0", ",", "1"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+        RowBox[{
+         RowBox[{"dxdxi", "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox["psi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"0", ",", "2"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}], "+", 
+     RowBox[{
+      RowBox[{"dxdlambda", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["dxdlambda", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"0", ",", "1"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox["psi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"0", ",", "1"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["psi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"0", ",", "1"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox["dxdxi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"1", ",", "0"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}], "-", 
+        RowBox[{"2", " ", 
+         RowBox[{"dxdxi", "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox["psi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"1", ",", "1"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}], "+", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"dxdxi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{
+           SuperscriptBox["psi", 
+            TagBox[
+             RowBox[{"(", 
+              RowBox[{"0", ",", "1"}], ")"}],
+             Derivative],
+            MultilineFunction->None], "[", 
+           RowBox[{"lambda", ",", "xi"}], "]"}]}], " ", 
+         RowBox[{
+          SuperscriptBox["dxdlambda", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"1", ",", "0"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+        RowBox[{
+         RowBox[{"dxdxi", "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox["psi", 
+           TagBox[
+            RowBox[{"(", 
+             RowBox[{"2", ",", "0"}], ")"}],
+            Derivative],
+           MultilineFunction->None], "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}]}], 
+    ")"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.694453006399822*^9, 3.694453102915819*^9, {3.694453147157097*^9, 
+   3.694453153100815*^9}, 3.694453382353271*^9, 3.6944703458944073`*^9, 
+   3.694531640786312*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dpsidxrule", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"psi", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", "x"}], "]"}], "\[Rule]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"psi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}], "*", 
+     RowBox[{
+      RowBox[{"invjacobian", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"psi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], "*", 
+     RowBox[{
+      RowBox[{"invjacobian", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.694453180890601*^9, 3.694453212158465*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["psi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"0", ",", "1"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["psi", 
+     TagBox[
+      RowBox[{"(", 
+       RowBox[{"0", ",", "1"}], ")"}],
+      Derivative],
+     MultilineFunction->None], "[", 
+    RowBox[{"lambda", ",", "xi"}], "]"}], 
+   RowBox[{"dxdxi", "[", 
+    RowBox[{"lambda", ",", "xi"}], "]"}]]}]], "Output",
+ CellChangeTimes->{3.694453213280061*^9, 3.694470345919853*^9, 
+  3.69453164080846*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"d2psidx2rule", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"psi", "[", 
+       RowBox[{"t", ",", "x"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "2"}], "}"}]}], "]"}], "->", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"D", "[", 
+            RowBox[{
+             RowBox[{"psi", "[", 
+              RowBox[{"t", ",", "x"}], "]"}], ",", "x"}], "]"}], ")"}], "/.", 
+          "dpsidxrule"}], ")"}], ",", "lambda"}], "]"}], "*", 
+      RowBox[{
+       RowBox[{"invjacobian", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"psi", "[", 
+             RowBox[{"t", ",", "x"}], "]"}], ",", "x"}], "]"}], "/.", 
+          "dpsidxrule"}], ")"}], ",", "xi"}], "]"}], "*", 
+      RowBox[{
+       RowBox[{"invjacobian", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}]}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.694453227225644*^9, 3.6944532466426277`*^9}, {
+  3.694453386390807*^9, 3.694453402601655*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["psi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"0", ",", "2"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", 
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox[
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], "3"]], 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{
+        SuperscriptBox["dxdxi", 
+         TagBox[
+          RowBox[{"(", 
+           RowBox[{"0", ",", "1"}], ")"}],
+          Derivative],
+         MultilineFunction->None], "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}]}], " ", 
+      RowBox[{
+       SuperscriptBox["psi", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"0", ",", "1"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+      RowBox[{
+       SuperscriptBox["psi", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"0", ",", "2"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}]}]], "Output",
+ CellChangeTimes->{3.694453248582263*^9, 3.6944534040003233`*^9, 
+  3.694470345945602*^9, 3.694531640841331*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rule2", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dtdxi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}], 
+     "\[Rule]", "d2tdxidlambda"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dtdxi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], "\[Rule]", 
+     "d2dxi2"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dxdxi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}], 
+     "\[Rule]", "d2xdxidlambda"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dxdxi", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], "\[Rule]", 
+     "d2xdxi2"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dtdlambda", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}], 
+     "\[Rule]", "d2tdlambda2"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dtdlambda", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], "\[Rule]", 
+     "d2tdxidlambda"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dxdlambda", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}], 
+     "\[Rule]", "d2xdlambda2"}], ",", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"dxdlambda", "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], "\[Rule]", 
+     "d2xdxidlambda"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.694447819035215*^9, 3.6944481680982037`*^9}, {
+  3.694531629526103*^9, 3.694531633527687*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dtdxi", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"1", ",", "0"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2tdxidlambda"}], ",", 
+   
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dtdxi", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"0", ",", "1"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2dxi2"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dxdxi", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"1", ",", "0"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2xdxidlambda"}], ",", 
+   
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dxdxi", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"0", ",", "1"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2xdxi2"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dtdlambda", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"1", ",", "0"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2tdlambda2"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dtdlambda", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"0", ",", "1"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2tdxidlambda"}], ",", 
+   
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dxdlambda", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"1", ",", "0"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2xdlambda2"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["dxdlambda", 
+      TagBox[
+       RowBox[{"(", 
+        RowBox[{"0", ",", "1"}], ")"}],
+       Derivative],
+      MultilineFunction->None], "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "\[Rule]", "d2xdxidlambda"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.6944481688989563`*^9, 3.6944485032668962`*^9, {3.6944519001714983`*^9, 
+   3.694451911563005*^9}, 3.694453523819763*^9, 3.69447034597169*^9, 
+   3.694531640864135*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"waveeqtimedep", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"waveeqtortoise4", "/.", "d2psidt2rule"}], "/.", "d2psidx2rule"}],
+    "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.694368230039584*^9, 3.6943682815668173`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["r", "3"]}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SuperscriptBox[
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], "2"]}], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["dxdxi", 
+       TagBox[
+        RowBox[{"(", 
+         RowBox[{"0", ",", "1"}], ")"}],
+        Derivative],
+       MultilineFunction->None], "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+     RowBox[{
+      SuperscriptBox["psi", 
+       TagBox[
+        RowBox[{"(", 
+         RowBox[{"0", ",", "1"}], ")"}],
+        Derivative],
+       MultilineFunction->None], "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+    RowBox[{
+     SuperscriptBox["r", "3"], " ", 
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "2"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"dxdlambda", "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "2"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["dxdlambda", 
+            TagBox[
+             RowBox[{"(", 
+              RowBox[{"0", ",", "1"}], ")"}],
+             Derivative],
+            MultilineFunction->None], "[", 
+           RowBox[{"lambda", ",", "xi"}], "]"}], "+", 
+          RowBox[{
+           SuperscriptBox["dxdxi", 
+            TagBox[
+             RowBox[{"(", 
+              RowBox[{"1", ",", "0"}], ")"}],
+             Derivative],
+            MultilineFunction->None], "[", 
+           RowBox[{"lambda", ",", "xi"}], "]"}]}], ")"}]}]}], ")"}]}], "-", 
+    RowBox[{
+     SuperscriptBox["r", "3"], " ", 
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["dxdlambda", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"1", ",", "0"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{"2", " ", 
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"1", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "3"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", "M", " ", 
+        RowBox[{"f", "[", "r", "]"}], " ", 
+        RowBox[{"psi", "[", 
+         RowBox[{"t", ",", "x"}], "]"}]}], "+", 
+       RowBox[{
+        SuperscriptBox["r", "3"], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"2", ",", "0"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}]}], ")"}], "/", 
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["r", "3"], " ", 
+    SuperscriptBox[
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], "3"]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.694368251584818*^9, 3.694368282383057*^9}, 
+   3.6943701672082233`*^9, 3.694371351250739*^9, 3.694439893100059*^9, 
+   3.6944470546547956`*^9, {3.6944519003692303`*^9, 3.69445191168581*^9}, 
+   3.6944533193397083`*^9, 3.6944534089427834`*^9, 3.694470346011033*^9, 
+   3.694531640901038*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"timedepconst", "=", 
+  RowBox[{"Coefficient", "[", 
+   RowBox[{"waveeqtimedep", ",", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"psi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"lambda", ",", "2"}], "}"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.694368284550995*^9, 3.694368311667447*^9}, 
+   3.694368731750801*^9, {3.6943694203447523`*^9, 3.694369483746448*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{
+  3.694369484607217*^9, 3.694370184599814*^9, 3.694371351270903*^9, 
+   3.694439893124805*^9, 3.694447054671636*^9, {3.694451900392819*^9, 
+   3.694451911707659*^9}, 3.694453471507663*^9, 3.69447034603335*^9, 
+   3.694531640926014*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.694370473221086*^9, 3.694370514438312*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dxidtrule3", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"xi", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", "t"}], "]"}], "\[Rule]", 
+   "dxidt"}]}]], "Input",
+ CellChangeTimes->{{3.69437058202085*^9, 3.6943706125260878`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["xi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"1", ",", "0"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", "dxidt"}]], "Output",
+ CellChangeTimes->{
+  3.6943706173668613`*^9, 3.6943713513062353`*^9, 3.694439893176312*^9, 
+   3.694447054692686*^9, {3.694451900445973*^9, 3.6944519117570753`*^9}, 
+   3.694453471644343*^9, 3.694470346055295*^9, 3.694531640949428*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dxidxrule3", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"xi", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", "x"}], "]"}], "\[Rule]", 
+   "dxidx"}]}]], "Input",
+ CellChangeTimes->{{3.694370618158703*^9, 3.6943706392455463`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["xi", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"0", ",", "1"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", "dxidx"}]], "Output",
+ CellChangeTimes->{
+  3.6943706408799667`*^9, 3.694371351319697*^9, 3.694439893200264*^9, 
+   3.694447054709011*^9, {3.694451900470665*^9, 3.694451911780486*^9}, 
+   3.694470346072434*^9, 3.694531640971489*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dlambdadxrule3", "=", 
+  RowBox[{
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"lambda", "[", 
+      RowBox[{"t", ",", "x"}], "]"}], ",", "x"}], "]"}], "\[Rule]", 
+   "dlambdadx"}]}]], "Input",
+ CellChangeTimes->{{3.694370750024062*^9, 3.694370767544177*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["lambda", 
+    TagBox[
+     RowBox[{"(", 
+      RowBox[{"0", ",", "1"}], ")"}],
+     Derivative],
+    MultilineFunction->None], "[", 
+   RowBox[{"t", ",", "x"}], "]"}], "\[Rule]", "dlambdadx"}]], "Output",
+ CellChangeTimes->{
+  3.694370768579467*^9, 3.694371351336947*^9, 3.6944398932247057`*^9, 
+   3.6944470547256117`*^9, {3.694451900494862*^9, 3.6944519118038797`*^9}, 
+   3.6944703460916348`*^9, 3.694531640991495*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"waveeqtimedep2", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"waveeqtimedep", "/", "timedepconst"}], "/.", "dxidtrule3"}], "/.",
+     "dxidxrule3"}], "/.", "dlambdadxrule3"}]}]], "Input",
+ CellChangeTimes->{{3.6943706424316893`*^9, 3.6943706476967363`*^9}, {
+  3.694370693845828*^9, 3.6943707246307573`*^9}, {3.694370772821966*^9, 
+  3.6943707770576563`*^9}, {3.69437149068484*^9, 3.694371495104042*^9}, {
+  3.6944535033662243`*^9, 3.6944535042543373`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["r", "3"]}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SuperscriptBox[
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], "2"]}], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["dxdxi", 
+       TagBox[
+        RowBox[{"(", 
+         RowBox[{"0", ",", "1"}], ")"}],
+        Derivative],
+       MultilineFunction->None], "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+     RowBox[{
+      SuperscriptBox["psi", 
+       TagBox[
+        RowBox[{"(", 
+         RowBox[{"0", ",", "1"}], ")"}],
+        Derivative],
+       MultilineFunction->None], "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+    RowBox[{
+     SuperscriptBox["r", "3"], " ", 
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "2"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"dxdlambda", "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "2"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["dxdlambda", 
+            TagBox[
+             RowBox[{"(", 
+              RowBox[{"0", ",", "1"}], ")"}],
+             Derivative],
+            MultilineFunction->None], "[", 
+           RowBox[{"lambda", ",", "xi"}], "]"}], "+", 
+          RowBox[{
+           SuperscriptBox["dxdxi", 
+            TagBox[
+             RowBox[{"(", 
+              RowBox[{"1", ",", "0"}], ")"}],
+             Derivative],
+            MultilineFunction->None], "[", 
+           RowBox[{"lambda", ",", "xi"}], "]"}]}], ")"}]}]}], ")"}]}], "-", 
+    RowBox[{
+     SuperscriptBox["r", "3"], " ", 
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["dxdlambda", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"1", ",", "0"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{"2", " ", 
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"1", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "3"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", "M", " ", 
+        RowBox[{"f", "[", "r", "]"}], " ", 
+        RowBox[{"psi", "[", 
+         RowBox[{"t", ",", "x"}], "]"}]}], "+", 
+       RowBox[{
+        SuperscriptBox["r", "3"], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"2", ",", "0"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}]}], ")"}], "/", 
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["r", "3"], " ", 
+    SuperscriptBox[
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], "3"]}], ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.694370725478924*^9, 3.694370777541813*^9, 3.6943713513595333`*^9, 
+   3.694371496025095*^9, 3.694439893249568*^9, 3.694447054742015*^9, {
+   3.694451900518211*^9, 3.694451911827177*^9}, {3.694453516866419*^9, 
+   3.694453528664777*^9}, 3.6944703461139402`*^9, 3.694531641013269*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"waveeqtimedep5", "=", 
+  RowBox[{
+   RowBox[{"waveeqtimedep2", "/.", "rule2"}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.6943714846066732`*^9, 3.694371535990636*^9}, {
+   3.694453569165779*^9, 3.694453570214267*^9}, 3.6944537534755497`*^9, {
+   3.694470391641635*^9, 3.694470397775916*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "d2xdxi2"}], " ", 
+     SuperscriptBox["r", "3"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SuperscriptBox[
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], "2"]}], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["psi", 
+       TagBox[
+        RowBox[{"(", 
+         RowBox[{"0", ",", "1"}], ")"}],
+        Derivative],
+       MultilineFunction->None], "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+    RowBox[{
+     SuperscriptBox["r", "3"], " ", 
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", "d2xdxidlambda", " ", 
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "-", 
+       RowBox[{
+        SuperscriptBox["psi", 
+         TagBox[
+          RowBox[{"(", 
+           RowBox[{"0", ",", "2"}], ")"}],
+          Derivative],
+         MultilineFunction->None], "[", 
+        RowBox[{"lambda", ",", "xi"}], "]"}], "+", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"dxdlambda", "[", 
+          RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "2"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}], "-", 
+    RowBox[{
+     SuperscriptBox["r", "3"], " ", 
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"d2xdlambda2", " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"0", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}], "+", 
+       RowBox[{"2", " ", 
+        RowBox[{"dxdlambda", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"1", ",", "1"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "3"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", "M", " ", 
+        RowBox[{"f", "[", "r", "]"}], " ", 
+        RowBox[{"psi", "[", 
+         RowBox[{"t", ",", "x"}], "]"}]}], "+", 
+       RowBox[{
+        SuperscriptBox["r", "3"], " ", 
+        RowBox[{
+         SuperscriptBox["psi", 
+          TagBox[
+           RowBox[{"(", 
+            RowBox[{"2", ",", "0"}], ")"}],
+           Derivative],
+          MultilineFunction->None], "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}]}]}], ")"}]}]}], ")"}], "/", 
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["r", "3"], " ", 
+    SuperscriptBox[
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], "3"]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.694371521965117*^9, 3.694371536273361*^9}, 
+   3.694439893446156*^9, 3.694447054845385*^9, {3.6944519007021027`*^9, 
+   3.694451911989609*^9}, 3.69445357112786*^9, 3.694453754763294*^9, 
+   3.694470346143263*^9, 3.6944703985143414`*^9, 3.694470472204792*^9, 
+   3.694531641048305*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Coefficient", "[", 
+  RowBox[{"waveeqtimedep5", ",", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"psi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], ",", "lambda"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.694470356809297*^9, 3.694470412177476*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.6944704075011597`*^9, 3.694470413140299*^9}, {
+   3.6944704767968388`*^9, 3.6944704818814363`*^9}, 3.694531641069517*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Coefficient", "[", 
+  RowBox[{"waveeqtimedep5", ",", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"psi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"lambda", ",", "2"}], "}"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.69447041721522*^9, 3.694470452281474*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.694531641091189*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Input",
+ CellChangeTimes->{{3.694531598598794*^9, 3.694531602158906*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.694531641110755*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Coefficient", "[", 
+   RowBox[{"waveeqtimedep5", ",", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"psi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}]}], "]"}], "//",
+   "Simplify"}]], "Input",
+ CellChangeTimes->{{3.6944705186717377`*^9, 3.69447054644738*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", 
+   SuperscriptBox[
+    RowBox[{"dxdxi", "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "3"]], 
+  RowBox[{"(", 
+   RowBox[{"d2xdxi2", "-", 
+    RowBox[{"d2xdxi2", " ", 
+     SuperscriptBox[
+      RowBox[{"dxdlambda", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "2"]}], "+", 
+    RowBox[{"2", " ", "d2xdxidlambda", " ", 
+     RowBox[{"dxdlambda", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}], " ", 
+     RowBox[{"dxdxi", "[", 
+      RowBox[{"lambda", ",", "xi"}], "]"}]}], "-", 
+    RowBox[{"d2xdlambda2", " ", 
+     SuperscriptBox[
+      RowBox[{"dxdxi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], "2"]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.694470539311144*^9, 3.6944705469091063`*^9}, 
+   3.694531641134869*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Coefficient", "[", 
+   RowBox[{"waveeqtimedep5", ",", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"psi", "[", 
+       RowBox[{"lambda", ",", "xi"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"xi", ",", "2"}], "}"}]}], "]"}]}], "]"}], "//", 
+  "Simplify"}]], "Input",
+ CellChangeTimes->{{3.694470553547222*^9, 3.694470580841831*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"-", "1"}], "+", 
+   SuperscriptBox[
+    RowBox[{"dxdlambda", "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}], "2"]}], 
+  SuperscriptBox[
+   RowBox[{"dxdxi", "[", 
+    RowBox[{"lambda", ",", "xi"}], "]"}], "2"]]], "Output",
+ CellChangeTimes->{3.694470581346118*^9, 3.694531641156979*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Coefficient", "[", 
+   RowBox[{"waveeqtimedep5", ",", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"psi", "[", 
+         RowBox[{"lambda", ",", "xi"}], "]"}], ",", "xi"}], "]"}], ",", 
+      "lambda"}], "]"}]}], "]"}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.694470584545846*^9, 3.694470615775285*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"2", " ", 
+    RowBox[{"dxdlambda", "[", 
+     RowBox[{"lambda", ",", "xi"}], "]"}]}], 
+   RowBox[{"dxdxi", "[", 
+    RowBox[{"lambda", ",", "xi"}], "]"}]]}]], "Output",
+ CellChangeTimes->{3.694473586944755*^9, 3.6945316411792727`*^9}]
+}, Open  ]]
+},
+WindowSize->{828, 959},
+WindowMargins->{{Automatic, 178}, {21, Automatic}},
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 94, 1, 32, "Input"],
+Cell[655, 23, 91, 1, 32, "Input"],
+Cell[CellGroupData[{
+Cell[771, 28, 282, 8, 32, "Input"],
+Cell[1056, 38, 440, 10, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1533, 53, 681, 21, 55, "Input"],
+Cell[2217, 76, 899, 28, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3153, 109, 133, 3, 32, "Input"],
+Cell[3289, 114, 362, 6, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3688, 125, 1314, 41, 99, "Input"],
+Cell[5005, 168, 1577, 50, 95, "Output"]
+}, Open  ]],
+Cell[6597, 221, 96, 2, 32, "Input"],
+Cell[6696, 225, 96, 2, 32, "Input"],
+Cell[6795, 229, 98, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[6918, 235, 119, 2, 32, "Input"],
+Cell[7040, 239, 1505, 49, 95, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8582, 293, 759, 17, 32, "Input"],
+Cell[9344, 312, 573, 15, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9954, 332, 246, 5, 32, "Input"],
+Cell[10203, 339, 885, 21, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11125, 365, 216, 5, 55, "Input"],
+Cell[11344, 372, 359, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11740, 384, 167, 4, 32, "Input"],
+Cell[11910, 390, 376, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12323, 402, 321, 8, 32, "Input"],
+Cell[12647, 412, 263, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12947, 424, 982, 28, 77, "Input"],
+Cell[13932, 454, 1005, 35, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14974, 494, 1446, 42, 99, "Input"],
+Cell[16423, 538, 4551, 143, 228, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21011, 686, 859, 26, 77, "Input"],
+Cell[21873, 714, 625, 22, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22535, 741, 1352, 41, 99, "Input"],
+Cell[23890, 784, 1384, 47, 81, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25311, 836, 1732, 53, 187, "Input"],
+Cell[27046, 891, 2395, 82, 154, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29478, 978, 251, 6, 32, "Input"],
+Cell[29732, 986, 4835, 150, 210, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34604, 1141, 458, 11, 32, "Input"],
+Cell[35065, 1154, 284, 5, 32, "Output"]
+}, Open  ]],
+Cell[35364, 1162, 92, 1, 32, "Input"],
+Cell[CellGroupData[{
+Cell[35481, 1167, 275, 8, 32, "Input"],
+Cell[35759, 1177, 487, 13, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36283, 1195, 276, 8, 32, "Input"],
+Cell[36562, 1205, 461, 13, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37060, 1223, 286, 8, 32, "Input"],
+Cell[37349, 1233, 475, 13, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37861, 1251, 492, 10, 55, "Input"],
+Cell[38356, 1263, 4829, 150, 210, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43222, 1418, 327, 6, 32, "Input"],
+Cell[43552, 1426, 3772, 115, 187, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47361, 1546, 294, 8, 32, "Input"],
+Cell[47658, 1556, 172, 2, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47867, 1563, 343, 9, 32, "Input"],
+Cell[48213, 1574, 70, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48320, 1580, 93, 1, 32, InheritFromParent],
+Cell[48416, 1583, 70, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48523, 1589, 327, 9, 32, "Input"],
+Cell[48853, 1600, 785, 22, 106, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49675, 1627, 381, 11, 32, "Input"],
+Cell[50059, 1640, 337, 10, 56, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50433, 1655, 399, 11, 55, "Input"],
+Cell[50835, 1668, 290, 8, 85, "Output"]
+}, Open  ]]
+}
+]
+*)
+
