@@ -41,3 +41,33 @@ Currently, there are four distinct windows on the gravitational wave universe pl
 \section{EMRIs}
 \section{The discontinuous galerkin method}
 \section{LISA}
+
+
+\section{Notation}
+In this manuscript, I use Einstein summation notation for tensors, where a repeated Greek index implies a summation over that repeated index. For example, an $n$ dimensional tensor field of rank (1,2) transforms, in general, according to the rule
+\begin{equation}
+  T^\alpha_{\beta\gamma}(\bar{x}^1,\ldots,\bar{x}^n)=\Lambda^\alpha_\delta\Lambda^\epsilon_\beta\Lambda^\zeta_\gamma T^\delta_{\epsilon\zeta}(x^1,\ldots,x^n)
+\end{equation}
+where $\Lambda$ is the jacobian of the coordinate transformation from $x$ to $\bar{x}$. 
+
+Indices are raised by use of the inverse metric and lowered by use of the metric. The metric transforms contravariant one-forms, which constitute the basis, to covariant vectors, which constitute the coordinates, e.g. $u^\beta=g^{\alpha\beta}u_\beta$, where $g^{\alpha\beta}$ is the metric. However, the metric and its inverse can also be used to raise and lower indices of tensors of higher and mixed rank. The metric describes the relative distance between two coordinates on a manifold, in all $n$ dimensions, in an $n\times n$ matrix. Two sign conventions are allowed, depending on whether the time component is positive or negative, though the metric always has a negative determinant in four dimensions. In our sign convention, the Minkowski metric for flat spacetime is given by
+\[
+\eta^{\mu\nu}=
+\begin{bmatrix}
+  -1 & 0 & 0 & 0\\
+  0 & 1 & 0 & 0\\
+  0 & 0 & 1 & 0\\
+  0 & 0 & 0 & 1\\
+\end{bmatrix}
+\]
+Here the four dimensions are Cartesian, $t$, $x$, $y$, and $z$. The Schwarzchild metric for a spherically symmetric blackhole without charge or spin is given by
+\[
+d\tau^2=g^{\mu\nu}
+\begin{bmatrix}
+  -(1-\frac{2M}{r}) & 0 & 0 & 0\\
+  0 & (1-\frac{2M}{r})^{-1} & 0 &0\\
+  0 & 0 & r^2 & 0\\
+  0 & 0 & 0 & r^2\sin^2\theta
+\end{bmatrix}
+\]
+where $d\tau$ is the proper time, and coordinates are $t$ (the local time), $r$ (a radial coordinate that goes to zero at the singularity, $2M$ at the horizon, and infinity at spatial infinity), $\theta$ (the polar angle), and $\phi$ (the azimuthal angle). To obtain the inverse (lowered) metric, simply invert the matrix representation.
