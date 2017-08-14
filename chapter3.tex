@@ -15,6 +15,16 @@ where $g$ is the determinant of $g^{\mu\nu}$.~\cite{Wald}
 
 \subsubsection{Multipole moment decomposition}
 
+In our approach, spherical harmonics are used to reduce the three spatial dimensions to a one dimensional problem, in terms of the radius and a sum of an infinite number of discrete spherical harmonic modes, characterized by numbers $l$ and $m$, where $l$ ranges from $0$ to $\infty$ and  $m$ ranges from $-l$ to $+l$ for each $l$~\cite{poisson_pound_vega_living_review}. The field is written as
+\begin{equation}
+  \Psi=\sum_{l,m}\Psi^{lm}(t,r)Y^{lm}(\theta,\phi)
+\end{equation}
+This separation of variables ansatz can be used to simplify the wave equation in any coordinate system, since the angular coordinates are not transformed in any of the coordinate systems we use. We make use of the identity
+\begin{equation}
+  r^2\nabla_{\theta,\phi}^2Y^{lm}=-l(l+1)Y^{lm}
+\end{equation}
+where $\nabla_{\theta,\phi}^2$ is the angular part of the Laplacian, which has a $\frac{1}{r^2}$ dependence. This introduces a term proportional to $l(l+1)\Psi^{lm}(t,r)$ for each $l$, $m$. 
+
 \subsubsection{Tortoise coordinates}
 In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperboloidal coordinates. Tortoise coordinates have the property that they go to infinity at the horizon (scri minus) and infinity at lightlike infinity (scri plus). It is beneficial to place scri minus at an unreachable distance in coordinate space so that the boundary conditions at the horizon become trivial and there is no leakage of information from the interior of the blackhole to outside the horizon in the process of discritization. It is also beneficial to increase the number of computational elements near the horizon by compactifying the coordinates there. Tortoise coordinates transform only the radial coordinate, leaving the angular and time coordinates alone.~\cite{Wald}
 \begin{eqnarray}
@@ -45,43 +55,11 @@ I have verified this equation, and derived the outgoing wave equation, in Mathem
 
 
 \subsubsection{Initial conditions and boundary conditions}
-Since there is no source for the scalar field in the C++ code, it must be set to some initial value and allowed to fall into the blackhole or radiate away its energy to infinity. A gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen.   
+Since there is no source for the scalar field in the C++ code, it must be set to some initial value and allowed to fall into the blackhole or radiate away its energy to infinity. A gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen. Initial conditions and the first timestep are shown in Figures~\ref{psi0,rho0,phi0}.
 
-Boundary conditions were matched automatically by the coordinate transformation between tortoise and hyperboloidal layers. At scri minus and scri plus, the boundary conditions were that the scalar field be set to zero. 
-
-
-
-\section{Theoretical expectations}
-
-quasinormal modes
-tails
-
-\section{Comparison of C++ code to Fortran code}
-round off noise
-truncation error
 
 \begin{figure}
-  \includegraphics{l1m1qnm}
-  \caption{Quasinormal mode for l=1,m=1}
-  \end{figure}
-
-\begin{figure}
-  \includegraphics{l2m2qnm}
-  \caption{Quasinormal mode for l=2, m=2}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{l1m1tail2}
-  \caption{Power law tail, l=1, m=1}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{l2m2tailfail2}
-  \caption{Power law tail does not match expectations due to truncation error in DG method, l=2, m=2}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{phi1dl0}
+  \includegraphics{psi1dl0}
   \caption{Scalar field spatial slice initial condition and first full timestep for l=0.}
 \end{figure}
 
@@ -94,3 +72,44 @@ truncation error
   \includegraphics{phi1dl0}
   \caption{Radial derivative of the scalar field spatial slice initial condition and first full timestep for l=0.}
 \end{figure}
+
+Boundary conditions were matched automatically by the coordinate transformation between tortoise and hyperboloidal layers. At scri minus and scri plus, the boundary conditions were that the scalar field be set to zero. 
+
+\section{Theoretical expectations}
+
+The phase without a source is like the ringdown phase of the system. There are two analytically predicted behaviors that characterize the ringdown phase. After the plunge from the innermost stable circular orbit, quasinormal mode ringing begins. Eventually that fades into a long, power law tail.
+
+\subsection{Quasinormal modes}
+A field, such as a scalar or tensor field surrounding a blackhole, exhibits quasinormal mode ringing as it relaxes into or away from the blackhole.  Hence, in LIGO, the first overtone of the first fundamental quasinormal mode was seen after the merger phase during the ringdown phase in LIGO's first detection~\cite{LIGO1e}. In EMRI's, quasinormal modes are expected to be detected by LISA after the small black hole crosses the large blackhole's horizon, following the plunge from the innermost stable circular orbit. The same set of quasinormal modes is expected for any tensor field perturbed around a blackhole, regardless of why, as long as there is no ongoing source present. The case is very similar with scalar fields, though the spectrum of quasinormal modes is slightly different.
+
+A quasinormal mode decays at a nearly stably frequency and a nearly steady exponential decay rate, with slight changes due to the loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have used their theoretical expectations for the first overtone at each l and $m$ mode to fit my simulation data in Figures~\cite{qnml1m1} and~\cite{qnml2m2}. Notice that for higher $m$, the quasinormal mode frequency is higher and the decay is faster.
+
+\begin{figure}
+  \includegraphics{l1m1qnm}
+  \caption{Quasinormal mode for l=1,m=1}
+  \label{qnml1m1}
+\end{figure}
+
+\begin{figure}
+  \includegraphics{l2m2qnm}
+  \caption{Quasinormal mode for l=2, m=2}
+  \label{qnml2m2}
+\end{figure}
+
+
+\subsection{Power law tails}
+
+After quasinormal mode ringing settles down, power law tails begin. Both are due to backscattering of the waves off the background metric, but they take place in different regimes of time that has elapsed relative to perturbation initial conditions and background blackhole mass. In 1972, Richard Price predicted that the tails would scale as $t^-(2l+2)$ or $t^-(2l+3)$ depending on initial conditions~\cite{PriceTails}. In our choice of initial conditions, $t^-(2l+2)$ matches best for the choices of $l$ explored. Figure~\ref{taill1m1} shows a mode for which I successfully recovered a power law tail. Figure~\ref{notaill2m2} demonstrates that truncation error may dominate at high l, and that it may be necessary to increase the DG order to resolve all l-modes in a simulation.
+
+\begin{figure}
+  \includegraphics{l1m1tail2}
+  \caption{Power law tail, l=1, m=1}
+  \label{taill1m1}
+\end{figure}
+
+\begin{figure}
+  \includegraphics{l2m2tailfail2}
+  \caption{Power law tail does not match expectations due to truncation error in DG method, l=2, m=2}
+  \label{notaill2m2}
+\end{figure}
+
