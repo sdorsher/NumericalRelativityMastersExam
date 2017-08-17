@@ -2,15 +2,16 @@ In the last chapter, $\psi_l$ was defined as the sum over $m$ within a specific 
 \begin{eqnarray}
   F_r(l)=&\frac{A}{(2l-1)(21+3)}+\frac{B}{(2l-3)(2l-1)(2l+3)(2l+5)}\nonumber \\
   &+\frac{C}{(2l-5)(2l-3)(2l-1)(2l+3)(2l+5)(2l+7)}+\ldots
+  \label{lmodefitsum}
 \end{eqnarray}
 Here $A$, $B$, and $C$ are constants determined by a least squares fit. Least squares fits minimize the sum of the squared differences between the function and the data in the $y$ direction, over all values of $x_i$. For fit parameters $A$, $B$, and $C$, and $l_max=n-1$, the portion of the total radial self-force contributed by the l-modes extrapolated to infinity after the end of the known data is given by
 \begin{eqnarray}
   \sum_n^{\infty} F_r(l) = &\frac{an}{4n^2-1}+\frac{bn}{3(9-40n^2+16n^4)}\nonumber\\
   &\frac{cn}{5(2n-5)(2n-3)(2n-1)(2n+1)(2n+3)(2n+5)}+\ldots
 \end{eqnarray}
-In my computations, I have terminated the ``end of the known data'' at the end of the fit region, on the theory that I am simulating having more or fewer total l-modes available to me by including more or fewer l-modes in my fit.
+Although Peter Diener's Fortran code implements this sum, I have analyzed it in an independent way to establish choices of $l_{min}$ and $l_{max}$ and to establish best choice DG orders for the code. In my computations, I have terminated the ``end of the known data'' at the end of the fit region, on the theory that I am simulating having more or fewer total l-modes available to me by including more or fewer l-modes in my fit.
 
-Figure~\ref{lmodefit} shows a fit including the first three terms of this sum. Note how the fit is bad at high l. There are an infinite number of additional terms that can be added to the fit to account for this deviation. However, it is also fundamentally difficult to fit an exponentially converging function. See Chapter~\ref{sigmachap}.
+Figure~\ref{lmodefit} shows a fit including the first three terms of this sum. Note how the fit is bad at high l. There are an infinite number of additional terms that can be added to the fit to account for this deviation. However, it is also fundamentally difficult to fit an exponentially converging function. 
 
 
 \begin{figure}
@@ -19,7 +20,40 @@ Figure~\ref{lmodefit} shows a fit including the first three terms of this sum. N
 \label{lmodefit}
 \end{figure}
 
-The quality of the fit depends on the number of terms in the l-mode sum used in the fit, as well as the starting and ending modes chosen. In Figure~\ref{surface234big} roundoff noise is evident at higher $l_{max}$ choices, where $l_{min}$ is the minimum l-mode included in the fit and $l_{max}$ is the maximum l-mode included in the fit. This is true of most times near aphelion. Note that there is not a large difference between two and three terms, and that four terms is less smooth a surface, suggesting that it is more subject to round off noise. Three terms is preferred. In Figure~\ref{surface234small}, a smaller region of $l_min$ versus $l_max$ space has been chosen to form the surface plot, and the roundoff noise is excluded.
+\section{Fitting techniques and choice of starting mode}
+
+The quality of the fit depends on the number of terms in the l-mode sum used in the fit, as well as the starting and ending modes chosen. It is also very difficult to fit a nearly power law decay with relative error that does not decrease much at small values, which we might expect as long as the l-modes are in the truncation error regime. This is because a least squares fit minimizes distances between the curve and the data in a linear scale plot, not a log-log plot, giving disproportionate weight to data near the maximum of a power law decay. To correct this, I have suggested an alteration to the fit. I minimize the classic $\chi^2$ with weights, as follows
+\begin{equation}
+\chi^2=\sum_i \frac{(y_i-f(x_i))^2}{\sigma_i^2}
+\end{equation}
+Since the $\sigma_i$ weights do not represent proper statistical uncertainties, the normalization of the weights is unimportant, unless they are used to interpret the ``goodness'' of a fit in terms of a reduced chi-squared. Since the error behaves in an unknown, possibly highly correlated, deterministic, manner, cation is warranted in doing so. I have examined weights that are constant (effectively no weight), that  scale as $l^{-2}$, and that scale as $l^{-1}$. The first is motivated by standard fitting techniques and is the default solution, while the second is motivated by the nature of the first order scaling behavior of the function to which we fit the l-modes, and the third is motivated by the desire to find something that behaves well in both the truncation error and roundoff error regimes. Figure~\ref{sigmafit} shows the functional form of the l-mode fit with three different choices of weights. Figures~\ref{8badfit} and~\ref{14goodfit} show that for all choices of weight scaling, a starting l-mode of 14 is a reasonably good fit, while significantly lower starting modes are a bad fit for three terms in the l-mode fit expansion. These figures also show that the choice of sigma can make a small difference in the goodness of the fit at high l-mode, which is important for extrapolation to infinite l-mode. However, Figure~\ref{scatterfinf} shows that for a range of $l_{min}$ versus $l_{max}$, the variation in the total radial self force due to variation over start and stop range in the fit is small compared to the variation between between $l^{-2}$ scaling and contant scaling (circles and triangles). 
+
+\begin{figure}
+  \includegraphics{fiterrscalecorrect3term570l1}
+  \caption{The l-mode convergence behavior and three different fits to it using three terms in the l-mode fit sum of Equation~\ref{lmodefitsum}. The three different fits represent different choices of weights in the least squares fit. It appears that starting the fit at 14 might level this residual.}
+\label{sigmafit}
+\end{figure}
+
+\begin{figure}
+\includegraphics{fitresiduals3terms570l8}
+\caption{Fit residuals for three different least squares weight scalings starting from $l_{min}=8$. Notice that this is a bad fit, due to the strong correlated skews to either side of the axis.}
+\label{8badfit}
+\end{figure}
+
+\begin{figure}
+\includegraphics{fitresidulas3terms570l14}
+\caption{Fit residuals for three different least squares weight scalings starting from $l_{min}=14$. This is a much better fit than $l_{min}=8$ both due to the smaller correlated deviations from zero and due to the smaller amplitude of the residual.}
+\label{14goodfit}
+\end{figure}
+
+\begin{figure}
+  \includegraphics{3Dscatterwithwithoutsigmalminlmax}
+  \caption{The difference between the triangles and the circles shows that the difference in the total radial self force between the presence of a $\sigma\sim l^{-2}$ weight and no weight is unimportant compared to the difference in the total radial self force between various start and end points of the l-mode fit.}
+\end{figure}
+
+\section{Roundoff noise and choice of end mode}
+
+In Figure~\ref{surface234big} roundoff noise is evident at higher $l_{max}$ choices, where $l_{min}$ is the minimum l-mode included in the fit and $l_{max}$ is the maximum l-mode included in the fit. This is true of most times near aphelion. Note that there is not a large difference between two and three terms, and that four terms is less smooth a surface, suggesting that it is more subject to round off noise. Three terms is preferred. In Figure~\ref{surface234small}, a smaller region of $l_min$ versus $l_max$ space has been chosen to form the surface plot, and the roundoff noise is excluded.
 
 \begin{figure}
   \includegraphics{bestfinflminlmax234terms635fullrange_perihelion}
@@ -35,6 +69,8 @@ The quality of the fit depends on the number of terms in the l-mode sum used in 
 
 
 
+\section{Results and errors}
+
 Figure~\ref{totalselfforcevt} shows the evolution of the total self force over time. First it has been extrapolated to obtain $F_\infty$ using the three-point DG order exponential convergence extrapolation techique, and the optimal starting order has been chosen. Then the modes computed in the simulation have been summed numerically from $l=0$ up to some $l_{max}$, and a fit from $l_{min}$ to $l_{max}$ has been used to extrapolate the sum to infinite $l$, to obtain the total radial self-force, at each time. The three different measurement techniques described 
 
 
@@ -45,8 +81,10 @@ Figure~\ref{totalselfforcevt} shows the evolution of the total self force over t
 \end{figure}
 
 
+\subsection{Relative and absolute differences}
 
 Figure~\ref{relErrSelfForceBigSmall} shows the relative difference between the total radial self force measured in two different ways. The self-force values in each surface plot shown in Figures~\ref{surface234big} and~\ref{surface234small} were averaged to obtain better estimates of the total radial self force as a function of time. This plot shows the relative difference. Some caution is advised in interpretation, since the relative difference may largely point to roundoff noise in the larger range. It is clearly random, and clearly decreasing with time, but also very clearly not at the machine precision level necessary to be roundoff noise.
+
 
 \begin{figure}
   \includegraphics{relErrBigSmallRangeOverTime.eps}
@@ -102,6 +140,8 @@ I obtain the fractional error, within a given method for choosing the best self 
 \end{figure}
 
 
+\section{Best choice $l_{mins}$ and $l_{max}$'s and best choice DG orders}
 
+My conclusion is that $l_min$ can be as low as 14 and as high as 17, and $l_max$ can be as low as 22 and as high as 25 without encountering roundoff or truncation error. There is no single best choice of DG order for a given mode or time, that I have yet been able to establish. It would be quite difficult, in terms of infrastructure, to run multiple DG orders at the same time. This work is not yet resolved, and more remains to be done. 
 
 

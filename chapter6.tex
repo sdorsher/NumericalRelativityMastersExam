@@ -93,13 +93,18 @@ In the median approach, the starting orders that had a solution at each time and
 
 
 \subsection{Determining $F_{\inf}$ using maximum likelihood fits to subsegments of lines in semilog space}
-A better motivated approach, is to fit subsegments of lines in semilog space onthe DG order convergence plot, and find the most linear, longest linear, region. A fit with the ``best'' value of the reduced chi squared should be a good approximation to this. The reduced chi squared is the value of the sum of the residuals of the fit squared divided by the number of degrees of freedom, which in this case is the number of points in the fit minus two, since there are two degrees of freedom in a linear fit. The expectation value of the reduced chi squared, in the limit of a large number of degrees of freedom, is one. I loop over starting and ending points of the fit, and over starting orders, and choose the starting order with the best fit line segment in the sense that that line segment has a reduced chi squared closest to one. An example of such an automatically chosen starting index is given in Figure~\ref{autoconverge}, where there is a long exponentially converging region.
+A better motivated approach, is to fit subsegments of lines in semilog space onthe DG order convergence plot, and find the most linear, longest linear, region. A fit with the ``best'' value of the reduced chi squared should be a good approximation to this. The reduced chi squared is the value of the sum of the residuals of the fit squared divided by the number of degrees of freedom, which in this case is the number of points in the fit minus two, since there are two degrees of freedom in a linear fit. The expectation value of the reduced chi squared, in the limit of a large number of degrees of freedom, is one. I loop over starting and ending points of the fit, and over starting orders, and choose the starting order with the best fit line segment in the sense that that line segment has a reduced chi squared closest to one. An example of such an automatically chosen starting index is given in Figure~\ref{autoconverge}, where there is a long exponentially converging region. Figure~\ref{abserrfitmedian} shows that the absolute error between fit and median techniques increases with l-mode, possibly indicating that roundoff error becomes a more significant factor in the median technique as the l-mode increases, and the fit technique becomes more important.
 
 \begin{figure}
   \includegraphics{fittingtechniqet370l0}
   \caption{l=0 mode with line-segment fit-chosen starting order produces convergence plot with long exponentially converging region}
 \end{figure}
 
+
+\begin{figure}
+  \includegraphics{absErrorIncreaseslmode}
+  \caption{Absolute error between fit and median techniques increases with l-mode.}
+\end{figure}
 
 
 
