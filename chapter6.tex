@@ -16,7 +16,7 @@ g(\alpha)-h=&0\\
 c(l)=&\frac{F_r(n_1)-F_r(n_2)}{\exp[-\alpha n_1]-\exp[-\alpha n_2]}\\
 F_\infty(l)=&F_r(n_3)-c(l)\exp[-\alpha n_3]
 \end{eqnarray}
-In the middle step, it is necessary to use the bisection method for root finding, numerically, with the condition that $\alpha$ may never be less than zero since the solution must decay. If the three points are not monotonic, sometimes there is not a solution. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. Figure~\ref{galpha} shows the form of $g(\alpha)$. From this plot, it is clear why $h$ must be greater than $0.5$ in order for $g(\alpha)-h$ to have a root. 
+In the middle step, it is necessary to use the bisection method for root finding, numerically, with the condition that $\alpha$ may never be less than zero since the solution must decay. If the three points are not monotonic, sometimes there is not a solution. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. In order to use data from several different DG orders, it was necessary to interpolate between the times at which each order was computed to some desired common set of times, since each order takes a different time that decreases with increasing order so that the grid remains spacelike within a full Runga Kutta timestep. Figure~\ref{galpha} shows the form of $g(\alpha)$. From this plot, it is clear why $h$ must be greater than $0.5$ in order for $g(\alpha)-h$ to have a root. 
 
 
 \begin{figure}
