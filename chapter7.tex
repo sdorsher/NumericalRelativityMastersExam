@@ -142,6 +142,9 @@ I obtain the fractional error, within a given method for choosing the best self 
 
 \section{Best choice $l_{mins}$ and $l_{max}$'s and best choice DG orders}
 
-My conclusion is that $l_min$ can be as low as 14 and as high as 17, and $l_max$ can be as low as 22 and as high as 25 without encountering roundoff or truncation error. There is no single best choice of DG order for a given mode or time, that I have yet been able to establish. It would be quite difficult, in terms of infrastructure, to run multiple DG orders at the same time. This work is not yet resolved, and more remains to be done. 
+My conclusion is that $l_min$ can be as low as 14 and as high as 17, and $l_max$ can be as low as 22 and as high as 25 without encountering roundoff or truncation error. There is no single best choice of DG order for a given mode or time, that I have yet been able to establish. It would be quite difficult, in terms of infrastructure, to run multiple DG orders at the same time.
 
-The next step is to compare the relative and absolute error of the sum of $F_{inf}$ over each l-mode, without using any mode fit to add the higher modes, to the total self force calculated at the same times (using time interpolation) for several different DG orders, again, without using a fit to extend the sum to higher modes. This comparison could be repeated with the mode fit method for finding the total self-force, for the two different usage cases in the Fortran code. 
+To obtain the best possible DG order for all times and for all l-modes is not theoretically possible. $F_\infty$ is a function of l-mode and time. However, it may be possible to choose a DG order for which a constant offset in time and mode is best, even if that offset is itself not meaningful, unlike $F_\infty$. This can be done manually and graphically, and that is the next step. 
+
+
+
