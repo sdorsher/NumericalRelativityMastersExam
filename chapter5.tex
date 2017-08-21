@@ -1,27 +1,27 @@
-For eliptical orbits, there are two primary additional physical or computational effects to consider. One is the need for ellitpical orbit paramters, expressed in terms of an eccentricity and a semilatus rectum, determined by an energy and an angular momentum. The second is the addition of a time dependent coordinate transformation region between tortoise layers in the middle of the computational grid, containing the position of the particle for all times. In this section, I describe Peter Diener's Fortran code, using Niels Warburton's exact initial conditions for l-modes 0 through 5, and Barry Wardell's effective source, which I have run to produce elliptical orbit output. Similar computations have been done before, using the Discontinuous Galerkin method, by Reference~\ref{time_dependent_coordinate_transformation}, for the gravitational tensor field case; however, the scalar Discontinuous Galerkin case is not yet published.
+For eccentric orbits, there are two primary additional physical or computational effects to consider. One is the need for eccentric orbit paramters, expressed in terms of an eccentricity and a semilatus rectum, determined by an energy and an angular momentum. The second is the addition of a time dependent coordinate transformation region between tortoise layers in the middle of the computational grid, containing the position of the particle for all times. In this section, I describe Peter Diener's Fortran code, using Niels Warburton's exact initial conditions for l-modes 0 through 5, and Barry Wardell's effective source, which I have run to produce eccentric orbit output. Similar computations have been done before, using the Discontinuous Galerkin method, by Reference~\ref{time_dependent_coordinate_transformation}, for the gravitational tensor field case; however, the scalar Discontinuous Galerkin case is not yet published.
 
 \section{Orbital parameters}
 
-The orbital parameters of an elliptical orbit in a Schwarzchild spacetime are defined through the following conditions.
+The orbital parameters of an eccentric orbit in a Schwarzchild spacetime are defined through the following conditions.
 \begin{equation}
   E^2=\frac{(p-2-2e)(p-2+2e)}{p(p-3-e^2)}
 \end{equation}
 \begin{equation}
   L^2=\frac{p^2M^2}{p-3-e^2}
 \end{equation}
-Here, $E$ is the energy and $L$ is the angular momentum. $e$ is the eccentricity and $p$ is the semilatus rectum, which is a dimensionless measure of half the ``width'' of the elliptical orbit. More clearly, $r_{periastron}=\frac{pM}{1+e}$ and $r_{apastron}=\frac{pM}{1-e}$. $\chi$ is a parameter that runs from $0$ to $2\pi$ in one radial cycle (as opposed to $\phi$, which runs from $0$ to $2\pi$ in one angular cycle). In terms of these parameters~\cite{pound_poisson},
+Here, $E$ is the energy and $L$ is the angular momentum. $e$ is the eccentricity and $p$ is the semilatus rectum, which is a dimensionless measure of half the ``width'' of the eccentric orbit. More clearly, $r_{periastron}=\frac{pM}{1+e}$ and $r_{apastron}=\frac{pM}{1-e}$. $\chi$ is a parameter that runs from $0$ to $2\pi$ in one radial cycle (as opposed to $\phi$, which runs from $0$ to $2\pi$ in one angular cycle). In terms of these parameters~\cite{pound_poisson},
 \begin{eqnarray}
   r^\prime(\chi)=\frac{pMe\sin(\chi-w)}{[1-e\cos(\chi-w)]^2}\\
   \phi^\prime(\chi)=\sqrt{\frac{p}{p-6-2e\cos\nu}}\\
   t^\prime(\chi)=&\frac{p^2M}{(p-2-2e\cos\nu)(1+e\cos\nu)^2}\nonumber\\
   \frac{d\chi}{dt}=&(\frac{dt}{d\chi})^{-1}
 \end{eqnarray}
-where $\nu=\chi-w$. For an elliptical orbit, $\chi$ and $\phi$ are evolved using a fourth order Runga Kutta integration using the oscillating orbits framework described in Reference~\ref{pound_poisson}. For a self consistent evolving orbit with the backreaction effect of the self-force, see future work in Chapter~\ref{futurework}. 
+where $\nu=\chi-w$. For an eccentric orbit, $\chi$ and $\phi$ are evolved using a fourth order Runga Kutta integration using the oscillating orbits framework described in Reference~\ref{pound_poisson}. For a self consistent evolving orbit with the backreaction effect of the self-force, see future work in Chapter~\ref{futurework}. 
 
 
 \section{Time dependent coordinate transformation}
 
-In the case of an elliptical orbit, it is necessary to ensure that the particle always remains within the tortoise region, so that the effective source remains valid. We use a time dependent coordinate transformation to keep the particle fixed at a specific coordinate location while the space in its immediate neighborhood evolves. With the proper boundary conditions, enforced by the numeric flux, this simulates a particle on an elliptical orbit and produces the same self-force and the same scalar waves at scri plus. The necessary time dependent coordinate transformation can be found in Reference~\cite{time_dependent_coordinate_transformation}. It transforms from tortoise coordinates, $\xi$, to time dependent coordinates, $x$. The location of the particle $\xi_p(t)$, varies in tortoise coordinates but is fixed in time dependent coordinates ($x_p$). $a$ and $b$ are the boundaries of the time dependent region, in computational coordinates. 
+In the case of an eccentric orbit, it is necessary to ensure that the particle always remains within the tortoise region, so that the effective source remains valid. We use a time dependent coordinate transformation to keep the particle fixed at a specific coordinate location while the space in its immediate neighborhood evolves. With the proper boundary conditions, enforced by the numeric flux, this simulates a particle on an eccentric orbit and produces the same self-force and the same scalar waves at scri plus. The necessary time dependent coordinate transformation can be found in Reference~\cite{time_dependent_coordinate_transformation}. It transforms from tortoise coordinates, $\xi$, to time dependent coordinates, $x$. The location of the particle $\xi_p(t)$, varies in tortoise coordinates but is fixed in time dependent coordinates ($x_p$). $a$ and $b$ are the boundaries of the time dependent region, in computational coordinates. 
 \begin{equation}
   x=a+\frac{x_p-a}{\xi_p-a}(\xi-a)+\frac{(b-\xi_p)(\xi_p-a)-(x_p-a)(b-\xi_p)}{(\xi_p-a)(b-\xi_p)(b-a)}(\xi-a)(\xi-\xi_p)
 \end{equation}
@@ -37,7 +37,7 @@ It is necessary to invert the time dependent transformation and subtract the sin
 
 \section{Orbits}
 
-I have computed four orbits of the system, at DG order 44. Figure~\ref{rorb} shows the radius iin Schwarzschild coordinates as a function of time. Figure~\ref{chiorb} shows the sense in which this orbit is elliptical-- if it did not precess, it would form an ellipse. Figure~\ref{phiorb} depicts the physical path of the orbit, including precession. Figure~\ref{precession} demonstrates why precession must exist. The periods of the angular variable $\phi$ and the parameter that governs the rate of radial evolution, $\chi$, are not synchronized.
+I have computed four orbits of the system, at DG order 44. Figure~\ref{rorb} shows the radius iin Schwarzschild coordinates as a function of time. Figure~\ref{chiorb} shows the sense in which this orbit is eccentric-- if it did not precess, it would form an ellipse. Figure~\ref{phiorb} depicts the physical path of the orbit, including precession. Figure~\ref{precession} demonstrates why precession must exist. The periods of the angular variable $\phi$ and the parameter that governs the rate of radial evolution, $\chi$, are not synchronized.
 
 \begin{figure}
   \includegraphics{orbit}
