@@ -1,0 +1,4 @@
+\section{ToDO}
+He also wants convergence plots of the fit data versus the median data for some bad times. I also want a plot that shows the raw data before the subtraction of the offset for some time. Modify code to use saved raw data.
+
+Need a max number of iterations addition to the loop around alphamax and alphamin selection in extrapolate7.py and bestinfselector.py. test with tempbestinfscript
