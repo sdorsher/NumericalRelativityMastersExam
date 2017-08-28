@@ -2,3 +2,30 @@
 He also wants convergence plots of the fit data versus the median data for some bad times. I also want a plot that shows the raw data before the subtraction of the offset for some time. Modify code to use saved raw data.
 
 Need a max number of iterations addition to the loop around alphamax and alphamin selection in extrapolate7.py and bestinfselector.py. test with tempbestinfscript
+
+
+Fit method doesn't work because it is selecting perfectly linear segments of three. I want to extend it to prefer segments of four or five. The chi square test should automatically do this, but is failing to do so because of the perfectly linear segment. Instead, either need to brute force it to prefer longer segments or use a variant of the chi square statistic but not minimized, instead with the fixed fit determined by the extrapolation, over the non nan range of neighboring points to either side of extrapolation. Choose value with minimal residuals per degree of freedom. This has the problem that it doesn't use N-1 dof so it doesn't automatically optimize for more dof. Need to figure out how to optimize for more dof without making arbitrary tolerance cuts.
+
+Peter points out that it is theoretically expected that the Finf as a function of DG starting order curve should be a converging curve with order, since there are higher order terms that enter into the calculation that should die away with order. Since these higher order terms effect the curvature of the Psir curve as a function of order, sometimes alpha is negative, and Finf is nan. When this happens often, the plot of DG starting order vs Finf may look like a dot followed by a v or a dot followed by a slash or just a v or some other fairly degenerate case, instead of the more common case of an exponentially converging curve, curving up or down toward an asymptontic flat value at high orders.
+
+Two points is not in any way a trend. However, we are looking for a stable plateau at the end of a curve up or down, with possibly some noise at the end. That means, if we have only three points that are monotonic, the best we can do is a second order extrapolation. But sometimes I only have three points, and sometimes it's a really sharp plateau. If it's a sharp plateau, take the plateau and take the average. Don't forget that there may be outliers after the plateau. If it's only three points or two points that are adjacent, take the average, discarding any outlier. It may be possible to handle outliers using three sigma technique. It may be necessary to make cuts some other way, especially because some cases converge exponentially. Do we wish to do a second order extrapolation in those cases?
+
+Three cases:
+1. Convergent
+2. Big step then plateaus
+3. Missing data
+
+Use isnan to find longest range of non-missing data. If is 2 or 3, take latest such range and average, rejecting any 3-sigma outlier.
+
+If longest such chain is 4-6, check for "convergent-like behavior" versus "plateau like behavior" and for "roundoff noise" Perform exponential fits and examine reduced chi squared. Compare to constant of same length, constant one shorter in front (3-5), constant one shorter in back (3-5), constant two shorter in back (2-4), constant one shorter in front and one shorter in back (2-4), and constant one shorter in front and two shorter in back (2-3) if length greater than 4. 
+
+stats.chi2.ppf
+stats.chi2.pdf
+stats.chi2.cdf
+
+
+Peter says that I can tell the difference between case 1. and cases 2 and three by looking at the differences between the values and the differences in the differences (the derivatives). See if the derivatives are decreasing, and if they have changed sign.
+
+I have noticed that there is something wrong with my fit method. The fact that I have used unscaled sigmas means that my reduced chi squared should not necessarily go to one. I am so frustruated!
+
+Notice the likelihood ratio test, with complex hypotheses, if necessary. There's also image recognition and machine learning.
