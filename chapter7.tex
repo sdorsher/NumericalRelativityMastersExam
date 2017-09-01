@@ -26,7 +26,7 @@ The quality of the fit depends on the number of terms in the l-mode sum used in 
 \begin{equation}
 \chi^2=\sum_i \frac{(y_i-f(x_i))^2}{\sigma_i^2}
 \end{equation}
-Since the $\sigma_i$ weights do not represent proper statistical uncertainties, the normalization of the weights is unimportant, unless they are used to interpret the ``goodness'' of a fit in terms of a reduced chi-squared. Since the error behaves in an unknown, possibly highly correlated, deterministic, manner, cation is warranted in doing so. I have examined weights that are constant (effectively no weight), that  scale as $l^{-2}$, and that scale as $l^{-1}$. The first is motivated by standard fitting techniques and is the default solution, while the second is motivated by the nature of the first order scaling behavior of the function to which we fit the l-modes, and the third is motivated by the desire to find something that behaves well in both the truncation error and roundoff error regimes. Figure~\ref{sigmafit} shows the functional form of the l-mode fit with three different choices of weights. Figures~\ref{8badfit} and~\ref{14goodfit} show that for all choices of weight scaling, a starting l-mode of 14 is a reasonably good fit, while significantly lower starting modes are a bad fit for three terms in the l-mode fit expansion. These figures also show that the choice of sigma can make a small difference in the goodness of the fit at high l-mode, which is important for extrapolation to infinite l-mode. However, Figure~\ref{scatterfinf} shows that for a range of $l_{min}$ versus $l_{max}$, the variation in the total radial self force due to variation over start and stop range in the fit is small compared to the variation between between $l^{-2}$ scaling and contant scaling (circles and triangles). 
+Since the $\sigma_i$ weights do not represent proper statistical uncertainties, the normalization of the weights is unimportant, unless they are used to interpret the ``goodness'' of a fit in terms of a reduced chi-squared. Since the error behaves in an unknown, possibly highly correlated, deterministic, manner, cation is warranted in doing so. I have examined weights that are constant (effectively no weight), that  scale as $l^{-2}$, and that scale as $l^{-1}$. The first is motivated by standard fitting techniques and is the default solution, while the second is motivated by the nature of the first order scaling behavior of the function to which we fit the l-modes, and the third is motivated by the desire to find something that behaves well in both the truncation error and roundoff error regimes. Figure~\ref{sigmafit} shows the functional form of the l-mode fit with three different choices of weights. Figures~\ref{8badfit} and~\ref{14goodfit} show that for all choices of weight scaling, a starting l-mode of 14 is a reasonably good fit, while significantly lower starting modes are a bad fit for three terms in the l-mode fit expansion. These figures also show that the choice of sigma can make a small difference in the goodness of the fit at high l-mode, which is important for extrapolation to infinite l-mode. However, Figure~\ref{scatterfinf} shows that for a range of $l_{min}$ versus $l_{max}$, the variation in the total radial self force due to variation over start and stop range in the fit is small compared to the variation between between $l^{-2}$ scaling and constant scaling (circles and triangles). 
 
 \begin{figure}
   \includegraphics{fiterrscalecorrect3term570l1}
@@ -71,7 +71,7 @@ In Figure~\ref{surface234big} roundoff noise is evident at higher $l_{max}$ choi
 
 \section{Results and errors}
 
-Figure~\ref{totalselfforcevt} shows the evolution of the total self force over time. First it has been extrapolated to obtain $F_\infty$ using the three-point DG order exponential convergence extrapolation techique, and the optimal starting order has been chosen. Then the modes computed in the simulation have been summed numerically from $l=0$ up to some $l_{max}$, and a fit from $l_{min}$ to $l_{max}$ has been used to extrapolate the sum to infinite $l$, to obtain the total radial self-force, at each time. The three different measurement techniques described 
+Figure~\ref{totalselfforcevt} shows the evolution of the total self force over time. First it has been extrapolated to obtain $F_\infty$ using the three-point DG order exponential convergence extrapolation technique, and the optimal starting order has been chosen. Then the modes computed in the simulation have been summed numerically from $l=0$ up to some $l_{max}$, and a fit from $l_{min}$ to $l_{max}$ has been used to extrapolate the sum to infinite $l$, to obtain the total radial self-force, at each time. The three different measurement techniques described 
 
 
 \begin{figure}
@@ -80,12 +80,6 @@ Figure~\ref{totalselfforcevt} shows the evolution of the total self force over t
 \label{totalselfforcevt}
 \end{figure}
 
-
-\begin{figure}
-\includegraphics{psirwfinfvt.eps}
-\caption{Self force vs time for a third method I haven't described yet.}
-\label{mixedvtime}
-\end{figure}
 
 \subsection{Relative and absolute differences}
 
@@ -108,7 +102,7 @@ Figure~\ref{relErr23terms} shows the relative difference between using two and t
   \label{relErr23terms}
 \end{figure}
 
-In Figure~\ref{minmaxmedRelErr}, the purple line is the relative difference between the maximum and the median, and the green line is the relative difference between the median and the minimum. The first is subject to roundoff error due to the potential for the DG order with the maximum self-force, which is likely the maximum DG order, to contian roundoff error. The second is subject to effects due to failure to hit the regime where the truncation error model is valid, because of the minimum. 
+In Figure~\ref{minmaxmedRelErr}, the purple line is the relative difference between the maximum and the median, and the green line is the relative difference between the median and the minimum. The first is subject to roundoff error due to the potential for the DG order with the maximum self-force, which is likely the maximum DG order, to contain roundoff error. The second is subject to effects due to failure to hit the regime where the truncation error model is valid, because of the minimum. 
 
 \begin{figure}
   \includegraphics{minmaxmedrelativeerror3termavgl.eps}

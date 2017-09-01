@@ -22,7 +22,7 @@
 \thispagestyle{empty}
 \begin{center}
 %The title page is first created.
-  STRATEGIES FOR COMPUTING THE SCALAR SELF-FORCE ON A SCHWARSZCHILD BACKGROUND: A COMPARISON STUDY WITH AN FORTRAN CODE IN C++, EXTRAPOLATING TO INFINITE DISCONTINUOUS GALERKIN ORDER, AND EXTRAPOLATING TO INFINITE SPHERICAL HARMONIC MODES
+  STRATEGIES FOR COMPUTING THE SCALAR SELF-FORCE ON A SCHWARZSCHILD BACKGROUND: A COMPARISON STUDY WITH AN FORTRAN CODE IN C++, EXTRAPOLATING TO INFINITE DISCONTINUOUS GALERKIN ORDER, AND EXTRAPOLATING TO INFINITE SPHERICAL HARMONIC MODES
 
 \vfill
 \doublespacing
@@ -69,7 +69,7 @@ December, 2017
 \chapter*{Acknowledgments}
 \doublespacing
 \vspace{0.55ex}
-I would like to thank Peter Diener and Frank L\"{o}ffler for their guidance. Peter Diener especially has been very important to me, both as an advisor and personally. Frank L\"{o}ffler and the Einstein Toolkit grant has also provided some of the funding for this research, and I would like to thank him for that and for all of his help. I would also like to thank Gabriela Gonzalez for the excellent opportunity to work on LIGO during the time of three detections, which provided me the funding I needed to continue the work detailed in this document. I would like to thank Juana Moreno for the opportunity to work as outreach coordinator to the LA-SIGMA Research Experience for Undergraduates program my first summer at LSU, which also helped provide funding for this research. My parents, Paul and Joanne Dorsher, also deserve a mention, both for extraordinary moral support and for the financial support they provided that helped make this possible, as well as loving me endlessly and talking to me every single night. I'd like to thank my sister, Patricia Dorsher, my grandmother, Evie Dorsher, my Aunt Peggy Bennett, my Aunt Elaine Shirley, my Aunt Mary Brunbergy, and my friends Christy Paulson and Matt Ratliff, Hope Ring, Josh McKeown, and Adam for their steady presence in my life. I would also like to thank my workplace friends Peter Diener, Steven Brandt, Brad Schaefer, Frank L\'{o}ffler, Sreenath Vijayakumar, and Samuel Cupp for making work truly enjoyable, almost all of the time. My family, friends, and loved ones are the purpose behind this work. 
+I would like to thank Peter Diener and Frank L\"{o}ffler for their guidance. Peter Diener especially has been very important to me, both as an advisor and personally. Frank L\"{o}ffler and the Einstein Toolkit grant has also provided some of the funding for this research, and I would like to thank him for that and for all of his help. I would also like to thank Gabriela Gonzalez for the excellent opportunity to work on LIGO during the time of three detections, which provided me the funding I needed to continue the work detailed in this document. I would like to thank Juana Moreno for the opportunity to work as outreach coordinator to the LA-SIGMA Research Experience for Undergraduates program my first summer at LSU, which also helped provide funding for this research. My parents, Paul and Joanne Dorsher, also deserve a mention, both for extraordinary moral support and for the financial support they provided that helped make this possible. My family, friends, and loved ones are the purpose behind this work. 
 
 %The code below adds the Acknowledgments section to the Table of Contents.
 \addcontentsline{toc}{chapter}{\hspace{-1.5em} {ACKNOWLEDGMENTS} \vspace{12pt}}
@@ -113,7 +113,7 @@ I would like to thank Peter Diener and Frank L\"{o}ffler for their guidance. Pet
 \begin{abstract}
 \vspace{0.55ex}
 \doublespacing
-In this document, I present the results of one comparison study in which I reproduce Peter Diener's simulation~\cite{heffernan_ottewil_wardell_modesum_basisForCode} of a scalar particle on a Schwarzchild background for the purpose of producing Extreme Mass Ratio black hole binary templates for the Laser Interferometer Space Antenna. Porting this Fortran code to C++ has provided an independent verification of the code to roundoff precision. The results do not verify, but are consistent with, Wardell et al.'s circular orbit results from 2012 using a different differencing scheme~\cite{wardell_vega_thornberg_diener}. I present preliminary results from a second comparison study of Niels Warburton's and Peter Diener's and Barry Wardell's scalar self-force simulation for eccentric orbits. These results are so far consistent with the physical reasoning gained from Field, Hesthaven, and Lau~\cite{time_dependent_coordinate_transform}; with the caveat that their results are for the gravitational case while ours are for the scalar case. Finally, I make use of a first order Richardson extrapolation to obtain the self-force at infinite Discontinuous Galkerin order then sum the spherical harmonic modes to obtain the total self-force as a function of time. The long term goal is to continue the second comparison study with self-consistent evolution. 
+In this document, I present the results of one comparison study in which I reproduce Peter Diener's simulation~\cite{heffernan_ottewil_wardell_modesum_basisForCode} of a scalar particle on a Schwarzschild background for the purpose of producing Extreme Mass Ratio black hole binary templates for the Laser Interferometer Space Antenna. Porting this Fortran code to C++ has provided an independent verification of the code to roundoff precision. The results do not verify, but are consistent with, Wardell et al.'s circular orbit results from 2012 using a different differencing scheme~\cite{wardell_vega_thornberg_diener}. I present preliminary results from a second comparison study of Niels Warburton's and Peter Diener's and Barry Wardell's scalar self-force simulation for eccentric orbits. These results are so far consistent with the physical reasoning gained from Field, Hesthaven, and Lau~\cite{time_dependent_coordinate_transform}; with the caveat that their results are for the gravitational case while ours are for the scalar case. Finally, I make use of a first order Richardson extrapolation to obtain the self-force at infinite Discontinuous Galkerin order then sum the spherical harmonic modes to obtain the total self-force as a function of time. The long term goal is to continue the second comparison study with self-consistent evolution. 
 \end{abstract}
 
 \pagenumbering{arabic}
@@ -148,7 +148,7 @@ In this document, I present the results of one comparison study in which I repro
 \label{ellipticalorb}
 \pagebreak
 \singlespacing
-\chapter{Extrapolating the self force to infinite Disctontinuous Galerkin order}
+\chapter{Extrapolating the self force to infinite Discontinuous Galerkin order}
 \doublespacing
 \input{chapter6}
 \pagebreak
@@ -195,9 +195,9 @@ In this document, I present the results of one comparison study in which I repro
 \vspace{0.2em}
 \addtocontents{toc}{\vspace{12pt}}
 \addcontentsline{toc}{chapter}{\hspace{-1.5em} VITA}
-My past research has been on comet photometry, x-ray bursts, gravitational lensing and cosmology, exoplanets, neutrino oscillations, theoretical particle physics, gravitational waves, gravity gradient noise, and fractional calculus. Most of my background is in simulation, whether statistical or theoretical. I think of myself as a computational physicst and a multimessenger astrononomer. 
+My past research has been on comet photometry, x-ray bursts, gravitational lensing and cosmology, exoplanets, neutrino oscillations, theoretical particle physics, gravitational waves, gravity gradient noise, and fractional calculus. Most of my background is in simulation, whether statistical or theoretical. I think of myself as a computational physicist and a multi-messenger astronomer. 
 
-I have 27 publications or preprints thanks in part to my membership in the LIGO Scientific Collabroation from 2009 to 2011. I made significant contributions to five of these, four related to LIGO and one related to exoplanets. I have also had the opportunity to submit, unsucessfully, an additional first author paper on the simulation of order circuit devices with Gary Bohannan at Saint Cloud State University.
+I have 27 publications or preprints thanks in part to my membership in the LIGO Scientific Collaboration from 2009 to 2011. I made significant contributions to five of these, four related to LIGO and one related to exoplanets. I have also had the opportunity to submit, unsuccessfully, an additional first author paper on the simulation of fractional order circuit devices with Gary Bohannan at Saint Cloud State University.
 
 Now I am a fourth year graduate student at Louisiana State University, exactly were I intended to be. I have worked on LIGO during the time of three detections. I have had the opportunity to gain experience with multiple techniques for speeding up code with supercomputers in my classes. I have done a little research involving databases and and more involving numerical algorithms. I have the opportunity to continue to contribute to the field of general relativity and to participate in a department where my broad background in the connections between various fields of astronomy is valued. I have helped supervise undergraduate research progress and made a lesson plan for and taught a graduate class, once. This document contains the research I have produced in the last three years since I arrived on June 3, 2014 at LSU and began working with Peter Diener. These have been the best three years of my life.
 

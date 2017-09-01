@@ -6,7 +6,7 @@ P(x)=&\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}y_0\nonumber\\
 &+\frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}y_1\nonumber\\
 &+\frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}y_2
 \end{eqnarray}
-However, this form of extrapolation is insufficient for the case of a function that is fundamentally exponential in form. Nowhere does it approximate a polynomail. It is necessary to extend the extrapolation to one based upon exponential, rather than polynomial, assumptions about the underlying functional form.
+However, this form of extrapolation is insufficient for the case of a function that is fundamentally exponential in form. Nowhere does it approximate a polynomial. It is necessary to extend the extrapolation to one based upon exponential, rather than polynomial, assumptions about the underlying functional form.
 
 The three-point exponential extrapolation is motivated by our assumption that Discontinuous Galerkin error is one-sided in the truncation error regime-- it is not random; hence, the self force more or less monotonically approaches a limit. In the round-off error regime where the error is random, the self-force is no longer monotonically decaying. As long as it is monotonically decaying, it can be written in the form of $F_r(n,l)=F_\infty(l)+c(l)\exp[-\alpha n]$, where $n$ is the DG order. For a given mode, the three-point extrapolation is given by
 \begin{eqnarray}
@@ -16,7 +16,7 @@ g(\alpha)-h=&0\\
 c(l)=&\frac{F_r(n_1)-F_r(n_2)}{\exp[-\alpha n_1]-\exp[-\alpha n_2]}\\
 F_\infty(l)=&F_r(n_3)-c(l)\exp[-\alpha n_3]
 \end{eqnarray}
-In the middle step, it is necessary to use the bisection method for root finding, numerically, with the condition that $\alpha$ may never be less than zero since the solution must decay. If the three points are not monotonic, sometimes there is not a solution. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. In order to use data from several different DG orders, it was necessary to interpolate between the times at which each order was computed to some desired common set of times, since each order takes a different time that decreases with increasing order so that the grid remains spacelike within a full Runga Kutta timestep. Figure~\ref{galpha} shows the form of $g(\alpha)$. From this plot, it is clear why $h$ must be greater than $0.5$ in order for $g(\alpha)-h$ to have a root. 
+This technique of extrapolating from various resolutions to produce a correction to the error is known as Richardson extrapolation, and can be done in finite difference schemes, Runga Kutta schemes, and other numerical schemes as well. In the middle step, it is necessary to use the bisection method for root finding, numerically, with the condition that $\alpha$ may never be less than zero since the solution must decay. If the three points are not monotonic, sometimes there is not a solution. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. In order to use data from several different DG orders, it was necessary to interpolate between the times at which each order was computed to some desired common set of times, since each order takes a different time that decreases with increasing order so that the grid remains space-like within a full Runga Kutta time-step. Figure~\ref{galpha} shows the form of $g(\alpha)$. From this plot, it is clear why $h$ must be greater than $0.5$ in order for $g(\alpha)-h$ to have a root. 
 
 
 \begin{figure}
@@ -35,11 +35,11 @@ Since some modes fail, it is not possible to chose the same starting order for t
 
 \begin{figure}
   \includegraphics{finfovertimel3discontinuities}
-  \caption{Starting order was chosen by iterating from the lowest order to the first order for which the ``mode failed'', and chosing the maximum starting order that succeded. When $F_{\inf}$ is evolved over one full orbital cycle, some l-modes shows discontinuities at some times. l=3}
+  \caption{Starting order was chosen by iterating from the lowest order to the first order for which the ``mode failed'', and choosing the maximum starting order that succeeded. When $F_{\inf}$ is evolved over one full orbital cycle, some l-modes shows discontinuities at some times. l=3}
 \label{finfovertimediscont}
 \end{figure}
 
-To address this concern, I examined the choice of starting order more closely for specific times where discontinuities were present. One example, for $l=2$ and $t=632M$, is shown in a Table~\ref{manual}. Figure~\ref{nosoln} shows an example where no solution is found. The roundoff noise is visible in Figure~\ref{roundoff} at high DG orders. In Figure~\ref{offset}, it is possible the effect at high DG orders is roundoff noise in the $F_r(n,l)$ values of the points, but it is more likely that it is roundoff noise in the choice of $F_\infty$ due to limitations of the root finding method, resulfing in an incorrect offset of the curve. Figure~\ref{manualfix} shows that after selecting an average of the reasonably similar values from Table~\ref{manual}, the discontinuity in the $l=2$ $t=632M$ radial self-force becomes smooth. 
+To address this concern, I examined the choice of starting order more closely for specific times where discontinuities were present. One example, for $l=2$ and $t=632M$, is shown in a Table~\ref{manual}. Figure~\ref{nosoln} shows an example where no solution is found. The roundoff noise is visible in Figure~\ref{roundoff} at high DG orders. In Figure~\ref{offset}, it is possible the effect at high DG orders is roundoff noise in the $F_r(n,l)$ values of the points, but it is more likely that it is roundoff noise in the choice of $F_\infty$ due to limitations of the root finding method, resulting in an incorrect offset of the curve. Figure~\ref{manualfix} shows that after selecting an average of the reasonably similar values from Table~\ref{manual}, the discontinuity in the $l=2$ $t=632M$ radial self-force becomes smooth. 
 
 
 \begin{table}
@@ -59,7 +59,7 @@ To address this concern, I examined the choice of starting order more closely fo
 
 \begin{figure}
   \includegraphics{extrapolate7t632l2i1}
-  \caption{Fluctuation in one of the points chosen in the extrapolation, due to roundoff or truncation error, causes the extrapolation to predict a value of $F_{\inf}$ that is subtly wrong, leading to curvature in the semilog plot after $F_{\inf}$ subtraction. t=632, l=2, i=1}
+  \caption{Fluctuation in one of the points chosen in the extrapolation, due to roundoff or truncation error, causes the extrapolation to predict a value of $F_{\inf}$ that is subtly wrong, leading to curvature in the semi-log plot after $F_{\inf}$ subtraction. t=632, l=2, i=1}
   \label{nosoln}
 \end{figure}
 
@@ -71,7 +71,7 @@ To address this concern, I examined the choice of starting order more closely fo
 
 \begin{figure}
   \includegraphics{extrapolate7t632l2i3}
-  \caption{The incorrect value of $F_{\inf}$ has been chosen due to roundoff error, perhaps due to finite precision in the root finding algorithm, leading to a negative values, that show as a ``V'' in the semilog plot. t=632, l=3, i=3}
+  \caption{The incorrect value of $F_{\inf}$ has been chosen due to roundoff error, perhaps due to finite precision in the root finding algorithm, leading to a negative values, that show as a ``V'' in the semi-log plot. t=632, l=3, i=3}
   \label{offset}
 \end{figure}
 
@@ -92,8 +92,8 @@ In the median approach, the starting orders that had a solution at each time and
 \end{figure}
 
 
-\subsection{Determining $F_{\inf}$ using maximum likelihood fits to subsegments of lines in semilog space}
-A better motivated approach, is to fit subsegments of lines in semilog space onthe DG order convergence plot, and find the most linear, longest linear, region. A fit with the ``best'' value of the reduced chi squared should be a good approximation to this. The reduced chi squared is the value of the sum of the residuals of the fit squared divided by the number of degrees of freedom, which in this case is the number of points in the fit minus two, since there are two degrees of freedom in a linear fit. The expectation value of the reduced chi squared, in the limit of a large number of degrees of freedom, is one. I loop over starting and ending points of the fit, and over starting orders, and choose the starting order with the best fit line segment in the sense that that line segment has a reduced chi squared closest to one. An example of such an automatically chosen starting index is given in Figure~\ref{autoconverge}, where there is a long exponentially converging region. Figure~\ref{abserrfitmedian} shows that the absolute error between fit and median techniques increases with l-mode, possibly indicating that roundoff error becomes a more significant factor in the median technique as the l-mode increases, and the fit technique becomes more important.
+\subsection{Determining $F_{\inf}$ using maximum likelihood fits to subsegments of lines in semi-log space}
+A better motivated approach, is to fit subsegments of lines in semi-log space on the DG order convergence plot, and find the most linear, longest linear, region. A fit with the ``best'' value of the reduced chi squared should be a good approximation to this. The reduced chi squared is the value of the sum of the residuals of the fit squared divided by the number of degrees of freedom, which in this case is the number of points in the fit minus two, since there are two degrees of freedom in a linear fit. The expectation value of the reduced chi squared, in the limit of a large number of degrees of freedom, is one. I loop over starting and ending points of the fit, and over starting orders, and choose the starting order with the best fit line segment in the sense that that line segment has a reduced chi squared closest to one. An example of such an automatically chosen starting index is given in Figure~\ref{autoconverge}, where there is a long exponentially converging region. Figure~\ref{abserrfitmedian} shows that the absolute error between fit and median techniques increases with l-mode, possibly indicating that roundoff error becomes a more significant factor in the median technique as the l-mode increases, and the fit technique becomes more important.
 
 \begin{figure}
   \includegraphics{fittingtechniqet370l0}
@@ -101,7 +101,7 @@ A better motivated approach, is to fit subsegments of lines in semilog space ont
 \end{figure}
 
 
-\subsection{Verification}
+\subsection{Verification of the fit method fails}
 
 We expect that $F_\infty$ should be the limit to which the DG orders are approaching, as order increases. Figure~\ref{limit} shows $F_\infty$ generated by the fit method and the median method, summed naively without an l-mode fit (see Chapter~\ref{lmode}) as a function of time, in comparison to three DG orders. It is clear that there is a large gap between these DG orders and $F_\infty$. I am unsure whether this is because the orders converge slowly to the limit, which seems unlikely since the few orders I have plotted are close together, or because there is a bug in the code. I favor the second hypothesis. The ultimate goal is to choose a suitable DG order with a small enough error relative to $F_\infty$, at which to run all the code in the future.
 
@@ -118,7 +118,7 @@ We expect that $F_\infty$ should be the limit to which the DG orders are approac
 \end{figure}
 
 
-I note that verification of the sum over all modes fails. Figure~\ref{unextrapsumcompareDG} demonstrates that the sum over modes for $F_\infty$ does not match the closely converging other three DG orders shown. It would be difficult to fit an exponential through these three curves and reach $F_\infty$ as an asymptote. Some offset is expected. Future work will determine the extent of this offset as well as the correct starting order for all time and all modes based upon statistics for all modes and times. 
+I note that verification of the sum over all modes fails. Figure~\ref{unextrapsumcompareDG} demonstrates that the sum over modes for $F_\infty$ does not match the closely converging other three DG orders shown. It would be difficult to fit an exponential through these three curves and reach $F_\infty$ as an asymptote. Some offset is expected. 
 
 \begin{figure}
 \includegraphics{unextrapsumcompareDG}
@@ -126,4 +126,28 @@ I note that verification of the sum over all modes fails. Figure~\ref{unextrapsu
 \label{unextrapsumcompareDG}
 \end{figure}
 
+\section{A third method}
 
+In a third approach, I consider the behavior of $F_\infty$ as a function of starting order of the extrapolation. In many, but not all, modes, $F_\infty$ appears to converge to an asymptote from above or below as the DG starting order increases. However, in many modes, some starting orders produce no solution, so our set of six DG starting orders is reduced to somewhere between three and five. There are two obvious ways to test for convergence: fit an exponent or a power law and do a likelihood ratio test relative to a constant (since the second order errors are unmodelled), or, more reasonably, examine the signs of the first and second numerical derivatives and consider the end of the convergent regime to be the point where the roundoff noise dominates, and the derivative test no longer works. From this derivative sign test, we can determine the best starting order for $F_\infty$ of a pattern of five or six points that are behaving in a converging like pattern.
+
+However, sometimes, due to high roundoff noise or non-convergent behavior, a low DG order is chosen even for the case where there are five or six good contiguous starting indices. In that case, the asymptotic value of $F_\infty$ at high DG orders is under-estimated. To achieve a better estimate, I sort this group into the same class as the two, three, and four length contiguous sets of successful DG orders that generated values of $F_\infty$. For this case, I make an assumption that except for one or maybe two outliers, $F_\infty$ is approximately constant across the range. The outliers may be at the beginning or the end, or may be due to roundoff noise fluctuations. To reject outliers, I do a standard statistical test of taking the average, making a veto based on the number of standard deviations a point is away from the average, and taking an average again using only the data that survived the veto. I select the point with the value closest to the second average as the best starting order for the extrapolation, and the value I will use to obtain $F_\infty$. In this case, I found that I got linear curves of $\Psi_r-F_\infty$ on a semi-log scale for a one sigma veto.
+
+After performing this selection of the best starting order, based on methods to look for asymptotes or reject outliers, I obtained the time evolution of the radial self force, summed from $l=0$ to $l=30$, shown in Figure~\ref{summixed}. The absolute error between $F_\infty$ and the different DG orders is shown in Figure~\ref{absmixed} and the relative error is shown in Figure~\ref{relmixed}. There is one time where there is some kind of glitch in $F_\infty$ that remains to be investigated; however, the evolution as a whole appears to be smooth. The absolute and relative error demonstrate that convergence is exponential until about DG order 36 or 40, and which point roundoff noise takes over. The best order for evolutions is therefore DG order 36. 
+
+\begin{figure}
+\includegraphics{psirvtwfinfdgorders}
+\caption{Sum from $l=0$ to $l=30$ of the radial self force, comparing all DG orders to $F_\infty$. This was obtained using the method based on asymptotes and averages with rejection of outliers.}
+\label{summixed}
+\end{figure}
+
+\begin{figure}
+\includegraphics{absdiffpsirvtwfinfdgorders}
+\caption{Absolute difference of the radial self force summed from $l=0$ to $l=30$  for each DG order compared to the total radial self force for these modes for $F_\infty$. This was obtained using the method based on asymptotes and averages with rejection of outliers.}
+\label{absmixed}
+\end{figure}
+
+\begin{figure}
+\includegraphics{reldiffpsirvtwfinfdgorders}
+\caption{Relative difference of the radial self force summed from $l=0$ to $l=30$  for each DG order compared to the total radial self force for these modes for $F_\infty$. This was obtained using the method based on asymptotes and averages with rejection of outliers.}
+\label{relmixed}
+\end{figure}
