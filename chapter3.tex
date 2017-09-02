@@ -55,22 +55,25 @@ I have verified this equation, and derived the outgoing wave equation, in Mathem
 
 
 \subsubsection{Initial conditions and boundary conditions}
-Since there is no source for the scalar field in the C++ code, it must be set to some initial value and allowed to fall into the black hole or radiate away its energy to infinity. A Gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen. Initial conditions and the first time-step are shown in Figures~\ref{psi0,rho0,phi0}.
+Since there is no source for the scalar field in the C++ code, it must be set to some initial value and allowed to fall into the black hole or radiate away its energy to infinity. A Gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen. Initial conditions and the first time-step are shown in Figures~\ref{psi0},~\cite{rho0}, and ~\cite{phi0}.
 
 
 \begin{figure}
   \includegraphics{psi1dl0}
   \caption{Scalar field spatial slice initial condition and first full time-step for l=0.}
+  \label{psi0}
 \end{figure}
 
 \begin{figure}
   \includegraphics{rho1dl0}
   \caption{Time derivative of the scalar field spatial slice initial condition and first full time-step for l=0.}
+  \label{rho0}
 \end{figure}
 
 \begin{figure}
   \includegraphics{phi1dl0}
   \caption{Radial derivative of the scalar field spatial slice initial condition and first full time-step for l=0.}
+  \label{phi0}
 \end{figure}
 
 Boundary conditions were matched automatically by the coordinate transformation between tortoise and hyperboloidal layers. At scri minus and scri plus, the boundary conditions were that the scalar field be set to zero. 
@@ -82,7 +85,7 @@ The phase without a source is like the ring-down phase of the system. There are 
 \subsection{Quasi-normal modes}
 A field, such as a scalar or tensor field surrounding a black-hole, exhibits quasi-normal mode ringing as it relaxes into or away from the black hole.  Hence, in LIGO, the first overtone of the first fundamental quasi-normal mode was seen after the merger phase during the ring-down phase in LIGO's first detection~\cite{LIGO1e}. In EMRI's, quasi-normal modes are expected to be detected by LISA after the small black hole crosses the large black hole's horizon, following the plunge from the innermost stable circular orbit. The same set of quasi-normal modes is expected for any tensor field perturbed around a black hole, regardless of why, as long as there is no ongoing source present. The case is very similar with scalar fields, though the spectrum of quasi-normal modes is slightly different.
 
-A quasi-normal mode decays at a nearly stably frequency and a nearly steady exponential decay rate, with slight changes due to the loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have used their theoretical expectations for the first overtone at each l and $m$ mode to fit my simulation data in Figures~\cite{qnml1m1} and~\cite{qnml2m2}. Notice that for higher $m$, the quasi-normal mode frequency is higher and the decay is faster.
+A quasi-normal mode decays at a nearly stably frequency and a nearly steady exponential decay rate, with slight changes due to the loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have used their theoretical expectations for the first overtone at each l and $m$ mode to fit my simulation data in Figures~\ref{qnml1m1} and~\ref{qnml2m2}. Notice that for higher $m$, the quasi-normal mode frequency is higher and the decay is faster.
 
 \begin{figure}
   \includegraphics{l1m1qnm}

@@ -1,7 +1,7 @@
 \section{Plans for the more distant future}
 First, I will update our comparison study with Niels Warburton's geodesic code, to higher l-modes and more recent versions of both codes and report the results to Niels Warburton and Peter Diener.  
 
-I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits and examine the data, with the purpose of understanding the physical implications of the output of the simulation. If necessary, I may help debug the simulation. Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wardell_detweiler} have previously published on self-consistent evolution of a particle around a Schwarzschild black-hole; however, the current goal is to reimplement the same thing more precisely, in 1 dimension with spherical harmonics instead of in 1+3 dimensions and using the Discontinuous Galerkin method. 
+I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits and examine the data, with the purpose of understanding the physical implications of the output of the simulation. If necessary, I may help debug the simulation. Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wardell_detweiler_2012} have previously published on self-consistent evolution of a particle around a Schwarzschild black-hole; however, the current goal is to reimplement the same thing more precisely, in 1 dimension with spherical harmonics instead of in 1+3 dimensions and using the Discontinuous Galerkin method. 
 
 \section{Generic orbits}
 To extend the wave equation to that produced by a particle on a self-consistent orbit, it is necessary to include several additional effects.
@@ -17,7 +17,7 @@ R is the Ricci scalar (0 in Schwarzchild space-time) and $\xi$ is the coupling t
 There are two methods for evolving the orbit that we may use, already implemented in the code by Peter Diener: geodesic evolution and osculating orbits~\ref{pound_poisson}.
 
 \subsection{Geodesic evolution}
-The geodesic equation is modified to include a force term on the right hand side in the presence of a self-force or external force~\cite{carroll}.
+The geodesic equation is modified to include a force term on the right hand side in the presence of a self-force or external force~\cite{Carroll}.
 \begin{equation}
   \frac{d^2x^\mu}{d\tau^2}+\Gamma^\mu_{\rho\sigma}\frac{dx^\rho}{d\tau}\frac{dx^\sigma}{d\tau}=qF^\mu_\nu\frac{dx^\nu}{d\tau}=a^\mu
 \end{equation}
