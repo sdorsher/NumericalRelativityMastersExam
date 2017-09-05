@@ -1,7 +1,7 @@
 \section{Plans for the more distant future}
 First, I will update our comparison study with Niels Warburton's geodesic code, to higher l-modes and more recent versions of both codes and report the results to Niels Warburton and Peter Diener.  
 
-I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits and examine the data, with the purpose of understanding the physical implications of the output of the simulation. If necessary, I may help debug the simulation. Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wardell_detweiler_2012} have previously published on self-consistent evolution of a particle around a Schwarzschild black-hole; however, the current goal is to reimplement the same thing more precisely, in 1 dimension with spherical harmonics instead of in 1+3 dimensions and using the Discontinuous Galerkin method. 
+I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits including a back-reaction which causes the orbit to evolve away from a geodesic, and examine the data, with the purpose of understanding the physical implications. I will compare Warburton's frequency domain code to Peter Diener's self-consistent time domain code. Warburton's code does include time evolution between geodesics; however, it is not self-consistent evolution. Warburton makes use of the radiative approximation to evolve the orbit in the frequency domain, assuming the source is well represented by its average over one orbit~\cite{Warburton}. In the time domain, the state of the field itself naturally accounts for the past orbit of the particle when computing the self force at a given time, assuming sufficient orders of perturbation theory are included. Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wardell_detweiler_2012} have previously published on self-consistent evolution of a particle around a Schwarzschild black-hole; however, the current goal is to reimplement the same thing more precisely, in one dimension with spherical harmonics instead of in 1+3 dimensions and using the Discontinuous Galerkin method. 
 
 \section{Generic orbits}
 To extend the wave equation to that produced by a particle on a self-consistent orbit, it is necessary to include several additional effects.
@@ -12,7 +12,7 @@ To extend the wave equation to that produced by a particle on a self-consistent 
     \frac{dm}{d\tau}=-q u^\alpha\Psi^R_{,\alpha}
     \label{genericev}
 \end{eqnarray}
-R is the Ricci scalar (0 in Schwarzchild space-time) and $\xi$ is the coupling to curvature. The first equation gives th scalar wave equation in curved space-time, with a source. The second equation gives the back-reaction due to acceleration of the particle. Here, $\Psi^R$ is the regularized field. The third equation governs the self-consistent evolution of the mass of the particle.~\cite{WardellSelfForceReview}
+R is the Ricci scalar (0 in Schwarzschild space-time) and $\xi$ is the coupling to curvature. The first equation gives th scalar wave equation in curved space-time, with a source. The second equation gives the back-reaction due to acceleration of the particle. Here, $\Psi^R$ is the regularized field. The third equation governs the self-consistent evolution of the mass of the particle.~\cite{WardellSelfForceReview}
 
 There are two methods for evolving the orbit that we may use, already implemented in the code by Peter Diener: geodesic evolution and osculating orbits~\cite{pound_poisson}.
 
