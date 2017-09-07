@@ -56,30 +56,6 @@ I have verified this equation, and derived the out-going wave equation, in Mathe
 
 
 
-\subsubsection{Initial conditions and boundary conditions}
-Since there is no source for the scalar field in the C++ code, the initial conditions determine the behavior of the field for all time. A Gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen. Initial conditions and the first time-step are shown in Figures~\ref{psi0},~\cite{rho0}, and ~\cite{phi0}.
-
-
-\begin{figure}
-  \includegraphics{psi1dl0}
-  \caption{Scalar field spatial slices at the first and second timestep for l=0.}
-  \label{psi0}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{rho1dl0}
-  \caption{Time derivative of the scalar field spatial slice initial condition and first full time-step for l=0.}
-  \label{rho0}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{phi1dl0}
-  \caption{Radial derivative of the scalar field spatial slice initial condition and first full time-step for l=0.}
-  \label{phi0}
-\end{figure}
-
-Boundary conditions were matched by the coordinate transformation between tortoise and hyperboloidal layers. At the horizon and spatial infinity, the boundary conditions are handled automatically, since there are no out-going modes at the horizon and no in-going modes at spatial infinity.
-
 \section{Theoretical expectations}
 
 The phase without a source is like the ring-down phase of the system. There are two analytically predicted behaviors that characterize the ring-down phase. After the plunge from the innermost stable circular orbit, quasi-normal mode ringing begins. Eventually that fades into a long, power law tail.

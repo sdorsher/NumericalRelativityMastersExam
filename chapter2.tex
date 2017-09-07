@@ -16,7 +16,7 @@ where the final form is specialized to one dimension and $c=1$ in natural units.
 \end{eqnarray}
 This system of equations can be rewritten
 \begin{equation}
-  \frac{\partial u}{\partial t} = A\frac{\partial u}{\partial r} + Bu\nonumber\\
+  \frac{\partial u}{\partial t} = A\frac{\partial u}{\partial r} + Bu\nonumber\\\
   \frac{\partial u}{\partial t} = RHS(u,t)
   \label{matrixdiff}
 \end{equation}
@@ -60,7 +60,7 @@ The Discontinuous Galerkin method helps damp error introduced by discontinuities
 Time evolution in our code is handled by a fourth order low storage Runga Kutta method. Instead of the standard fourth order Runga Kutta method, this method takes five sub-time-steps, but only the most recent sub-time-step needs to be stored.
 
 \begin{eqnarray}
-  p^{(0)}=&u^n\nonumbuer\\
+  p^{(0)}=&u^n\nonumber\\
   k^{(i)}=&a_ik^{(i-1)}+\delta t RHS(p^{(i-1)},t^n+c_i\delta t)\nonumber\\
   p^{(i)}=&p^{(i-1)}+b_iK^{(i)}\nonumber\\
   u_h^{n+1}=&p^{(5)}
