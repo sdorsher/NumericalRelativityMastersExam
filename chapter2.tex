@@ -51,7 +51,7 @@ where $\xi_i$ is a location of a node and where $r$ is an arbitrary position~\ci
 
 Omitting the details of the derivation of this method, which can be found in Reference~\cite{dghesthaven}, the procedure for calculating the spatial derivative in one dimension is to first calculate the Legendre polynomials. A matrix inversion is involved to calculate the derivative matrices, for which we use custom packages, the Template Numerical Toolkit and JAMA. It was discovered, upon parallelization with OpenMP, that TNT is not threadsafe. I rewrote most, but not all, of the code to avoid this issue; however, it would be better to replace TNT altogether if this code were developed further.
 
-The Discontinuous Galerkin method helps damp error introduced by discontinuities in the field, provided they remain at element boundaries. We make use of this in our self-force calculations in the neighborhood of the particle, to be described in Chapter~\ref{ellipticalorb}. The numerical flux how information passes from one element to the next in the Discontinuous Galerkin method and is a way of accounting for the discontinuity in the flow between neighboring elements. The specific method we use for calculating the numerical flux breaks breaks the wave velocities into ingoing and outgoing components. At each element boundary, the state vector from external to the element is coupled to the ingoing velocity then added to the state vector internal to the element coupled to the outgoing velocity. The contribution from each boundary is distributed across the element according to a lift matrix. This is repeated at each time step. Discontinuties can exist at the boundaries, but not within an element. 
+The Discontinuous Galerkin method helps damp error introduced by discontinuities in the field, provided they remain at element boundaries. We make use of this in our self-force calculations in the neighborhood of the particle, to be described in Chapter~\ref{ellipticalorb}. The numerical flux how information passes from one element to the next in the Discontinuous Galerkin method and is a way of accounting for the discontinuity in the flow between neighboring elements. The specific method we use for calculating the numerical flux breaks breaks the wave velocities into in-going and outgoing components. At each element boundary, the state vector from external to the element is coupled to the in-going velocity then added to the state vector internal to the element coupled to the outgoing velocity. The contribution from each boundary is distributed across the element according to a lift matrix. This is repeated at each time step. Discontinuities can exist at the boundaries, but not within an element. 
 
 
 
@@ -93,7 +93,7 @@ The Discontinuous Galerkin method has truncation error that scales as $h^{n+1}$,
 
 \begin{figure}
   \includegraphics{sinL2WTelement}
-  \caption{$L_2$ error scaling with element size for sinusoidal initial conditions. The error seems to be super-convergent. This requires cancellations due to symmetry, perhaps due to the symmetry of wave propogation speed in either direction in flat spacetime.}
+  \caption{$L_2$ error scaling with element size for sinusoidal initial conditions. The error seems to be super-convergent. This requires cancellations due to symmetry, perhaps due to the symmetry of wave propagation speed in either direction in flat spacetime.}
   \label{scalingelement}
 \end{figure}
 

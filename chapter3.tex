@@ -1,5 +1,5 @@
 \section{Scalar field on Schwarzschild space-time}
-Although the final goal in this field is to compute tensor waveforms that can be used as templates for LISA searches, for the purposes of obtaining the desired accuracy, it is important to improve our computational methods. We do this by developing numerical techniques using scalar, rather than tensor, self force methods to make the problem more tractable. I have reimplemented Peter Diener's Fortran scalar self-force code, with a slightly modified design, in C++. The desired goal was for the results to match to within roundoff error. This was achieved for scalar fields without a source and for scalar fields with point sources on circular orbits (see Chapter~\ref{circularorbit}. The original goal, currently put on hold, was to parallelize this code in HPX, a tool which makes it simple to do high performance computing. 
+Although the final goal in this field is to compute tensor waveforms that can be used as templates for LISA searches, for the purposes of obtaining the desired accuracy, it is important to improve our computational methods. We do this by developing numerical techniques using scalar, rather than tensor, self force methods to make the problem more tractable. I have reimplemented Peter Diener's Fortran scalar self-force code, with a slightly modified design, in C++. The desired goal was for the results to match to within roundoff error. This was achieved for scalar fields without a source and for scalar fields with point sources on circular orbits (see Chapter~\ref{circularorbit}). The original goal, currently put on hold, was to parallelize this code in HPX, a tool which makes it simple to do high performance computing. In this chapter, I discuss the physical behavior of a scalar field without a source on a Schwarzschild background. 
 
 
 \subsection{Scalar field wave equations}
@@ -35,32 +35,34 @@ In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperbolo
 \end{eqnarray}
 We solve the wave equation in tortoise coordinates in one region of the code. I have re-derived this equation in Mathematica and verified the form that appears in Peter Diener's Fortran scalar self-force code. The wave equation in tortoise coordinates is
 \begin{equation}
-  \frac{d^2\psi}{dt^2}=\frac{d^2\psi}{dr_*^2}-\frac{1}{r^5}(\frac{2M}{r}+(l+1)l)(1-\frac{2M}{r})\psi
+  \frac{d^2\psi}{dt^2}=\frac{d^2\psi}{dr_*^2}-\frac{1}{r^3}\left(\frac{2M}{r}+(l+1)l\right)\left(1-\frac{2M}{r}\right)\psi
 \end{equation}
 $r$ is in Schwarzschild coordinates, $r_*$ is in tortoise coordinates, $l$ is the spherical harmonic l-mode (discussed below), which accounts for the angular dependence, and $\psi$ is a function of tortoise coordinates.
 
 
 \subsubsection{Hyperboloidal coordinates}  
-Hyperboloidal coordinates are necessary; however, because infinities are computationally unreachable. It is clear that space infinitesimally close to the horizon is important, since the curvature of space is strongest there, and it is still causally connected to the exterior region. To make the horizon reachable in a finite number of computational elements, while retaining the property that more computational elements are placed near the horizon than far away, hyperboloidal coordinates are introduced in the region closest to the horizon. In a middle region, tortoise coordinates are used. In the region furthest from the black hole, hyperboloidal coordinates are used again to place spatial infinity at a finite number, yet maintaining the property that fewer computational elements are needed far away from the black hole. Hyperboloidal coordinates are described by the transformation~\cite{hyperboloidalCoordinates}
+Hyperboloidal coordinates are necessary because infinities are computationally unreachable. It is clear that space infinitesimally close to the horizon is important, since the curvature of space is strongest there, and it is still causally connected to the exterior region. To make the horizon reachable in a finite number of computational elements, while retaining the property that more computational elements are placed near the horizon than far away, hyperboloidal coordinates are introduced in the region closest to the horizon. In a middle region, tortoise coordinates are used. In the region furthest from the black hole, hyperboloidal coordinates are used again to place $\mathcal{I}^+$ at a finite coordinate. 
 
-There are a few key features. The angular coordinates are not transformed. The time coordinate preserves the stationarity of the background metric, and thus the new time variable, $\tau$, must be related to the old time variable, $t_*$, by an offset dependent only upon $r_*$, $\tau=t-h(r_*)$. For in-going waves in the inner region, $t-r_*=\tau-\rho$ and in the outgoing region, $t+r_*=\tau+\rho$ to preserve the structure of the light cone. Bernuzzi, Nagar, and Zenginoglu define $H=\frac{dh}{dr_*}$. They introduce a compactification that depends on a window function $\Omega$~\cite{OmegaTransferFunction}, such that the tortoise radius gets redefined  $r_*=\frac{\rho}{\Omega(\rho)}$, resulting in an expression for the height function $H$ in terms of the hyperboloidal radius,  $H(\rho)=1-\frac{\Omega^2}{\Omega-\rho\Omega^\prime}$. Their final wave equation, for in-going waves, is~\cite{hyperboloidalCoordinates}
+
+
+There are a few key features of the hyperboloidal transformation~\cite{hyperboloidalcoordinates}. The angular coordinates are not transformed. The time coordinate preserves the stationarity of the background metric, and thus the new time variable, $\tau$, must be related to the old time variable, $t_*$, by an offset dependent only upon $r_*$, $\tau=t-h(r_*)$. For in-going waves in the inner region, $t-r_*=\tau+\rho$ and in the outgoing region, $t+r_*=\tau-\rho$ to preserve the structure of the light cone. Bernuzzi, Nagar, and Zenginoglu define $H=\frac{dh}{dr_*}$. They introduce a compactification that depends on a transition function $\Omega$~\cite{OmegaTransferFunction}, such that the tortoise coordinate is defined to be  $r_*=\frac{\rho}{\Omega(\rho)}$ in the hyperboloidal region, resulting in an expression for the height function $H$ in terms of the hyperboloidal radius,  $H(\rho)=1-\frac{\Omega^2}{\Omega-\rho\Omega^\prime}$. For the purpose of computing characteristic modes, important for the numerical fluxes, we are only interested in the highest derivative terms of the wave equation, called the principle part. Their final principle part of the wave equation, for in-going waves, is~\cite{hyperboloidalCoordinates}
   \begin{eqnarray}
-    \partial_t^2-\partial_{r_*}^2=-(1-H^2)\partial_\tau^2\nonumber\\
+    \partial_{t_*}^2-\partial_{r_*}^2=-(1-H^2)\partial_\tau^2\nonumber\\
     +(1-H)(-2H\partial_\tau\partial_\rho+(1-H)\partial_\rho^2-(\partial_\rho H)(\partial_\tau+\partial_\rho))
   \end{eqnarray}    
-I have verified this equation, and derived the outgoing wave equation, in Mathematica.
+I have verified this equation, and derived the out-going wave equation, in Mathematica.
 
   
 
 
 
 \subsubsection{Initial conditions and boundary conditions}
-Since there is no source for the scalar field in the C++ code, it must be set to some initial value and allowed to fall into the black hole or radiate away its energy to infinity. A Gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen. Initial conditions and the first time-step are shown in Figures~\ref{psi0},~\cite{rho0}, and ~\cite{phi0}.
+Since there is no source for the scalar field in the C++ code, the initial conditions determine the behavior of the field for all time. A Gaussian initial condition in the time derivative of the scalar field, centered at computational coordinate zero (which was some physical distance outside the black hole horizon), was chosen. Initial conditions and the first time-step are shown in Figures~\ref{psi0},~\cite{rho0}, and ~\cite{phi0}.
 
 
 \begin{figure}
   \includegraphics{psi1dl0}
-  \caption{Scalar field spatial slice initial condition and first full time-step for l=0.}
+  \caption{Scalar field spatial slices at the first and second timestep for l=0.}
   \label{psi0}
 \end{figure}
 
@@ -76,7 +78,7 @@ Since there is no source for the scalar field in the C++ code, it must be set to
   \label{phi0}
 \end{figure}
 
-Boundary conditions were matched automatically by the coordinate transformation between tortoise and hyperboloidal layers. At the horizon and spatial infinity, the boundary conditions were that the scalar field be set to zero. 
+Boundary conditions were matched by the coordinate transformation between tortoise and hyperboloidal layers. At the horizon and spatial infinity, the boundary conditions are handled automatically, since there are no out-going modes at the horizon and no in-going modes at spatial infinity.
 
 \section{Theoretical expectations}
 
