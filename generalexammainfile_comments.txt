@@ -1,0 +1,240 @@
+Title needs to be shortened.
+
+Abstract: 
+
+I don't think you can say that the C++ version of the code has provided an
+independent verification of the Fortran code. You implemented exactly the same
+overall algorithm.
+
+No reason to mention Field, Hesthaven & Lau in the abstract.
+
+You should say why you perform the Richardson Extrapolation. In fact you're
+not performing a comparison with Warburton's, Diener's and Wardell's eccentric
+orbit results. Rather you're trying to estimate the errors in the simulations.
+
+The long term goal is to perform self-consistent evolutions that are accurate
+enough to see differences with respect to geodesic evolutions.
+
+Section 1.2:
+
+First paragraph: If the small black hole is in an inclined orbit out of the
+accretion disk plane, the black hole will have to cross the disk.
+
+Second paragraph: What do you mean bu the "persistence of the initial
+conditions in the system"?
+
+Second paragraph: Is your timescale there in physical time or are you talking
+number of periods? The second to last sentence indicates the first, while
+the last sentence indicates the second.
+
+Section 1.3:
+
+Second paragraph: I wouldn't call it a principle that the small object has
+mass.
+
+Third paragraph: I wouldn't say "still due" as there was no scalar field in
+the previous case.
+
+Section 1.4:
+
+First paragraph: GEO 600 is in Hannover, Germany not England and is run by
+the Albert-Eisntein-Institute, a Max-Planck institute.
+
+Last paragraph: A space is needed after the second period.
+
+Last paragraph: ... with a NASA as a .... -> ... with NASA as a ...
+
+Section 1.5:
+
+You need to specify the you use geometric units with G=c=1.
+
+I would write the Minkowski metric with indices down.
+
+Bad notation for the Schwarzschild metric. The matrix is the Schwarzschild
+(with indices down). So just write g_{\mu\nu} = Matrix.
+
+Last sentence. The inverse is the metric with indices up.
+
+Section 2.1:
+
+You may want to remind the reader that the speed of light is 1 in the geometric
+units.
+
+Your final writeup of the equations is incorrect. B multiplies the state
+vector. Not the time derivative of the state vector.
+
+You could write down what A and B are in the case of the wave equation in
+flat space.
+
+Section 2.2:
+
+It may be better to say the the the equations are discretized in space only
+(leaving time derivatives) which converts the set of PDE's into a (very big)
+set of ODE's in time. These are then evolved in time by a suitable ODE 
+integrator.
+
+Section 2.2.1:
+
+The first sentence is formulated clumsily.
+
+The third benefit you describle (power law convergence with decreasing element
+size) is exactly the same for finite differencing. So it's not an advantage.
+
+Finite differencing bullet point:
+
+Your description of the size of the stencil and order is not correct.
+1 point on each side gives 2nd order, 2 points gives 4th order, 3 points gives
+6th order and so on...
+
+Equation (2.8): This is in fact a forth order accurate derivative.
+
+Discontinuous Galerkin bullet point:
+
+There are n+1 interpolating polynomials. This number has to match the number
+of nodes.
+
+In this paper you don't need the details of equations (2.11), (2.12) and 
+(2.13), as you're not providing enough details for the reader to understand
+these equations anyway. Instead you can just say that calculating derivatives
+is performed by multiplying the state vector by a derivative matrix. If you
+want to talk about TNT and JAMA you can just say that constructing the
+derivative matrix requires the inversion of a matrix. The way you mention
+TNT and JAMA is currently inconsistent. You first say that we use them
+and then say that the code was rewritten to not use them. Either you
+state that you first tried these libraries and then discovered the threading
+issue and had to rewrite the code (you'll then have to mention what you use
+instead) or simply leave this out.
+
+Regarding the description of the numerical flux, there is again either
+too much detail or too little detail. A reader who does not know DG methods
+do not have enough detail to understand how the flux works as there is no
+coupling of Lambda and S to the characteristic decomposition of the wave
+equations. If you don't give enough detail for a reader to really understand
+it, you should leave it out and instead shortly describe it in words. You
+don't even mention that the numerical flux is the only way for information
+to pass from one element to another or why the DG method is able to handle
+discontinuities located at element boundaries.
+
+Section 2.2.2:
+
+You can not write the RK scheme on one line. Use an eqnarray or something
+like that to make it clear that there is multiple steps.
+
+Section 2.3;
+
+Refer to equation (2.4) to (2.6) when talking about evolution of the wave
+equation in flat space-time. As far as I can see from Figure 2.1, you
+set a Gaussian profile for psi, you set rho to zero and phi to the spatial
+derivative of the Gaussian. This result in a profile that splits into
+a left and a right going mode that superpose when they reach the periodic
+boundary conditions. For the sinusoidal case (Figure 2.2), it looks like your
+initial data is set up differently. I.e. you seem to set up initial data for
+a mode traveling either to the left or to the right (from the plot it's
+impossible to tell which).
+
+Regarding errors, it is due to the periodic boundary conditions that we know
+that the system should be the the same after one period. Hence we can
+measure the errors by taking the difference between that data after one
+period and the initial data. Once we know the pointwise error we can
+calculate the L_2 error.
+
+Figure 2.3 and 2.4: The title of the plot is incomplete.
+
+Figure 2.4: The error seem to be super convergent. Does it actually
+go as element size to the 5th power? This is possible if the symmetry
+of the data makes some errors cancel.
+
+Section 3.1:
+
+Instead of talking about performing comparison studies for the scalar case,
+rather say that we develop new numerical techniques using the scalar case
+as a playground since it reproduces the important features of the
+gravitational case without introducing the associated gauge complications.
+
+Section 3.1.1:
+
+I would rather say that the scalar wave equation can be written in short
+form as equation(3.1) where \Box is the curved spacetime D'Alembertion
+and that this reduces to the standard wave equation in a flat space-time.
+
+After equation (3.2), g is the determinant of the metric (with indices
+down) and not the inverse metric as you state.
+
+Tortoise coordinates bullet point:
+
+The horizon is not scri minus. The tortoise coodinates do not go to scri plus,
+they go to spatial infinity.
+
+Tortoise coordinates do not transform the radial coordinates. They can
+be obtained from Schwarzschild coordinates by the radial transformation
+you give in equations (3.5) to (3.8).
+
+Equation (3.6): Why do you have G here. You're using geometric units with G=1.
+
+Either before or after equation (3.5) to (3.8): mention that the unstarred
+coordinates are the Schwarzschild coordinates.
+
+Equation (3.9): double check this. The powers of the schwarzschild radius look
+wrong to me. Also either use larger outer parenthesis (\left ( and \right )
+to make matching these easier.
+
+Hyperboloidal coordinates bullet point:
+
+The first sentence: The "however" is not needed and only confuses the sentence.
+
+In the outer region hyperboloidal coordinates are used in order to make the
+outer boundary correspond physically to scri plus and place it at a
+finite coordinate location. Scri plus is normally denoted by a scri I with
+a plus superscript.
+
+At the end of the first paragraph, the hyperboloidal transformation is
+missing, or is this supposed to refer to the following paragraph.
+
+Second paragraph: You mention the old time coordinate t_star but then
+proceeds with using t in the next expressions.
+
+Second paragraph: You have the inner and outer region light cone
+relationships reversed.
+
+Second paragraph: Omega is not what I would call a window function. 
+It's just a function that has to satisfy that its one for r_star 
+less than or larger than (depending on the region) some constant value
+and monotonically goes to zero at the horizon or scri plus. I think
+transition function is a better name.
+
+Second paragraph: The tortoise coordinate does not get redefined. Rather
+this is the definition of the computational coordinate rho in the hyperboloidal
+region.
+
+Equation (3.10): This is not the wave eqaution. Rather it's how the
+principal part of the wave equation is expressed in the hyperboloidal
+coordinates of either the inner or outer hyperboloidal region. In
+addition this allows for both ingoing and outgoing waves. Finally 
+it's formatted badly (use eqnarray).
+
+Initial conditions and boundary conditions bullet point.
+
+In section 3.1 you do mention an effective source for the C++ code so why
+is there suddenly no source? I assume you describe initial conditions for
+testing the code without a source.
+
+The wording "allowed to fall into the black hole or radiate away its energy
+to infinity" is bad. If you set up an initial data profile part of it will
+fall in and part of it will go to infinity, whether you allow it or not.
+
+Figures 3.1 to 3.3: It looks like this is data from the two first timesteps
+rather than the initial data and the first full timesteps. Otherwise
+why would the field itself grow by a factor of 2 between the inital time and
+the first full timestep. Besides, the initial data for the field itself is
+normally chosen to be zero when a guassian profile for the time derivative is
+chosen.  
+
+Your description of the boundary conditions are not correct. At the
+boundary between the tortoise region and the hyperboloidal regions the
+coordinate transformation is used when constructing the numerical fluxes
+the the element boundary. However, this is not property a boundary condition
+as it's not a boundary of the computational domain. As for the boundaries
+at the horizon (not scri minus) and scri plus, setting the field to zero
+would be wrong. Rather, due to the fact that there are no incoming modes
+the use of characteristic fluxes mean that we don't need any outer boundary
+conditions.
