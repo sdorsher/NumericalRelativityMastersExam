@@ -1,17 +1,17 @@
 \section{Scalar field on Schwarzschild space-time}
-Although the final goal in this field is to compute tensor waveforms that can be used as templates for LISA searches, for the purposes of obtaining the desired accuracy, it is important to improve our computational methods. We do this by performing comparison studies using scalar, rather than tensor, self force methods to make the problem more tractable. I have performed the simplest of such comparison studies-- I have reimplemented Peter Diener's Fortran scalar self-force code, with a slightly modified design, in C++. The desired goal was for the results to match to within roundoff error. This was achieved for scalar fields without a source and for scalar fields with point sources on circular orbits (see Chapter~\ref{circularorbit}.
+Although the final goal in this field is to compute tensor waveforms that can be used as templates for LISA searches, for the purposes of obtaining the desired accuracy, it is important to improve our computational methods. We do this by developing numerical techniques using scalar, rather than tensor, self force methods to make the problem more tractable. I have reimplemented Peter Diener's Fortran scalar self-force code, with a slightly modified design, in C++. The desired goal was for the results to match to within roundoff error. This was achieved for scalar fields without a source and for scalar fields with point sources on circular orbits (see Chapter~\ref{circularorbit}. The original goal, currently put on hold, was to parallelize this code in HPX, a tool which makes it simple to do high performance computing. 
 
 
 \subsection{Scalar field wave equations}
-A scalar field is a field that has one one degree of freedom at a given point in space-- rather than being a matrix, it has a single value. The scalar wave equation, on a Schwarzschild background,in the absence of a source, is, in its most abstract form, the same as in flat space-time. 
+A scalar field is a field that has one one degree of freedom at a given point in space-- rather than being a matrix, it has a single value. The scalar wave equation can be written, in the absence of a source, in short form, as the D'Alembertian or box operator acting on a scalar field. 
 \begin{equation}
   \Box\Psi=0
 \end{equation}
-The details of the implementation are a little different, to account for the curvature of space. This enters through the metric. For a scalar field, the D'Alembertian can be written
+In flat spacetime this reduces to the standard wave equation. In curved spacetime, further complications are introduced, to account for the curvature of space. This enters through the metric. For a scalar field, the D'Alembertian can be written
 \begin{equation}
   \Box\Psi=\frac{1}{\sqrt{-g}}\partial_\mu(\sqrt{-g}\partial^\mu\Psi)=0
 \end{equation}
-where $g$ is the determinant of $g^{\mu\nu}$.~\cite{Wald} 
+where $g$ is the determinant of $g_{\mu\nu}$.~\cite{Wald} 
 
 \subsubsection{Multipole moment decomposition}
 
@@ -26,10 +26,10 @@ This separation of variables ansatz can be used to simplify the wave equation in
 where $\nabla_{\theta,\phi}^2$ is the angular part of the Laplacian, which has a $\frac{1}{r^2}$ dependence. This introduces a term proportional to $l(l+1)\Psi^{lm}(t,r)$ for each $l$, $m$. 
 
 \subsubsection{Tortoise coordinates}
-In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperboloidal coordinates. Tortoise coordinates have the property that they go to infinity at the horizon (scri minus) and infinity at light-like infinity (scri plus). It is beneficial to place scri minus at an unreachable distance in coordinate space so that the boundary conditions at the horizon become trivial and there is no leakage of information from the interior of the black hole to outside the horizon in the process of discretization. It is also beneficial to increase the number of computational elements near the horizon by compactifying the coordinates there. Tortoise coordinates transform only the radial coordinate, leaving the angular and time coordinates alone.~\cite{Wald}
+In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperboloidal coordinates. Tortoise coordinates have the property that they go to infinity at the horizon and spatial infinity. It is beneficial to place the horizon at an unreachable distance in coordinate space so that the boundary conditions at the horizon become trivial and there is no leakage of information from the interior of the black hole to outside the horizon in the process of discretization. It is also beneficial to increase the number of computational elements near the horizon by compactifying the coordinates there. Tortoise coordinates are obtained by the following transformation of Schwarzschild coordinates.~\cite{wald}
 \begin{eqnarray}
   t_*=t\\
-  r_*=r+2GM\ln|\frac{r}{2GM}-1|\\
+  r_*=r+2M\ln|\frac{r}{2M}-1|\\
   \theta_*=\theta\\
   \phi_*=\phi
 \end{eqnarray}
@@ -41,7 +41,7 @@ $r$ is in Schwarzschild coordinates, $r_*$ is in tortoise coordinates, $l$ is th
 
 
 \subsubsection{Hyperboloidal coordinates}  
-Hyperboloidal coordinates are necessary; however, because infinities are computationally unreachable. It is clear that space infinitesimally close to the horizon is important, since the curvature of space is strongest there, and it is still causally connected to the exterior region. To make the horizon reachable in a finite number of computational elements, while retaining the property that more computational elements are placed near the horizon than far away, hyperboloidal coordinates are introduced in the region closest to the horizon. In a middle region, tortoise coordinates are used. In the region furthest from the black hole, hyperboloidal coordinates are used again to place scri plus at a finite number, yet maintaining the property that fewer computational elements are needed far away from the black hole. Hyperboloidal coordinates are described by the transformation~\cite{hyperboloidalCoordinates}
+Hyperboloidal coordinates are necessary; however, because infinities are computationally unreachable. It is clear that space infinitesimally close to the horizon is important, since the curvature of space is strongest there, and it is still causally connected to the exterior region. To make the horizon reachable in a finite number of computational elements, while retaining the property that more computational elements are placed near the horizon than far away, hyperboloidal coordinates are introduced in the region closest to the horizon. In a middle region, tortoise coordinates are used. In the region furthest from the black hole, hyperboloidal coordinates are used again to place spatial infinity at a finite number, yet maintaining the property that fewer computational elements are needed far away from the black hole. Hyperboloidal coordinates are described by the transformation~\cite{hyperboloidalCoordinates}
 
 There are a few key features. The angular coordinates are not transformed. The time coordinate preserves the stationarity of the background metric, and thus the new time variable, $\tau$, must be related to the old time variable, $t_*$, by an offset dependent only upon $r_*$, $\tau=t-h(r_*)$. For in-going waves in the inner region, $t-r_*=\tau-\rho$ and in the outgoing region, $t+r_*=\tau+\rho$ to preserve the structure of the light cone. Bernuzzi, Nagar, and Zenginoglu define $H=\frac{dh}{dr_*}$. They introduce a compactification that depends on a window function $\Omega$~\cite{OmegaTransferFunction}, such that the tortoise radius gets redefined  $r_*=\frac{\rho}{\Omega(\rho)}$, resulting in an expression for the height function $H$ in terms of the hyperboloidal radius,  $H(\rho)=1-\frac{\Omega^2}{\Omega-\rho\Omega^\prime}$. Their final wave equation, for in-going waves, is~\cite{hyperboloidalCoordinates}
   \begin{eqnarray}
@@ -76,7 +76,7 @@ Since there is no source for the scalar field in the C++ code, it must be set to
   \label{phi0}
 \end{figure}
 
-Boundary conditions were matched automatically by the coordinate transformation between tortoise and hyperboloidal layers. At scri minus and scri plus, the boundary conditions were that the scalar field be set to zero. 
+Boundary conditions were matched automatically by the coordinate transformation between tortoise and hyperboloidal layers. At the horizon and spatial infinity, the boundary conditions were that the scalar field be set to zero. 
 
 \section{Theoretical expectations}
 
