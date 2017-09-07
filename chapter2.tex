@@ -9,9 +9,10 @@ The fundamental problem we wish to solve is to evolve the wave equation on Schwa
 \end{eqnarray}
 where the final form is specialized to one dimension and $c=1$ in natural units. To numerically integrate this, it is necessary to reduce this second order differential equation to three coupled differential first order differential equations. There is a classical solution to this problem, which we follow. We introduce variables $\rho=\frac{\partial \psi}{\partial t}$ and $\phi = \frac{\partial\psi}{\partial r}$. With these definitions, and remembering that we want time evolution equations rather than spatial evolution equations, the three coupled equations become
 \begin{eqnarray}
-  \frac{\partial\psi}{\partial t} = \rho\\
-  \frac{\partial\rho}{\partial t} = \frac{\partial \phi}{\partial r}\\
+  \frac{\partial\psi}{\partial t} = \rho\nonumber\\
+  \frac{\partial\rho}{\partial t} = \frac{\partial \phi}{\partial r}\nonumber\\
   \frac{\partial\phi}{\partial t} = \frac{\partial \rho}{\partial r}
+  \label{stateev}
 \end{eqnarray}
 This system of equations can be rewritten
 \begin{equation}
@@ -68,7 +69,7 @@ Here steps two and three are repeated for $i=1-5$, first $k$, then $p$, then inc
 
 \section{Wave equation on flat space-time}
 
-Using Gaussian initial conditions in $\psi$ and setting the $\rho$ initial conditions to the derivative of that Gaussian, I have produced the evolution shown in Figure~\ref{gaussWave}. The Gaussian marches to the right over a number of time steps, hits the periodic boundary conditions, and re-enters the one-dimensional space on the left, eventually returning to its original position. A similar progression can be seen in Figure~\ref{sineWave} for sinusoidal initial conditions.
+Using Gaussian initial conditions in $\psi$ and setting the $\rho$ (Equation~\ref{statev}) initial conditions to the derivative of that Gaussian, I have produced the evolution shown in Figure~\ref{gaussWave}. The Gaussian splits into two, evolves both left and right, hits the periodic boundary conditions, and re-enters the one-dimensional space on the opposite side, eventually returning to its original position and re-merging. A progression from left to right can be seen in Figure~\ref{sineWave} for sinusoidal initial conditions with a sinusoidal initial condition in $\psi$ and cosine initial conditions in $\phi$ (Equation~\ref{stateev}). Again, periodic boundary conditions cause the wave to cross to the opposite side and re-enter.
 
 \begin{figure}
   \includegraphics{gaussWave}
@@ -82,17 +83,17 @@ Using Gaussian initial conditions in $\psi$ and setting the $\rho$ initial condi
   \label{sineWave}
 \end{figure}
 
-The Discontinuous Galerkin method has truncation error that scales as $h^{n+1}$, where $h$ is the element size and $n$ is the polynomial order of the elements. The $L_2$ error is defined as the square root of the sum of the squared differences across all space, after one complete cycle of the system. The scaling of the $L_2$ error with DG order and with element size is shown in Figures~\ref{scalingorder} and~\ref{scalingelement}. The scaling matches expectations until roundoff error is hit, where the error stops improving with order or smaller element size. Not shown, this same pattern was seen for the $L_0$ error, which is the maximum error over all space.
+The Discontinuous Galerkin method has truncation error that scales as $h^{n+1}$, where $h$ is the element size and $n$ is the polynomial order of the elements. The $L_2$ error is defined as the square root of the sum of the squared differences across all space, after one complete cycle of the system. Because of the periodic boundary conditions, the system should be the same after one complete cycle, making a meaningful error estimate possible. The scaling of the $L_2$ error with DG order and with element size is shown in Figures~\ref{scalingorder} and~\ref{scalingelement}. The scaling matches expectations until roundoff error is hit, where the error stops improving with order or smaller element size. Not shown, this same pattern was seen for the $L_0$ error, which is the maximum error over all space.
 
 \begin{figure}
   \includegraphics{sinL2WTorder}
-  \caption{$L_2$ error scaling with DG order for sinusoidal initial conditions}
+  \caption{$L_2$ error scaling with DG order for sinusoidal initial conditions with ten elements with element size $h=0.01$.}
   \label{scalingorder}
 \end{figure}
 
 \begin{figure}
   \includegraphics{sinL2WTelement}
-  \caption{$L_2$ error scaling with element size for sinusoidal initial conditions}
+  \caption{$L_2$ error scaling with element size for sinusoidal initial conditions. The error seems to be super-convergent. This requires cancellations due to symmetry, perhaps due to the symmetry of wave propogation speed in either direction in flat spacetime.}
   \label{scalingelement}
 \end{figure}
 
