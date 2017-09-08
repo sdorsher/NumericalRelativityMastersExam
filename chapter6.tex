@@ -1,12 +1,8 @@
-The Discontinuous Galerkin method results in truncation error that scales as $h^{N+1}$, where $h$ is the element size and $N$ is the order of the interpolating polynomials within the element.~\cite{dghesthaven} The radial self force is given by the radial derivative of the scalar field, $F_r=\partial_r\Psi$. However, to obtain this quantity, it is necessary to sum the radial derivatives over all $l$ and $m$ modes. Let $F_l=\sum_{m=-l}^l F_{lm}$. Each of these modes, separately, follows the DG convergence scaling laws. It should be possible to extrapolate to infinite DG order based and obtain $F_{\inf}$, the self force for a given l-mode at infinite DG order.
+To achieve a self-consistent simulation, it is necessary to take the back-reaction into account by evolving the mass and acceleration along with the field itself. The long term goal is to perform an accurate study of the differences between the geodesic evolution method used in Niels Warburton's frequency domain technique and the self-consistent evolution method used in Peter Diener's time domain technique for the scalar approximation to the extreme mass ratio inspiral problem. Diener and Warburton have implemented a preliminary simulation that uses initial conditions from the geodesic case to as a consistency check of the low order modes in the self-consistent simulation. Our simulation has some stability issues that must be addressed to evolve for longer durations. One possible explanation is the truncation error. Another possibility is with the sum of the l-modes. A specific functional form is fit over intermediate values of l to extend the sum analytically past the highest l-mode computed to $l=\infty$. There are uncertainties associated with the manner in which this sum is performed. In this chapter, I explore the truncation error associated with the first order Richardson extrapolation.
 
-The Lagrange interpolating polynomials that are used as the basis for the Discontinuous Galerkin method may also be used for extrapolation. Consider the case of a three degrees of freedom, for a quadratic polynomial. If $y_i=f(x_i)$ for $i=0-2$~\cite{NRinC++},
-\begin{eqnarray}
-P(x)=&\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}y_0\nonumber\\
-&+\frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}y_1\nonumber\\
-&+\frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}y_2
-\end{eqnarray}
-However, this form of extrapolation is insufficient for the case of a function that is fundamentally exponential in form. Nowhere does it approximate a polynomial. It is necessary to extend the extrapolation to one based upon exponential, rather than polynomial, assumptions about the underlying functional form.
+\section{First order Richardson extrapolation}
+
+The Discontinuous Galerkin method results in truncation error that scales as $h^{N+1}$, where $h$ is the element size and $N$ is the order of the interpolating polynomials within the element.~\cite{dghesthaven} The radial self force is given by the radial derivative of the scalar field, $F_r=\partial_r\Psi$. However, to obtain this quantity, it is necessary to sum the radial derivatives over all $l$ and $m$ modes. Let $F_l=\sum_{m=-l}^l F_{lm}$. Each of these modes, separately, follows the DG convergence scaling laws. It should be possible to extrapolate to infinite DG order based and obtain $F_{\inf}$, the self force for a given l-mode at infinite DG order.
 
 The three-point exponential extrapolation is motivated by our assumption that Discontinuous Galerkin error is one-sided in the truncation error regime-- it is not random; hence, the self force more or less monotonically approaches a limit. In the round-off error regime where the error is random, the self-force is no longer monotonically decaying. As long as it is monotonically decaying, it can be written in the form of $F_r(n,l)=F_\infty(l)+c(l)\exp[-\alpha n]$, where $n$ is the DG order. For a given mode, the three-point extrapolation is given by
 \begin{eqnarray}
@@ -16,7 +12,7 @@ g(\alpha)-h=&0\\
 c(l)=&\frac{F_r(n_1)-F_r(n_2)}{\exp[-\alpha n_1]-\exp[-\alpha n_2]}\\
 F_\infty(l)=&F_r(n_3)-c(l)\exp[-\alpha n_3]
 \end{eqnarray}
-This technique of extrapolating from various resolutions to produce a correction to the error is known as Richardson extrapolation, and can be done in finite difference schemes, Runga Kutta schemes, and other numerical schemes as well. In the middle step, it is necessary to use the bisection method for root finding, numerically, with the condition that $\alpha$ may never be less than zero since the solution must decay. If the three points are not monotonic, sometimes there is not a solution. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. In order to use data from several different DG orders, it was necessary to interpolate between the times at which each order was computed to some desired common set of times, since each order takes a different time that decreases with increasing order so that the grid remains space-like within a full Runga Kutta time-step. Figure~\ref{galpha} shows the form of $g(\alpha)$. From this plot, it is clear why $h$ must be greater than $0.5$ in order for $g(\alpha)-h$ to have a root. 
+This technique of extrapolating from various resolutions to produce a correction to the error is known as Richardson extrapolation, and can be done in finite difference schemes, Runga Kutta schemes, and other numerical schemes as well. In the middle step, it is necessary to use the bisection method for root finding, numerically, with the condition that $\alpha$ may never be less than zero since the solution must decay. If the three points are not monotonic, sometimes there is not a solution. I use extrapolation starting orders from the set 12, 16, 20, 24, 28, 32, and 36, with additional data at orders 40 and 44 that may be used as points two and three in the extrapolation. In order to use data from several different DG orders, it was necessary to interpolate between the times at which each order was computed to some desired common set of times, since each order takes a different time that decreases with increasing order so that the grid remains space-like within a full Runga Kutta time-step. Interpolation was performed using a cubic polynomial scheme. Figure~\ref{galpha} shows the form of $g(\alpha)$. From this plot, it is clear why $h$ must be greater than $0.5$ in order for $g(\alpha)-h$ to have a root. 
 
 
 \begin{figure}
@@ -27,18 +23,22 @@ This technique of extrapolating from various resolutions to produce a correction
 
 
 
-Since some modes fail, it is not possible to chose the same starting order for the extrapolation for all modes and all times. The first attempt I made to improve the choice of starting order was to chose the highest starting order for which no lower starting order had been unsolvable. Figure~\ref{finfovertimediscont} shows this approach leads to some discontinuities in the time evolution of $F_{\infty}$ in some l-modes ($l=3$ is shown). 
+\section{Choice of starting order}
 
+Some modes fail because roundoff noise causes the data to deviate from exponential convergence, it is not possible to chose the same starting order for the extrapolation for all modes and all times. This can be done manually, but to produce an evolution over the entire time series to investigate the error as a function of time, it is desirable to automate this process.
 
+\subsection{The last non-NaN method}
 
+The first attempt I made to improve the choice of starting order was to chose the highest starting order for which no lower starting order had been unsolvable. Figure~\ref{finfovertimediscont} shows this approach leads to some discontinuities in the time evolution of $F_{\infty}$ in some l-modes ($l=3$ is shown). 
 
 
 \begin{figure}
   \includegraphics{finfovertimel3discontinuities}
-  \caption{Starting order was chosen by iterating from the lowest order to the first order for which the ``mode failed'', and choosing the maximum starting order that succeeded. When $F_{\inf}$ is evolved over one full orbital cycle, some l-modes shows discontinuities at some times. l=3}
+  \caption{Starting order was chosen by iterating from the lowest order to the first order for which the starting order had no solution, and choosing the maximum starting order that succeeded. When $F_{\inf}$ is evolved over one full orbital cycle, some l-modes shows discontinuities at some times. l=3}
 \label{finfovertimediscont}
 \end{figure}
 
+\subsubsection{Manually correcting badly selected automatic values}
 To address this concern, I examined the choice of starting order more closely for specific times where discontinuities were present. One example, for $l=2$ and $t=632M$, is shown in a Table~\ref{manual}. Figure~\ref{nosoln} shows an example where no solution is found. The roundoff noise is visible in Figure~\ref{roundoff} at high DG orders. In Figure~\ref{offset}, it is possible the effect at high DG orders is roundoff noise in the $F_r(n,l)$ values of the points, but it is more likely that it is roundoff noise in the choice of $F_\infty$ due to limitations of the root finding method, resulting in an incorrect offset of the curve. Figure~\ref{manualfix} shows that after selecting an average of the reasonably similar values from Table~\ref{manual}, the discontinuity in the $l=2$ $t=632M$ radial self-force becomes smooth. 
 
 
@@ -82,7 +82,7 @@ To address this concern, I examined the choice of starting order more closely fo
 \label{manualfix}          
 \end{figure}
 
-\subsection{ Checking for discontinuities in $F_{\inf}$ for each each l-mode}
+\subsection{The median method}
 
 In the median approach, the starting orders that had a solution at each time and for each mode are ordered by their $F_{\inf}$ values. The median value of $F_{\inf}$ is selected, presumably discarding those effected by roundoff and those effected by failure to converge. However, there is no guarantee that it selects those in this regime, since in principle a mode could both be in the roundoff limit and have not converged yet. Yet when this is done, there are no discontinuities in $F_{\inf}$ for any of the l-modes when the median approach is used. See mode zero for an example. The maximum or the minimum may also be chosen.
 
@@ -92,7 +92,7 @@ In the median approach, the starting orders that had a solution at each time and
 \end{figure}
 
 
-\subsection{Determining $F_{\inf}$ using maximum likelihood fits to subsegments of lines in semi-log space}
+\subsection{The fit method}
 A better motivated approach, is to fit subsegments of lines in semi-log space on the DG order convergence plot, and find the most linear, longest linear, region. A fit with the ``best'' value of the reduced chi squared should be a good approximation to this. The reduced chi squared is the value of the sum of the residuals of the fit squared divided by the number of degrees of freedom, which in this case is the number of points in the fit minus two, since there are two degrees of freedom in a linear fit. The expectation value of the reduced chi squared, in the limit of a large number of degrees of freedom, is one. I loop over starting and ending points of the fit, and over starting orders, and choose the starting order with the best fit line segment in the sense that that line segment has a reduced chi squared closest to one. An example of such an automatically chosen starting index is given in Figure~\ref{autoconverge}, where there is a long exponentially converging region. Figure~\ref{abserrfitmedian} shows that the absolute error between fit and median techniques increases with l-mode, possibly indicating that roundoff error becomes a more significant factor in the median technique as the l-mode increases, and the fit technique becomes more important.
 
 \begin{figure}
@@ -100,8 +100,6 @@ A better motivated approach, is to fit subsegments of lines in semi-log space on
   \caption{l=0 mode with line-segment fit-chosen starting order produces convergence plot with long exponentially converging region}
 \end{figure}
 
-
-\subsection{Verification of the fit method fails}
 
 We expect that $F_\infty$ should be the limit to which the DG orders are approaching, as order increases. Figure~\ref{limit} shows $F_\infty$ generated by the fit method and the median method, summed naively without an l-mode fit (see Chapter~\ref{lmode}) as a function of time, in comparison to three DG orders. It is clear that there is a large gap between these DG orders and $F_\infty$. I am unsure whether this is because the orders converge slowly to the limit, which seems unlikely since the few orders I have plotted are close together, or because there is a bug in the code. I favor the second hypothesis. The ultimate goal is to choose a suitable DG order with a small enough error relative to $F_\infty$, at which to run all the code in the future.
 
@@ -126,7 +124,7 @@ I note that verification of the sum over all modes fails. Figure~\ref{unextrapsu
 \label{unextrapsumcompareDG}
 \end{figure}
 
-\section{A third method}
+\section{The asymptote method}
 
 In a third approach, I consider the behavior of $F_\infty$ as a function of starting order of the extrapolation. In many, but not all, modes, $F_\infty$ appears to converge to an asymptote from above or below as the DG starting order increases. However, in many modes, some starting orders produce no solution, so our set of six DG starting orders is reduced to somewhere between three and five. There are two obvious ways to test for convergence: fit an exponent or a power law and do a likelihood ratio test relative to a constant (since the second order errors are unmodelled), or, more reasonably, examine the signs of the first and second numerical derivatives and consider the end of the convergent regime to be the point where the roundoff noise dominates, and the derivative test no longer works. From this derivative sign test, we can determine the best starting order for $F_\infty$ of a pattern of five or six points that are behaving in a converging like pattern.
 
