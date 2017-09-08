@@ -61,36 +61,36 @@ I have verified this equation, and derived the out-going wave equation, in Mathe
 The phase without a source is like the ring-down phase of the system. There are two analytically predicted behaviors that characterize the ring-down phase. After the plunge from the innermost stable circular orbit, quasi-normal mode ringing begins. Eventually that fades into a long, power law tail.
 
 \subsection{Quasi-normal modes}
-A field, such as a scalar or tensor field surrounding a black-hole, exhibits quasi-normal mode ringing as it relaxes into or away from the black hole.  Hence, in LIGO, the first overtone of the first fundamental quasi-normal mode was seen after the merger phase during the ring-down phase in LIGO's first detection~\cite{LIGO1e}. In EMRI's, quasi-normal modes are expected to be detected by LISA after the small black hole crosses the large black hole's horizon, following the plunge from the innermost stable circular orbit. The same set of quasi-normal modes is expected for any tensor field perturbed around a black hole, regardless of why, as long as there is no ongoing source present. The case is very similar with scalar fields, though the spectrum of quasi-normal modes is slightly different.
+A field, such as a scalar or tensor field surrounding a black-hole, exhibits quasi-normal mode ringing as it relaxes into or away from the black hole.  Hence, in LIGO, the fundamental quasi-normal mode was seen after the merger phase during the ring-down phase in LIGO's first detection~\cite{LIGO1e}. In EMRI's, quasi-normal modes are expected to be detected by LISA after the small black hole crosses the large black hole's horizon, following the plunge from the innermost stable circular orbit. The same set of quasi-normal modes is expected for any tensor field perturbed around a black hole, regardless of why, as long as there is no source present. The case is very similar with scalar fields, though the spectrum of quasi-normal modes is slightly different.
 
-A quasi-normal mode decays at a nearly stably frequency and a nearly steady exponential decay rate, with slight changes due to the loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have used their theoretical expectations for the first overtone at each l and $m$ mode to fit my simulation data in Figures~\ref{qnml1m1} and~\ref{qnml2m2}. Notice that for higher $m$, the quasi-normal mode frequency is higher and the decay is faster.
+A quasi-normal mode decays at a steady frequency with an exponential decay envelope due to loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have tested their theoretical expectations for the fundamental mode at each l-mode against my simulation data in Figures~\ref{qnml1m1} and~\ref{qnml2m2} by plotting the QNM ringdown waveform using Berti's frequency and exponential decay parameters and adjusing the amplitudes and starting times by hand. Notice that for higher $m$, the quasi-normal mode frequency is higher and the decay is faster.
 
 \begin{figure}
   \includegraphics{l1m1qnm}
-  \caption{Quasi-normal mode for l=1,m=1}
+  \caption{Fundamental quasi-normal mode for l=1}
   \label{qnml1m1}
 \end{figure}
 
 \begin{figure}
   \includegraphics{l2m2qnm}
-  \caption{Quasi-normal mode for l=2, m=2}
+  \caption{Fundamental quasi-normal mode for l=2}
   \label{qnml2m2}
 \end{figure}
 
 
 \subsection{Power law tails}
 
-After quasi-normal mode ringing settles down, power law tails begin. Both are due to backscattering of the waves off the background metric, but they take place in different regimes of time that has elapsed relative to perturbation initial conditions and background black hole mass. In 1972, Richard Price predicted that the tails would scale as $t^-(2l+2)$ or $t^-(2l+3)$ depending on initial conditions~\cite{PriceTails}. In our choice of initial conditions, $t^-(2l+2)$ matches best for the choices of $l$ explored. Figure~\ref{taill1m1} shows a mode for which I successfully recovered a power law tail. Figure~\ref{notaill2m2} demonstrates that truncation error may dominate at high l, and that it may be necessary to increase the DG order to resolve all l-modes in a simulation.
+Quasi-normal mode ringing evolves into power law tails with a relatively rapid transition between the two regimes. Both are due to backscattering of the waves off the background metric, but for EMRI's, QNM are due to interactions near the horizon of the supermassive black hole (post-merger) while the power law tails are due to interactions of the field with the background spacetime far away from it. In 1972, Richard Price predicted that the tails would scale as $t^-(2l+2)$ or $t^-(2l+3)$ depending on initial conditions~\cite{PriceTails}. In our choice of initial conditions, $t^-(2l+2)$ matches best for the choices of $l$ explored. Figure~\ref{taill1m1} shows a mode for which I successfully recovered a power law tail. Figure~\ref{notaill2m2} demonstrates that truncation error may dominate at high l, and that it may be necessary to increase the DG order to resolve all l-modes in a simulation.
 
 \begin{figure}
   \includegraphics{l1m1tail2}
-  \caption{Power law tail, l=1, m=1}
+  \caption{Power law tail, l=1}
   \label{taill1m1}
 \end{figure}
 
 \begin{figure}
   \includegraphics{l2m2tailfail2}
-  \caption{Power law tail does not match expectations due to truncation error in DG method, l=2, m=2}
+  \caption{Power law tail does not match expectations due to truncation error in DG method, l=2}
   \label{notaill2m2}
 \end{figure}
 
