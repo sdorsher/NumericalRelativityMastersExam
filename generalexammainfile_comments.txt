@@ -238,3 +238,266 @@ at the horizon (not scri minus) and scri plus, setting the field to zero
 would be wrong. Rather, due to the fact that there are no incoming modes
 the use of characteristic fluxes mean that we don't need any outer boundary
 conditions.
+
+Section 3.2:
+
+At this point you're testing the wave eqaution evolution without a source,
+why do you talk about a plunge from the innermost stable circular orbit?
+There is no particle here. Just say that any initial data profile will decay
+through the 2 phases of quasinormal ringing and tail decay.
+
+Section 3.2.1:
+
+Only the fundamental quasi-normal mode was seen by LIGO. Berti's n=1 file
+contains the fundamental mode not the first overtone. This needs to be changed
+throughout the section.
+
+The word 'ongoing' seems superfluous.
+
+Except for an early phase where things settle down, once the quasinormal mode
+phase is begun, both the real and imaginary part of the frequency (i.e. the
+oscillatory and damping parts) are completely stable (at least until the tails
+take over). The energy loss is precisely accounted for in the damping.
+
+It's the l-value (not the m-value) that determines the frequencies for 
+a Schwarzschild spacetime. The frequencies are exaclty the same for l=2, m=0
+and l=2, m=2. Remember it's l that enters the potential term in the wave
+equation.
+
+Does figure 3.4 and 3.5 really show fits? Did you not just overplot the
+quasinormal ringdown form with the frequencies from Berti and adjust the
+amplitude and phase by hand?
+
+3.2.2:
+
+The quasinormal mode and tail decay are, as you say, both caused by 
+backscattering. However, it's more a question about where, not when, the
+backscattering occurs. Qusinormal mode ringing is produced near the peak
+of the potential, while tails are produced at larger distances. Quasinormal
+ringing in principle continues forever, however as it decays exponentially
+eventually the tail (with the power law decay) dominates.
+
+Your equations of the power law decay rates are not formatted correctly.
+Use, e.g. $t^{-(2\ell +2)}$. Traditionally \ell is used instead of l in LaTeX.
+The decay rate -(2 l+2) will happen if there
+is a field present initially. The decay rate -(2 l+3) will happen if the
+field is zero initially but the time derivative of the field is non-zero.
+As you're using the latter you'd expect -(2 l+3) decay, which is what you
+see in Figure 3.6 for l=1 (2*1+3=5, which is the power law decay indicated
+by the green line).
+
+4.1:
+
+Please reword the sentence starting with "In the limit of an EMRI...". You
+probably want to say something like: "For an EMRI system we can treat the
+system as a particle in orbit around the big black hole (due to the large mass
+ratio) but due to the finite mass of the small black hole we have to take into
+account the back reaction caused by the small particles interaction with it's
+own field (the self-force) that propagates on the static black hole backgroung
+spacetime. But please use your own words.
+
+Equation (4.3) is the wave equation with a point particle source. It's not
+the "self force".
+
+Your description of the retarded field is confusing. The fact that we always
+use the retarded field is because we are interested in the system where there
+are no incoming waves from the boundaries of the domain.
+
+Your description of the effective source is incomplete and confusing.
+You have to mention the \Psi^S is the Detweiler-Whiting singular field, to
+which we know a Taylor expansion in distance away from the particle only.
+You then have to say that the D'Alembertian acting on the \Psi produces
+a delta function source that exactly cancels the delta function source in the
+wave equation (the integral is missing in (4.6), which results in S_eff being
+regular at the particle. You also have to mention that the effective source
+is non-zero away from the particle due to the fact that we only know an
+approximation to \Psi^S. This is then why we introduce the world tube
+window function to make the source zero away from the particle (not inside
+the window function as you write). Equation (4.7) simply states that the
+self-force is the gradient of the regular field (if you change r to R) and
+relies on a long an careful derivation. It's wrong to say that the self-force
+can be derived from equation (4.7).
+
+4.2:
+
+The world tube is not a ring in 3-dimensions. It's a spherical shell.
+
+We don't use spherical harmonics to increase the dimensionality of space.
+Rather we convert a 3+1 dimensional problem to a number of 1+1 dimensional
+problems (one for each l and m mode).
+
+The paragraph on radiated energy does not belong in this section. Rather you should have a paragraph or two at the beginning of Chapter 4 where you describe
+the physical system that you will look at. There you can say that this is
+an unphysical code test where we continuously pump energy and angular momentum
+into the system in order to offset the radiation losses.
+
+4.3:
+
+You have to describe what you're comparing. What is the system (scalar
+particle on a circular orbit of radius 10M)? what are you plotting (seems
+to be the field extracted at R=10M in a fixed direction as a function of time)?
+
+In the captions repeat what is in the main text and also comment of the
+scaling of the differences.
+
+Why are there no differences plotted in Figure 4.4.
+
+Chapter 5:
+
+I wouldn't call eccentric orbit parameters a physical effect. Everybody knows
+what eccentricity is, but most do not know the semilatus rectum. I probably
+wouldn't mention either here, but just say that we need a way of describing
+relativistic eccentric orbits. The details come in 5.1.
+
+You say there is a need for a time dependent coordinate, but not why (we need
+to keep the particle at an element boundary since the effective source have
+limited smoothness). You also mention a coordinate transformation region
+between tortoise layers. The region with the time dependent coordinate
+transformation is betweem the hyperboloidal region (i.e. where for circular
+orbits we had the tortoise region).
+
+The paper you refer to by Field, Hesthaven and Lau do not use the
+effective source approach. They use a distributional source and will
+have to do mode sum regularization in order to get the self-force.
+I don't think it's necessary to refer to it here unless you want to refer
+to the time dependent coordinate transformation that we took from there.
+
+5.1:
+
+Your introduction of eccentricity an semilatus rectum is not clear. I would
+rather start with the definition of the turning points (peri- and apapstron)
+in terms of p and e (and state that this is in the tradition of celestial
+mechanics in Newtonian Gravity). These can then be related, in the relativistic
+case to the energy and angular momentum. Then also mention that the radial
+period is different from the phi period due to relativistic precession
+which can then lead to the introduction of Chi. You probably want to
+include the equation that gives r(Chi). Note, unless back-reaction is turned
+on w is constant (and we set it to zero), so for the purpose here, I'd leave
+it out and replace Chi-w by Chi. Then you don't need to introduce \nu either.
+
+5.2:
+
+As mention earlier the reason we want to keep the particle coordinate location
+fixed is due to the limited smoothness of the effective source, so we want it
+always to be on an element boundary where this is not felt by the derivative
+operator. We transform from tortoise coordinates to the time dependent 
+coordinates so in essence the tortoise coordinate region gets replaced by
+the time dependent coordinate region.
+
+You write that the "space in its immediate neighbourhood evolves". This is
+not correct. Spacetime is constant (Schwarzschild), only the coordinates evolve.
+
+It is true that the time-dependent coordinate transformation has to be taken
+into account when calculating numerical fluxes at the element boundary between
+the hyperboloidal regions and the time dependent coordinate transformation, but
+it's not correct that the boundary conditions gets enforced by the numerical
+flux.
+
+In the time dependent coordinate transformation, x is the tortose coordinate
+and xi is the time dependent coordinate.
+
+In equation (5.6), x_p(t) is a function of, while xi_p is constant.
+
+I have not checked equation (5.7) but the formattion is somewhat screwy.
+
+You don't need to subtract the singular field from the scalar field. The field
+itself do not contribute to the fluxes. You only need to subtract the
+derivatives of the singular field from the radial and time derivatives of the
+scalar field. Of course they have to be appropriately transformed whenever
+the coordinates on either side of the world tube are different. 
+
+5.3:
+
+Please specify the orbital parameters in the main text.
+
+Looks more like you have a bit more than 6 radial orbits.
+
+The DG order is irrelevant for geodesic orbits. The orbit is evolved
+using the RK4 time integrator and do not need any information from the field
+as the back reaction is turned off.
+
+Figure 5.1 does not show the radius of the orbit. It shows the radial
+coordinate of the orbit. The caption to Figure 5.1 need information about
+orbital parameters
+
+I don't understand the last part of your statement about 5.2: "...if it did
+not precess, it would form an ellipse". It is an ellipse when you plot as
+function of Chi, even though it precesses.
+
+Regarding Figure 5.2 and 5.3: Can you make the plot region quadratic? As it is
+now the eccentricity is exaggerated. 
+
+I would not say that the periods of phi and chi are not synchronized. I would
+just say that they are not the same.
+
+5.4:
+
+Figures 5.5, 5.6 and 5.7 obviously does not involve any fit as they show
+the amplitude of individual modes, so the description here is wrong. Also,
+you write nowhere which modes you are plotting. From looking at the plots it
+looks like it's l=0 to 7. That information should be both in the main text as
+well as the captions.
+
+You may need to comment on why some modes start evolving smoothly and others
+have a lot of noise before they setttle down.
+
+6:
+
+You don't write anything about why you do this. There should be a short
+introduction describing the ideas and then the rest more detailed description
+should be in a sub-section. This will also avoid having subsubsections numbered 6.0.1 and so on.
+
+As you don't use Lagrange interpolation skip the paragraph where you desribe
+it.
+
+You can't refer to F_inf (sometimes you write F_{inf}, somethimes you write
+F_{\infty}; make it consistent) before you define it. Move some of the 
+motivation for why extrapolation should work and write down the expected
+behaviour of the error at finite DG order early and as an equation of it's
+own. You can then refer to that and argue that there are 3, unkowns so you
+need 3 orders. That will lead naturally into a derivation of the extrapolation
+scheme, which needs to be presented in a more clear way. For example don't use
+h when you start out in the section using it for the element size. In the
+current text you talk about a monotonically decaying self-force. This doesn't
+make sense. The self-force is supposed to monotonically converge to a value;
+not decay.  Also the sequence of equations (6.2) to (6.6) does not describe
+the scheme without some words in between.
+
+The long sentence describing why time interpolation should be reformulated
+and potentially broken up into multiple sentences. The last part that states
+that this is done so that the grid remains space-like within a full Runge Kutta
+time-step is wrong. Different timesteps are used to keep evolutions Courant
+stable.
+
+You don't specify that alpha has to be positive for the solution to be
+properly converging. Hence it's not clear from Figure 6.1 why h (again don't
+use h for this) must be larger than 0.5. You also have to specify which values
+of n1, n2 and n3 goes into the figure. Both in the main text and in the
+caption. Don't plot it on such a wide scale. Plotting from -2 to 2 should be 
+enough. what is yratio in the plot title?
+
+You have to explain why some modes fail for different DG orders. Failures
+at high DG order can be explained with roundoff error. At lower orders you
+may have to explain it with not yet being in the convergent regime and higher
+order errors may be important or, as we talked about, there are times
+near apastron and periastron where we see some magnified roundoff noise,
+presumable from some numerical cancellations in the effective source 
+calculations.
+
+In Table 6.1, don't use the code indices 0 to 6 for the starting orders; use 
+the actual order.
+
+Figure 6.2 shows data only in steps of 10M, yet the case you consider in more
+detail is for t=632M which is not included in Figure 6.2. Also Figure 6.2 is
+for l=3 while your example is for l=2. Please make sure that there is some
+consistency.
+
+In all the captions for Figure 6.3 to 6.5 you don't specify exactly
+what you're plotting, namely the extracted self-force minus f_{\infty} as
+determined by the indicated DG orders. Also here use the actual starting order
+instead of i=1 to 3. Finally you have not explained in the main text what the
+behaviour should be in the case of nice convergence.
+
+In the caption to Figure 6.5 you say l=3, while the plot title says l=2.
+
+
