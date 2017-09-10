@@ -500,4 +500,224 @@ behaviour should be in the case of nice convergence.
 
 In the caption to Figure 6.5 you say l=3, while the plot title says l=2.
 
+6.0.1:
 
+Is the subsubsection title correct? Are the median method checking for
+discontinuities in f_inf?
+
+If you're introducing the median value here, you should start by saying what
+problem you're trying to solve with this and then introduce the method.
+You can't start the sentence with "In the median approach..." when it hasn't
+been introduced yet.
+
+The word "presumably" does not seem appropriate here. You introduce the
+method in the hope that it will discard the "bad" values of f_inf, however
+as you state, it is not fool proof.
+
+You say "see mode zero for an example". Where can the reader see that?
+
+You say the maximum or the minimum may also be chosen. Is that true? Does
+those give comparable or better results? I would expect not, since roundoff
+error can affect the f_inf values significantly and produce values that will
+be picked up by the minimum or maximum values.
+
+6.0.2:
+
+The wording "...find the most linear, longest linear, region." is clumsy.
+
+The reference to the Figures are missing.
+
+Does the last figure described in this section correspond to Figure 6.10? Why
+does it come after Figure 6.9 when it's described prior to it.
+
+Regarding Figure 6.9 and 6.11, I still expect that the deviation between the
+sum over f_inf and the sum over modes at finite order are due to an indexing
+error (or something like that) that results in the sums not including the same
+modes. It just cannot be true that the best extrapolation you can obtain from
+values that are so close together at different orders result in a curve that
+is significantly offset from the input data. This contradicts your final
+statement in this subsubsection.
+
+If you have time please check the numbers. Otherwise consider dropping these
+plots. Apparently in Figure 6.12, this issue is not present.
+
+6.1:
+
+Why is this third method a subsection instead of a subsubsection? To make
+things consistent either demote this to a subsubsection or promote the others
+to subsections.
+
+The other methods had a name. Why does this one not?
+
+You say you examine the signs of the first and second derivatives (with respect
+to what?) and consider the end of the convergent region to be where the 
+derivative test no longer works. However, you don't specify what works and/or
+do not work.
+
+The last sentence of the section obviously would not work (and doesn't) so
+why mention it.
+
+You should probably say that we are still investigating the spike in l=25 at
+t=630.
+
+Would it be an idea of generating similar plots to 6.13 and 6.14 where you
+only sum to l=24 (to avoid the spike) and see if the absolute and relative
+errors improve compared to the case of summing to l=30? If so it would
+indicate that it would be bad to include modes higher than l=24 into the
+fits later on.
+
+7.0:
+
+The l-dependence in equation (7.1) is for a 'suitable' high value of l. It's
+not followed for low l.
+
+You say, A, B and C are constants. That is true in some sense, but only at
+a given times. The 'constants' vary in time for eccentric orbits.
+
+A, B and C can be determined, for each time, by least squares fits to the
+numerically determined data.
+
+l_{max} is not formatted correctly. Rememer to use curly braces for subscripts
+and superscripts.
+
+In equation (7.2) use A, B, C instead of a, b and c.
+
+I don't understand Figure 7.1. What are you trying to say with this?
+What modes are included in the fit? What are the blue points? What is the green
+line? There are no labels in the plot, to help the reader understand it.
+
+As I don't understand the plot, I can't comment on the badness at high l.
+
+I don't understand the last sentence. You're fitting a power law behaviour,
+not an exponential.
+
+7.1:
+
+Your arguments for why weights are needed are, in my opinion, not formulated
+clearly enough.
+
+Typo: cation -> caution.
+
+I don't undestand the argument for the l^-1 weight. Aren't you fitting to f_inf
+where you have made sure not to include roundoff error dominated data. Also
+f_inf is an estimate of the value at infinite DG order, i.e. truncation error
+is minimized.
+
+Figure 7.2 looks very different from Figure 7.1. Why? Shouldn't the green curve
+in Figure 7.2 be the same as in Figure 7.1?
+
+Is the fit done over modes l=8 to 30 in Figures 7.3 and 7.4? Or is a different
+lmax used?
+
+The reference to Figure 7.5 is missing? The conclusions about Figure 7.5 
+in the text and the caption contradicts each other (the caption seem to be
+correct).
+
+When describing Figure 7.5, tell the reader in words what is on the 3 axes.
+
+7.2:
+
+In Figure 7.6 and 7.7 you have to indicate which of the coloured surfaces
+correspond to 2, 3 and 4 term fits. Does the "using DG error extrapolation"
+mean that you use f_inf values?
+
+If you are talking about the noise that we see in the extracted self-force
+shortly after aphelion, that I suspect may be significantly amplified 
+roundoff noise produced in the effective source itself (maybe from
+cancellations due to a small value of radial 4-velocity) here? If so, you'll
+either have to explain this in more detail or leave it out.
+
+Again l_min and l_max are missing some curly braces.
+
+7.3:
+
+The last sentence starting with "The three different measurement techniques
+described..." is incomplete. 
+
+In Figure 7.8 why is only the minimum, median and maximum methods shown? What
+about the more advanced methods not shown? As far as I can see Figure 6.12 is
+the only plot you have that shows consistent (except for one time) agreement
+between f_inf and the finite order results. Is the reason that this curve looks
+fine with the 3 methods shown, that you're only fitting up to an l_max that
+is smaller than the troublesome modes? What is l_min and l_max? Is the plot
+title giving an appropriate description?
+
+7.3.1:
+
+The captions in Figures 7.9 and 7.10 do not have enough detail to explain what
+is plotted. In Figure 7.9 is it the 2, 3 or 4 term data that is used?
+In Figure 7.10 is it the data constructed as in Figure 7.6 or 7.7 that is used?
+
+I'm not sure it makes sense to plot the difference between the averages of
+Figures 7.6 and 7.7. Clearly something happens beyond l=26 (where the curves
+start to bend up significantly). Hence the data constructed as in plot 7.6 will 
+have a mean value that differes from the 'plateau' region where the fit and
+extrapolation presumably makes sense.
+
+I'm not sure Figure 7.11 makes any sense either. What modes are included
+in the fit? In your discussion of the plot, why do you expect roundoff error
+only to affect the maximum choice of starting order? Coulnd't roundoff error
+just as well lead to a value that would affect the minimum choice?
+
+7.3.2:
+
+I don't understand why there can be such a big difference in the 
+'relative error', as you have defined it, between Figure 7.12 and 7.13
+depending on the choice of the method used to choose the starting order for
+the Richardson extrapolation. For example at t=550, the fit method gives a
+value larger than 0.1% while the median method gives a value significantly
+smaller than 0.01%.
+
+I think you have to state, that these results are very preliminary and
+subject to change (hopefully to the better) upon futher investigation.
+
+We probably also, at some point, look at similar plots for individual DG
+orders in order to determine if some of these issues are caused by the
+determination of f_inf. We can talk about that later.
+
+7.4:
+
+Again missing curly braces in l_min and l_max.
+
+I don't understand your discussion of an offset. What do you mean by that?
+
+8.1: Warburton does not evolve the orbit in the frequency domain. He uses
+geodesic self-force values, calculated in the frequency domain, to evolve
+the orbit in the time domain. You need a clearer description of the
+geodesic evolution (we have talked about that at length) and contrast it with
+the self-consistent evolution.
+
+The prior work on self-consistent evolution was not accurate enough to see
+the expected differences between geodesic and self-consistent evolutions.
+We are are NOT 'reimplementing' the same thing. We are changing the numerical
+methods completely in order to significantly improve the accuracy of the
+evolutions to the level where we will be able to see the expected differences.
+
+In equation (8.1) you can leave out the term with the Ricci scalar. We are
+not using coordinates where the Ricci is non-zero. There is no reason to
+mention this generalization of the wave equation to spacetimes with non-zero
+Ricci here.
+
+Typo: th -> the.
+
+8.2.1:
+
+In Equation (8.4) the expression between the equal signs are is the Lorentz
+force for an electic charge. This is irrelevant here and should be removed.
+Our a^mu is given by equation (8.2).
+
+8.2.2:
+
+For a particle moving in a Schwarzschild spacetime, the energy and angular
+momentum are always well-defined quantities (there are Killing vectors).
+You can't talk about energy and angular momentum as symmetries. For geodesics
+they are constants of motion related to the Killing symmetries. For orbits
+with back reaction, the change in orbital energy and angular momentum will
+be exactly offset by the flux of energy and angular momentum carried by the
+field into the black hole and out through scri+.
+
+In the osculating orbits framework, the evolution of position and 4-velocity
+(which for bound orbits are oscillatory on the orbital timescale) is replaced
+by the evolution of slowly evolving (p and e) orbital parameters and 
+monotonically increasing angles (phi and chi). Hence this is much more
+accurate.
