@@ -33,3 +33,12 @@ Notice the likelihood ratio test, with complex hypotheses, if necessary. There's
 
 ---------------
 Investigate modes 8 and 11. 8 is case 4. 11 is case 5. 11 fails because it is a plateau in case 5. can handle this through demanding case 5 or greater have a best index in the second half of the array. if not, go to case 4. case 4 simply needs further investigation to ensure it is working as intended, both in terms of output from bestfinfselector3.py and in terms of investigation of plots from extrapolate7.py. haven't seen any case 2 or case1s in t=380
+
+----------------
+
+Add to scaling arguments.
+Add an argument about parity and symmetries.
+Add something about relationship between gravity gradient noise and scalar self force.
+Fix plot comparing min max median so that it plots finf over time for median fit mixed
+Fix plot with relative errors so that it only includes up to mode 24
+Include an analysis of releative errors of different methods
