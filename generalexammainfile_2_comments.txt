@@ -1,0 +1,310 @@
+Page 3: There is a citation missing (shown as [?]).
+
+Page 4: Typo. Eurpeoan -> European.
+
+Page 5: E = Sqrt[ M^2 c^4 + (p c)^2]. Your expression do not have the right
+            non-relativistic limit.
+
+Page 5: You still write that g^{\alpha\beta} is the metric. It's not. The
+        has indices down.
+
+Page 6: Your notation for writing down the metric is still bad.
+        Just write that g_{\mu\nu} = the matrix [ ].
+
+Page 8: You still have du/dt too much in the B term.
+
+Page 8, section 2.2: You now writes that DG has three benefits but lists two.
+
+Page 8, section 2.2.1: The stencil extends n/2 points to either side, if n is
+        order. 2nd order -> 1 point, 4th order -> 2 points.
+
+Page 8, section 2.2.1: The correct formula for the total number of points in
+        stencil is n+2, if n is the order. Again 2nd order -> 3 points and
+        4th order -> 5 points total.
+
+Page 9: Equation 2.6: There is not text describing this equation. You also
+        use a strange notation for the second radial derivative.
+
+Page 9: Equation 2.7: Either the product should start from 0 or the upper limit
+        should be n+1.
+
+Page 10: A word missing: The numerical flux how... -> The numerical flux
+         describes how...
+
+Page 10: typo: ...breaks breaks... -> ...breaks...
+
+Page 10: The following sentence makes no sense: "At each element boundary, the
+         state vector from external to the element is coupled to the in-going
+         velocity then added to the state vector internal to the element
+         coupled to the outgoing velocity." 
+
+Page 10, equation 2.8: Your changing notation mid equation from k to K.
+         What is k^(0) needed for i=1?
+
+
+Page 11, section 2.4: A reference to an equation is screwed up (shows as ??).
+
+Page 11, section 2.4: I think you mean to say that you set the initial
+         conditions for phi to the radial derivative of psi.
+
+Page 11, section 2.4: You could comment on the superconvergence in the main
+         text instead of saying that both Figures 2.3 and 2.4 matches
+         expectations.
+
+Page 14, equation 3.2: I would write the last derivative as
+         g^{\mu\nu}\partial_{\nu}\Psi to make the dependence on the
+         inverse metric explicit.
+
+Page 15, Multipole moment decomposition bullet point: A citation is screwed
+         up (shown as [?]).
+
+Page 16, Tortoise coordinates bullet point: A citation is screwed up (shown as
+         [?]).
+
+Page 16, Hyperboloidal coordinates bullet point: A reader not familiar with GR
+         will not know what scri+ is. You have to say at least a few words to
+         introduce it somewhere.
+
+Page 16, Hyperboloidal coordinates bullet point: A citation is screwed up
+         (shown as [?]).
+
+Page 17, Hyperboloidal coordinates bullet point: You should tell the reader
+         what the properties of Omega(rho) are.
+
+Page 17, Hyperboloidal coordinates bullet point: It's principal part, not 
+         principle part. 
+
+Page 17, equation 3.10: The formatting of the equation is bad. The second
+         line should be aligned with what is right of the equal sign in the
+         first line.
+
+Page 17, section 3.2: The wording is clumsy here and still mixes in concepts
+         from the particle case. You are testing the code without a source
+         and the only thing to do is set up initial data and let it evolve.
+
+Page 18, section 3.2.1: It's the l-value that determines the qnm frequencies,
+         not m.
+
+Page 18, section 3.2.2: Use curly braces to format superscripts properly (as
+         in t^{-(2 l+2)}.
+
+Page 18, section 3.2.2: For the initial conditions you're plotting in Figure
+         3.3 and 3.4, the expectation is t^{-(2 l+3)}. Otherwise l=1
+         would not be matched by t^-5.
+
+Page 22, equation 4.5: This equation would make more sense to the reader if
+         you wrote \Box \Psi^R = \Box (\Psi^{ret}-\tilde{\Psi}^S) as the
+         text that describes how the delta function is cancelled comes next.
+
+Page 22, after equation 4.5: You don't give any reason for why the window
+         function is introduced. Hint: it's due to the fact that we only
+         know an approximation of the Detweiler-Whiting singular field.
+
+Page 22, after equation 4.5: Subtraction of the box operator acting on
+         the Detweiler-Whiting singular field cancels the delta function
+         exactly. We are left with a regular effective source due to the
+         fact that we don't know the exact Detweiler-Whiting singular field
+         away from the particle.
+
+Page 22, equation 4.6: Use a tilde on \Psi^{S} as you did when you introduced
+         it.
+
+Page 23, section 4.1: A couple of citations are screwed up (shown as [?]).
+
+Page 23, section 4.1: The self-force in a simulation can be simply computed
+         as the gradient of \Psi^R.
+
+Page 24, section 4.3: The sentence is clumsily formulated. A reader will read
+        it as a comparison between particles, not codes.
+
+Page 26, chapter 5: The time dependent coordinate region is between the
+         hyperboloidal regions and replaces the tortoise region.
+
+Page 26, chapter 5: There is a screwed up citation (shown as [?]).
+
+Page 26, section 5.1: typo: Refernce -> Reference.
+
+Page 27, section 5.2: You introduced the symbol for scri+ earlier. Use it.
+
+Page 27, section 5.2: Don't write xi in the text. Use $\xi$.
+
+Page 27, equation 5.4: The first term after the equal sign need some curly
+         braces for the superscript to be formatted correctly.
+
+Page 27, equation 5.4: Whenever you take derivatives of \Psi it should be
+         partial derivatives.
+
+Page 27, equation 5.4: You should mention that this is leaving out the
+         potential term.
+
+Page 27, after equation 5.4: You could simply say that derivatives of the
+         field need to be transformed appropriatlely at the element boundary
+         between the time-dependent region and the hyperboloidal regions when
+         the numerical fluxes are computed (in addition to the addition and/or
+         subtraction of the singular field).
+
+Page 30,31: Figures 5.4, 5.5 and 5.6: If you have time you can change the 
+         y-range to only go to -2, -1 and 0, respectively.
+
+Page 33, section 6.1: "The three-point exponential extrapolation is 
+         motivated..." -> "The following hree-point exponential extrapolation
+         is motivated...".
+
+Page 33, section 6.1: "...converging, it can be written in the form of..." ->
+         "...converging, the self-force at finite DG order, $n$, can be written
+         in the form..."
+
+Page 33, section 6.1: There is no description of where equations 6.1 to 6.4
+         are coming from. There is no explanation, before the equations, that
+         results at 3 different DG orders (n1, n2, n3) are used to determine
+         the parameters in the error model. 
+
+Page 34, section 6.1: "...steps are less than the wave travel time to the
+         minimum spacing on the grid." -> "...steps are less than the wave
+         travel time across the minimum spacing on the grid."
+
+Page 34, section 6.2: typo: chose -> choose.
+
+Page 34, Manually correcting badly selected automatic values bullet point:
+         You say "This time is particularly bad,..." but does not say what
+         time you're talking about. In the next sentence you say that l=2
+         and t=632 M is shown in Table 6.1. Is that the time you're talking
+         about.
+
+Page 34, Manually correcting badly selected automatic values bullet point:
+         You say that Figure 6.2 is an example of no solution being found, but
+         the caption to that figure says that the value of F_inf is subtly 
+         wrong.
+
+Page 34, Manually correcting badly selected automatic values bullet point:
+         Regarding 6.4, you talk about a possible limitation in the root
+         finding method. To me it looks quite like roundoff error. Sometimes
+         the value is too high, sometimes it is too low.
+
+Page 35, Table 6.1: if you look at the numbers, they are all compatible with
+         a value of 2.4097530, i.e. they all agree to 8 decimal places. This
+         is incredibly good agreement, so even you don't see clear convergence
+         with order, it's still useful data. You may want to comment on that.
+
+Page 39, section 6.2.2: You say see mode zero for an example. Where can the
+         reader see this? Is there a plot?
+
+Page 39, section 6.2.3: References to 2 Figures are screwed up (shown as ??).
+
+Page 39, section 6.2.3: What do you mean that "the fit technique becomes
+         more important"? Do you expect it to be better than the median
+         method?
+
+Page 43, section 6.3: Does this not belong as a subsection in section 6.2
+         (i.e. should it not be section 6.2.4). Shouldn't it also be
+         considered a fourth approach (you have already mentioned 3).
+
+Page 44, section 6.3: Your statement in parenthesis "(though this will take
+         significantly more work to implement) puzzles me. Why should it take
+         a lot of effort to change the upper limit of a sum from 30 to 24 (or
+         any other number; make it a parameter)?
+
+Page 44, section 6.3: Last statement about the error. What error are you
+         talking about here? The sum of modes or individual modes? Is this
+         absolute or relative error? Is there a plot to back up this statement?
+         Is this referring to Figure 6.10?
+
+Page 45, figure 6.11: use curly braces with superscripts, $10^{-4}$.
+
+Page 46, chapter 7: This is a comment to all of chapter 7. There is no
+         consistency with ragrd to which method of determining f_inf you
+         are using in the different plots. Hence, it's very difficult for
+         the reader to disentangle what differences are coming from the fits
+         and what differences are coming from the f_inf determination.
+         I realize that there is not much time, but it would be nice
+         if a bit more consistency would be possible. Your last two plots
+         of chapter 6 was using the asymptote method. Was the conclusion
+         that this was the best method? Or was one of the other methods
+         determined to be superior? If so, wouldn't it be better to only use
+         f_inf values determined by the best method.
+
+Page 46, chapter 7: You use F_{\infty} here instead of F_{inf} as you did
+         earlier. Please choose one and stick to it.
+
+Page 48, figure 7.1: Why is the data bad at high l here and not in figure 7.2.
+         Isn't it the same plot. As we discussed, get rid of this.
+
+Page 47, section 7.1: If you get rid of Figure 7.1, you have to rewrite this
+         section and argue for why sigma might be important for purely 
+         theoretical reasons. You will then also have to comment somewhere
+         after presenting the results, that sigma doesn't seem to make too
+         much difference.
+
+Page 49, section 7.1: There is a reference to a Figure screwed up (shown as ??).
+
+Page 50, figure 7.2: What modes are used in the fit? If you get rid of Figure
+         7.1, you have to change the caption here. Could it be that the
+         difference between Figure 7.1 and Figure 7.2 is which modes are 
+         included in the fit?
+
+Page 53, figure 7.5: typo in plot title: ponits -> points.
+
+Page 54, figure 7.6: What are you trying to say with the sentence: "Aphelion,
+         where this effect is worst."? That this data is from a time close to
+         Aphelion? Btw, what is the right word here? Apastron might be better
+         than Aphelion, though this is not an orbit around a star, either. 
+         Anyhow, choose one and make sure to use a consistent word everywhere.
+
+Page 54, section 7.3: A figure reference is screwed up (shown as ??).
+
+Page 54, section 7.3: The sentence "The three different measurement techniques
+         described in Chapter 6" is incomplete (as it was in the last version).
+
+Page 56, figure 7.8: The caption say that you're using the mixed method defined
+         in chapter 6. There is no mixed method defined there (The last non-NaN
+         method, the median method, the fit method and the asymptote method are
+         defined). The plot legends say Minimum, Median and Maximum. However,
+         in the current version there is no mention of then Minimum and
+         Maximum methods.
+
+Page 55, figure 7.7. Same question regarding the even shorter sentence. 
+         "Aphelion."
+
+Page 56, section 7.3.1: I'm still not sure that the difference of the averages
+         defined as in Figure 7.6 (including data up to l=30) and Figure 7.7
+         including data only up to 26) makes sense, since Figure 7.6 clearly
+         shows that things start to go wrong if l=27 and beyond are included
+         in the fit. Would something like the maximum value minus the mean
+         (or mean minus the minimum value) in Figure 7.7 be a better estimate
+         of the error?
+
+Page 57, section 7.3.1: use curly brace in $10^{-4}$ in a couple of places.
+
+Page 57, section 7.3.1: A figure reference is screwed up (shown as ??).
+
+Page 59, figure 7.11: How would this look like with a differen method for
+         determining f_inf?
+
+Page 59, figure 7.11: The sentence (if you can call it that) "3 term, median
+         method." needs to be expanded into a proper sentence.
+
+Page 59, figure 7.12: Same comment as just above.
+
+Page 59, figure 7.13: What f_inf method was used here?
+
+Page 61, section 8.1: A reference is screwed up (shown as [?]).
+
+Page 61, section 8.1: You don't elaborate on the difference between Niels'
+         "geodesic evolutions" and our "self-consistent" evolutions. This
+         is the main purpose of the future work, so is very important
+         to include.
+
+Page 61, section 8.2: It's not the acceleration that evolves, it's the
+         orbit itself. This is accounted for by adding an acceleration
+         term to the geodesic equation (which is not simplified).
+
+Page 62, equation 8.2: Don't use the (0) subscript on the metric. You haven't
+         done so before and there is only the Schwarzschild metric, since
+         there is no metric perturbations.
+
+Page 62, section 8.2.2: There is an ending ) missing after Chapter 5.4.
+
+Page 63, section 8.2.2: What do you mean by "touching geodesics"?
+
+Page 63, section 8.2.2: It's probably even more important that it will reduce
+         truncation error in the time integration of the orbit.
