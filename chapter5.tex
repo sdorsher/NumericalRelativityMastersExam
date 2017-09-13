@@ -1,8 +1,8 @@
-For eccentric orbits, there are two primary additional physical or computational effects to consider. One is the need for a way to describe relativistic eccentric orbits. The second is that in the presence of a source, it is necessary for the particle to be at an element boundary due to discontinuities at the location of the source because the singular source is not precisely regularlized by the Detweiler-Whiting singular field. To keep the particle at an element boundary for all times by keeping the computational coordinate fixed, it is necessary to add a time dependent coordinate transformation region between tortoise layers in the middle of the computational grid~\cite{time_dependent_coordinate_transform}. In this section, I describe Peter Diener's Fortran code, using Niels Warburton's exact initial conditions for l-modes 0 through 5, and Barry Wardell's effective source, which I have run to produce eccentric orbit output. 
+For eccentric orbits, there are two primary additional physical or computational effects to consider. One is the need for a way to describe relativistic eccentric orbits. The second is that in the presence of a source, it is necessary for the particle to be at an element boundary due to discontinuities at the location of the source because the singular source is not precisely regularized by the Detweiler-Whiting singular field. To keep the particle at an element boundary for all times by keeping the computational coordinate fixed, it is necessary to add a time dependent coordinate transformation region between tortoise layers in the middle of the computational grid~\cite{time_dependent_coordinate_transform}. In this section, I describe Peter Diener's Fortran code, using Niels Warburton's exact initial conditions for l-modes 0 through 5, and Barry Wardell's effective source, which I have run to produce eccentric orbit output. 
 
 \section{Orbital parameters}
 
-The eccentricity of an eccentric orbit is defined such that the turning points are defined to be $r_{periastron}=\frac{pM}{1+e}$ and $r_{apastron}=\frac{pM}{1-e}$, where $p$ is the semilatus rectum. Eccentric orbits in general relativity precess. In the coordinates of Refernce~\cite{pound_poisson}, $\chi$ is a parameter that runs from $0$ to $2\pi$ in one radial cycle (as opposed to $\phi$, which runs from $0$ to $2\pi$ in one angular cycle). The orbital parameters of an eccentric orbit in a Schwarzschild space-time are derived from General Relativity to be 
+The eccentricity of an eccentric orbit is defined such that the turning points are defined to be $r_{periastron}=\frac{pM}{1+e}$ and $r_{apastron}=\frac{pM}{1-e}$, where $p$ is the semilatus rectum. Eccentric orbits in general relativity precess. In the coordinates of Reference~\cite{pound_poisson}, $\chi$ is a parameter that runs from $0$ to $2\pi$ in one radial cycle (as opposed to $\phi$, which runs from $0$ to $2\pi$ in one angular cycle). The orbital parameters of an eccentric orbit in a Schwarzschild space-time are derived from General Relativity to be 
 \begin{equation}
   E^2=\frac{(p-2-2e)(p-2+2e)}{p(p-3-e^2)}
 \end{equation}
@@ -14,18 +14,18 @@ For an eccentric orbit, $\chi$ and $\phi$ are evolved using a fourth order Runga
 
 \section{Time dependent coordinate transformation}
 
-In the case of an eccentric orbit, it is necessary to ensure that the particle always remains at an element boundary for all time. We use a time dependent coordinate transformation to keep the particle fixed at a specific coordinate location while the coordinates in its immediate neighborhood evolve. This simulates a particle on an eccentric orbit and produces the same self-force and the same scalar waves at scri plus. The necessary time dependent coordinate transformation can be found in Reference~\cite{time_dependent_coordinate_transformation}. It transforms from tortoise coordinates, $x$, to time dependent coordinates, $xi$. The location of the particle $x_p(t)$, varies in tortoise coordinates but is fixed in time dependent coordinates ($\xi_p$). $a$ and $b$ are the boundaries of the time dependent region, in computational coordinates. 
+In the case of an eccentric orbit, it is necessary to ensure that the particle always remains at an element boundary for all time. We use a time dependent coordinate transformation to keep the particle fixed at a specific coordinate location while the coordinates in its immediate neighborhood evolve. This simulates a particle on an eccentric orbit and produces the same self-force and the same scalar waves at $\mathcal{I}^+$. The necessary time dependent coordinate transformation can be found in Reference~\cite{time_dependent_coordinate_transformation}. It transforms from tortoise coordinates, $x$, to time dependent coordinates, $\xi$. The location of the particle $x_p(t)$, varies in tortoise coordinates but is fixed in time dependent coordinates ($\xi_p$). $a$ and $b$ are the boundaries of the time dependent region, in computational coordinates. 
 \begin{equation}
   x=a+\frac{x_p-a}{x_p(t)-a}(\xi-a)+\frac{(b-x_p(t))(\xi_p-a)-(x_p(t)-a)(b-\xi_p)}{(\xi_p-a)(b-\xi_p)(b-a)}(\xi-a)(\xi-\xi_p)
 \end{equation}
-I have used Mathematica to confirm the time dependent coordinate wave equation used in Peter Diener's Fortran scalar self-force code. Its time and radial components are
+I have used Mathematica to confirm the time dependent coordinate wave equation used in Peter Diener's Fortran scalar self-force code. Its time and radial components, leaving out the potential term, are
 \begin{eqnarray}
-\frac{d^2\psi}{dt^2}=&\left(\frac{dx}{d\xi}\right)^-3\left[\frac{d^2x}{d\xi^2}-\frac{d^2x}{d\xi^2}\left(\frac{dx}{dt}\right)^2-2\frac{d^2x}{d\xi dt}\frac{dx}{d\xi}-\left(\frac{d^2x}{dt^2}\right)^2\right]\frac{d\psi}{d\xi}\nonumber\\
-&+\left[-1+\left(\frac{dx}{dt}\right)^2\right]\left(\frac{dx}{d\xi}\right)^{-2}\frac{d^2\psi}{d\xi^2}\nonumber\\
-&-2\frac{dx}{dt}\left(\frac{dx}{d\xi}\right)^{-1}\frac{d^2\psi}{d\xi dt}
+\frac{\partial^2\psi}{\partial t^2}=&\left(\frac{\partial x}{\partial \xi}\right)^{-3}\left[\frac{\partial^2x}{\partial\xi^2}-\frac{\partial^2x}{\partial\xi^2}\left(\frac{\partial x}{\partial t}\right)^2-2\frac{\partial^2x}{\partial\xi \partial t}\frac{\partial x}{\partial \xi}-\left(\frac{\partial ^2x}{\partial t^2}\right)^2\right]\frac{\partial \psi}{\partial \xi}\nonumber\\
+&+\left[-1+\left(\frac{\partial x}{\partial t}\right)^2\right]\left(\frac{\partial x}{\partial \xi}\right)^{-2}\frac{\partial^2\psi}{\partial\xi^2}\nonumber\\
+&-2\frac{\partial x}{\partial t}\left(\frac{\partial x}{\partial \xi}\right)^{-1}\frac{\partial ^2\psi}{\partial \xi \partial t}
 \end{eqnarray}
 
-It is necessary to invert the time dependent transformation subtract the principle part of the singular field from the principle part of the state vector to obtain in-going fluxes at elements just outside the world tube. Similarly, to obtain in-going fluxes inside the world tube, we must transform to time dependent coordinates and subtract the singular field from the scalar field. For outgoing fluxes, addition and subtraction are reversed. 
+At the world tube boundary, it is necessary to transform from one coordinate system to another before or after adding or subtracting the derivative of the singular field from the radial or time derivative of the scalar field, in order to transform between regular and retarded fields in time dependent coordinates and in hyperboloidal coordinates respectively. 
 
 
 \section{Orbits}
@@ -71,7 +71,6 @@ The radial self-force is defined as $q\nabla^\alpha\Psi^{R}$~\cite{wardell_vega_
 
 \begin{figure}
   \includegraphics{rawPhiSelfForceModes}
-  \caption{Raw output of Diener, Warburton, and Wardell code for DG order 44. Phi component of the self force. The phi compoent again shows this convergent behavior and the lack of transients from in the initial data from the frequency domain simulation.}
+  \caption{Raw output of Diener, Warburton, and Wardell code for DG order 44. Phi component of the self force. The phi component again shows this convergent behavior and the lack of transients from in the initial data from the frequency domain simulation.}
   \label{phisf}
 \end{figure}
-

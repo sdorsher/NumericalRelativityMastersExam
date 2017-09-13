@@ -9,7 +9,7 @@ A scalar field is a field that has one one degree of freedom at a given point in
 \end{equation}
 In flat spacetime this reduces to the standard wave equation. In curved spacetime, further complications are introduced, to account for the curvature of space. This enters through the metric. For a scalar field, the D'Alembertian can be written
 \begin{equation}
-  \Box\Psi=\frac{1}{\sqrt{-g}}\partial_\mu(\sqrt{-g}\partial^\mu\Psi)=0
+  \Box\Psi=\frac{1}{\sqrt{-g}}\partial_\mu(\sqrt{-g}g^{\mu\nu}\partial_\nu\Psi)=0
 \end{equation}
 where $g$ is the determinant of $g_{\mu\nu}$.~\cite{Wald} 
 
@@ -26,7 +26,7 @@ This separation of variables ansatz can be used to simplify the wave equation in
 where $\nabla_{\theta,\phi}^2$ is the angular part of the Laplacian, which has a $\frac{1}{r^2}$ dependence. This introduces a term proportional to $l(l+1)\Psi^{lm}(t,r)$ for each $l$, $m$. 
 
 \subsubsection{Tortoise coordinates}
-In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperboloidal coordinates. Tortoise coordinates have the property that they go to infinity at the horizon and spatial infinity. It is beneficial to place the horizon at an unreachable distance in coordinate space so that the boundary conditions at the horizon become trivial and there is no leakage of information from the interior of the black hole to outside the horizon in the process of discretization. It is also beneficial to increase the number of computational elements near the horizon by compactifying the coordinates there. Tortoise coordinates are obtained by the following transformation of Schwarzschild coordinates.~\cite{wald}
+In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperboloidal coordinates. Tortoise coordinates have the property that they go to infinity at the horizon and spatial infinity. It is beneficial to place the horizon at an unreachable distance in coordinate space so that the boundary conditions at the horizon become trivial and there is no leakage of information from the interior of the black hole to outside the horizon in the process of discretization. It is also beneficial to increase the number of computational elements near the horizon by compactifying the coordinates there. Tortoise coordinates are obtained by the following transformation of Schwarzschild coordinates.~\cite{Wald}
 \begin{eqnarray}
   t_*=t\\
   r_*=r+2M\ln|\frac{r}{2M}-1|\\
@@ -35,20 +35,20 @@ In this code, we use a mixture of tortoise (Eddington-Finkelstein) and hyperbolo
 \end{eqnarray}
 We solve the wave equation in tortoise coordinates in one region of the code. I have re-derived this equation in Mathematica and verified the form that appears in Peter Diener's Fortran scalar self-force code. The wave equation in tortoise coordinates is
 \begin{equation}
-  \frac{d^2\psi}{dt^2}=\frac{d^2\psi}{dr_*^2}-\frac{1}{r^3}\left(\frac{2M}{r}+(l+1)l\right)\left(1-\frac{2M}{r}\right)\psi
+  \frac{\partial^2\psi}{\partial t^2}=\frac{\partial^2\psi}{\partial r_*^2}-\frac{1}{r^3}\left(\frac{2M}{r}+(l+1)l\right)\left(1-\frac{2M}{r}\right)\psi
 \end{equation}
 $r$ is in Schwarzschild coordinates, $r_*$ is in tortoise coordinates, $l$ is the spherical harmonic l-mode (discussed below), which accounts for the angular dependence, and $\psi$ is a function of tortoise coordinates.
 
 
 \subsubsection{Hyperboloidal coordinates}  
-Hyperboloidal coordinates are necessary because infinities are computationally unreachable. It is clear that space infinitesimally close to the horizon is important, since the curvature of space is strongest there, and it is still causally connected to the exterior region. To make the horizon reachable in a finite number of computational elements, while retaining the property that more computational elements are placed near the horizon than far away, hyperboloidal coordinates are introduced in the region closest to the horizon. In a middle region, tortoise coordinates are used. In the region furthest from the black hole, hyperboloidal coordinates are used again to place $\mathcal{I}^+$ at a finite coordinate. 
+Hyperboloidal coordinates are necessary because infinities are computationally unreachable. It is clear that space infinitesimally close to the horizon is important, since the curvature of space is strongest there, and it is still causally connected to the exterior region. To make the horizon reachable in a finite number of computational elements, while retaining the property that more computational elements are placed near the horizon than far away, hyperboloidal coordinates are introduced in the region closest to the horizon. In a middle region, tortoise coordinates are used. In the region furthest from the black hole, hyperboloidal coordinates are used again to place light-like infinity, $\mathcal{I}^+$, at a finite coordinate. 
 
 
 
-There are a few key features of the hyperboloidal transformation~\cite{hyperboloidalcoordinates}. The angular coordinates are not transformed. The time coordinate preserves the stationarity of the background metric, and thus the new time variable, $\tau$, must be related to the old time variable, $t_*$, by an offset dependent only upon $r_*$, $\tau=t-h(r_*)$. For in-going waves in the inner region, $t-r_*=\tau+\rho$ and in the outgoing region, $t+r_*=\tau-\rho$ to preserve the structure of the light cone. Bernuzzi, Nagar, and Zenginoglu define $H=\frac{dh}{dr_*}$. They introduce a compactification that depends on a transition function $\Omega$~\cite{OmegaTransferFunction}, such that the tortoise coordinate is defined to be  $r_*=\frac{\rho}{\Omega(\rho)}$ in the hyperboloidal region, resulting in an expression for the height function $H$ in terms of the hyperboloidal radius,  $H(\rho)=1-\frac{\Omega^2}{\Omega-\rho\Omega^\prime}$. For the purpose of computing characteristic modes, important for the numerical fluxes, we are only interested in the highest derivative terms of the wave equation, called the principle part. Their final principle part of the wave equation, for in-going waves, is~\cite{hyperboloidalCoordinates}
+There are a few key features of the hyperboloidal transformation~\cite{hyperboloidalcoordinates}. The angular coordinates are not transformed. The time coordinate preserves the stationarity of the background metric, and thus the new time variable, $\tau$, must be related to the old time variable, $t_*$, by an offset dependent only upon $r_*$, $\tau=t-h(r_*)$. For in-going waves in the inner region, $t-r_*=\tau+\rho$ and in the outgoing region, $t+r_*=\tau-\rho$ to preserve the structure of the light cone. Bernuzzi, Nagar, and Zenginoglu define $H=\frac{dh}{dr_*}$. They introduce a compactification that depends on a transition function $\Omega$~\cite{OmegaTransferFunction} that goes to one at the horizon, is constant in the tortoise region, and smoothly goes to zero in the outer hyperboloidal region. The tortoise coordinate is defined to be  $r_*=\frac{\rho}{\Omega(\rho)}$ in the hyperboloidal region, resulting in an expression for the height function $H$ in terms of the hyperboloidal radius,  $H(\rho)=1-\frac{\Omega^2}{\Omega-\rho\Omega^\prime}$. For the purpose of computing characteristic modes, important for the numerical fluxes, we are only interested in the highest derivative terms of the wave equation, called the principal part. Their final principle part of the wave equation, for in-going waves, is~\cite{bernuzzi_nagar_zenginoglu_hyperb}
   \begin{eqnarray}
-    \partial_{t_*}^2-\partial_{r_*}^2=-(1-H^2)\partial_\tau^2\nonumber\\
-    +(1-H)(-2H\partial_\tau\partial_\rho+(1-H)\partial_\rho^2-(\partial_\rho H)(\partial_\tau+\partial_\rho))
+    \partial_{t_*}^2-\partial_{r_*}^2=&-(1-H^2)\partial_\tau^2\nonumber\\
+    &+(1-H)(-2H\partial_\tau\partial_\rho+(1-H)\partial_\rho^2-(\partial_\rho H)(\partial_\tau+\partial_\rho))
   \end{eqnarray}    
 I have verified this equation, and derived the out-going wave equation, in Mathematica.
 
@@ -58,12 +58,13 @@ I have verified this equation, and derived the out-going wave equation, in Mathe
 
 \section{Theoretical expectations}
 
-The phase without a source is like the ring-down phase of the system. There are two analytically predicted behaviors that characterize the ring-down phase. After the plunge from the innermost stable circular orbit, quasi-normal mode ringing begins. Eventually that fades into a long, power law tail.
+The system without a source is necessary for code development; however, it is also similar to the like the ring-down phase of an EMRI system after the small black hole plunges into the super-massive black hole. There are two analytically predicted behaviors that characterize the system that has no source. Initially,there should be quasi-normal mode ringing. Eventually that fades into a long, power law tail. 
 
 \subsection{Quasi-normal modes}
-A field, such as a scalar or tensor field surrounding a black-hole, exhibits quasi-normal mode ringing as it relaxes into or away from the black hole.  Hence, in LIGO, the fundamental quasi-normal mode was seen after the merger phase during the ring-down phase in LIGO's first detection~\cite{LIGO1e}. In EMRI's, quasi-normal modes are expected to be detected by LISA after the small black hole crosses the large black hole's horizon, following the plunge from the innermost stable circular orbit. The same set of quasi-normal modes is expected for any tensor field perturbed around a black hole, regardless of why, as long as there is no source present. The case is very similar with scalar fields, though the spectrum of quasi-normal modes is slightly different.
+A field, such as a scalar or tensor field surrounding a black-hole, exhibits quasi-normal mode ringing as it relaxes into or away from the black hole.  
+In EMRI's, quasi-normal modes are expected to be detected by LISA after the small black hole crosses the large black hole's horizon, following the plunge from the innermost stable circular orbit. In LIGO, the fundamental quasi-normal mode was seen after the merger phase during the ring-down phase in LIGO's first detection~\cite{LIGO1e}. The same set of quasi-normal modes is expected for any tensor field perturbed around a black hole, regardless of why, as long as there is no source present. The case is very similar with scalar fields, though the spectrum and decay rates of quasi-normal modes is slightly different.
 
-A quasi-normal mode decays at a steady frequency with an exponential decay envelope due to loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have tested their theoretical expectations for the fundamental mode at each l-mode against my simulation data in Figures~\ref{qnml1m1} and~\ref{qnml2m2} by plotting the QNM ringdown waveform using Berti's frequency and exponential decay parameters and adjusing the amplitudes and starting times by hand. Notice that for higher $m$, the quasi-normal mode frequency is higher and the decay is faster.
+A quasi-normal mode decays at a steady frequency with an exponential decay envelope due to loss of energy from the system. These rates have been calculated by Reference~\cite{bertiSchwQNM} and made available online. I have tested their theoretical expectations for the fundamental mode at each l-mode against my simulation data in Figures~\ref{qnml1m1} and~\ref{qnml2m2} by plotting the QNM ringdown waveform using Berti's frequency and exponential decay parameters and adjusting the amplitudes and starting times by hand. Notice that for higher $l$, the quasi-normal mode frequency is higher and the decay is faster.
 
 \begin{figure}
   \includegraphics{l1m1qnm}
@@ -80,7 +81,7 @@ A quasi-normal mode decays at a steady frequency with an exponential decay envel
 
 \subsection{Power law tails}
 
-Quasi-normal mode ringing evolves into power law tails with a relatively rapid transition between the two regimes. Both are due to backscattering of the waves off the background metric, but for EMRI's, QNM are due to interactions near the horizon of the supermassive black hole (post-merger) while the power law tails are due to interactions of the field with the background spacetime far away from it. In 1972, Richard Price predicted that the tails would scale as $t^-(2l+2)$ or $t^-(2l+3)$ depending on initial conditions~\cite{PriceTails}. In our choice of initial conditions, $t^-(2l+2)$ matches best for the choices of $l$ explored. Figure~\ref{taill1m1} shows a mode for which I successfully recovered a power law tail. Figure~\ref{notaill2m2} demonstrates that truncation error may dominate at high l, and that it may be necessary to increase the DG order to resolve all l-modes in a simulation.
+Quasi-normal mode ringing evolves into power law tails with a relatively rapid transition between the two regimes. Both are due to backscattering of the waves off the background metric, but for EMRI's, QNM are due to interactions near the horizon of the supermassive black hole (post-merger) while the power law tails are due to interactions of the field with the background spacetime far away from it. In 1972, Richard Price predicted that the tails would scale as $t^{-(2l+2)}$ or $t^{-(2l+3)}$ depending on initial conditions~\cite{PriceTails}. In our choice of initial conditions, $t^{-(2l+3)}$ matches best for the choices of $l$ explored. Figure~\ref{taill1m1} shows a mode for which I successfully recovered a power law tail. Figure~\ref{notaill2m2} demonstrates that truncation error may dominate at high l, and that it may be necessary to increase the DG order to resolve all l-modes in a simulation.
 
 \begin{figure}
   \includegraphics{l1m1tail2}

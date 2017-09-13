@@ -7,7 +7,7 @@ At this point, we introduce a source to the wave equation. We consider a particl
 
 A test particle orbiting a black hole follows a geodesic, which is the path of extremal proper time. This is described by the geodesic equation,
 \begin{equation}
-\frac{d^2x^\mu}{d\tau^2}+\Gamma^\mu_{\rho\sigma}\frac{dx^\rho}{d\tau}\frac{dx^\sigma}{d\tau}=0
+\frac{\partial^2x^\mu}{\partial\tau^2}+\Gamma^\mu_{\rho\sigma}\frac{\partial x^\rho}{\partial \tau}\frac{\partial x^\sigma}{\partial \tau}=0
 \end{equation}
 where $\tau$ is the proper time and $\Gamma^\mu_{\rho\sigma}$ is the Christoffel symbol, given by~\cite{Carroll}
 \begin{equation}
@@ -29,15 +29,15 @@ The retarded field is singular at the location of the particle due to the delta 
 The wave equation on a curve spaced time is given an effective source that depends on the location of the particle in four space.
 
 \begin{equation}
-  \Box\Psi^R=S_{eff}
+  \Box\Psi^R=\Box(\Psi^{ret}-\tilde{\Psi}^S)=S_{eff}
 \end{equation}
-Subtraction of the Detweiler-Whiting singular field cancels the source most precisely at the location of the singularity and approximately cancels it in its neighborhood. This leads to the definition of an effective source, $S_{eff}$, which is zero outside the neighborhood of the particle due to the world tube window function, $W$, shown in Figure~\ref{wtwindow}. Outside that region, the regularized field is equal to the retarded field.
+Subtraction of the Detweiler-Whiting singular field cancels the source. However, we only know an approximation to the Detweiler-Whiting singular field, which is is most precise at the location of the particle and begins to deviate far away. This leads to the definition of an effective source, $S_{eff}$, which is zero outside the neighborhood of the particle due to the world tube window function, $W$, shown in Figure~\ref{wtwindow}. The window function is to reduce the effect at long ranges of the approximation in the Detweiler-Whiting singular field to the true singular field. Outside the range of the window function, the regularized field is equal to the retarded field.
 
 \begin{equation}
-S_{eff}=4\pi q\int\delta(x,z(\tau^\prime))d\tau^\prime-\Box(W\Psi^S)
+S_{eff}=4\pi q\int\delta(x,z(\tau^\prime))d\tau^\prime-\Box(W\tilde{\Psi}^S)
 \end{equation}
 
-The Detweiler-Whiting singular field is derived from convolutions of retarded and advanced Greens functions appropriately symmetrized to select the singular part~\cite{detweiler_whiting}. It is perturbatively expanded in powers of the proper time along the particle's worldline~\cite{heffernan_ottewil_wardell_modesum_basisForCode} (Equation 3.7). The simulation currently incorporates the perturbative expansion to first order~\cite{heffernan_ottewil_wardell_modesum_basisForCode}, though a second order expansion to the Detweiler-Whiting singular field based upon a different approach is currently under devlopment~\cite{pound2ndOrderSelfForce2}. The self-force in a simulation can be computed is merely a gradient of the field itself~\cite{vega_wardell_diener_eff_source}. 
+The Detweiler-Whiting singular field is derived from convolutions of retarded and advanced Greens functions appropriately symmetrized to select the singular part~\cite{detweiler_whiting}. It is perturbatively expanded in powers of the proper time along the particle's worldline~\cite{heffernan_ottewil_wardell_modesum_basisForCode} (Equation 3.7). The simulation currently incorporates the perturbative expansion to first order~\cite{heffernan_ottewil_wardell_modesum_basisForCode}, though a second order expansion to the Detweiler-Whiting singular field based upon a different approach is currently under development~\cite{pound2ndOrderSelfForce}. The self-force in a simulation can be computed is merely a gradient of $\Psi^R$ at the location of the particle~\cite{vega_wardell_diener_2011}. 
 
 
 
@@ -55,7 +55,7 @@ The world tube window function around the particle carves out a spherical shell 
 
 \section{Comparison between C++ and Fortran codes}
 
-I've performed a comparison between scalar particles on a circular orbit of radius 10M in Peter Diener's Fortran code~\cite{heffernan_ottewil_wardell_modesum_basisForCode}, implementing the same thing, and my C++ code. To roundoff precision, they agree, as evidenced by the near-machine-precision ($10^{-15}$) levels of agreement in both absolute and relative error that I achieve in Figures~\ref{circ1},~\ref{circ2},~\ref{circ3}, and~\ref{circ4}
+I've performed a comparison between Peter Diener's Fortran code~\cite{heffernan_ottewil_wardell_modesum_basisForCode} and my C++ code, in both of which I ran the simulation for a scalar particle on a circular orbit of radius 10 M. To roundoff precision, they agree, as evidenced by the near-machine-precision ($10^{-15}$) levels of agreement in both absolute and relative error that I achieve in Figures~\ref{circ1},~\ref{circ2},~\ref{circ3}, and~\ref{circ4}
 
 \begin{figure}
   \includegraphics{wtcircl0m0}
