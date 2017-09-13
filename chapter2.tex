@@ -50,7 +50,7 @@ The classic solution to the spatial derivative problem is the finite difference 
 \end{equation}
 Here the $f_{-1}$ and $f_1$ indicate the function evaluated at the grid point to either side of the $0$th grid point, where the derivative is evaluated. Here $h$ is the spacing between grid points. A second derivative in a three point stencil is given by 
 \begin{equation}
-  D^2_r^(1)=\frac{1}{h^2}(f_{-1}-2f_0+f_1)
+  D^{2,(1)}_r=\frac{1}{h^2}(f_{-1}-2f_0+f_1)
 \end{equation}
 
 It is possible to extend these stencils to two and three dimensions. When considering parallelization using OpenMP, issues of synchronization must be considered. When parallelizing over many nodes, the spatial grid gets divided into blocks. At the ends of each block, the boundary cells need information from the neighboring cells to calculate the spatial derivative. It is necessary to synchronize a number of boundary cells equal to the size of the stencil in buffer zones both to the left and to the right at each time step. In our code, this is not necessary, since we have parallelized with OpenMP, which uses shared memory within one node, across several (16) cores.
