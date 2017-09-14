@@ -3,12 +3,12 @@ First, I will continue to work toward a solution to the peak in the relative dif
 
 I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits including a back-reaction which causes the orbit to evolve away from a geodesic.
 
-This is distinct from Warburton's code, in which the self force is generated in the frequency domain using the radiative approximation. In the radiative approximation, it is assumed that the particle has been on the same orbit for all time, an assumption made necessary due to periodicity requirements. The evolution then happens in the time domain from one tangent geodesic to the next.
+This is distinct from Warburton's code, in which the self force is generated in the frequency domain. It is assumed that the particle has been on the same orbit for all time, an assumption made necessary due to periodicity requirements. The evolution then happens in the time domain from one tangent geodesic to the next.
 
-By contrast, in the time domain, in the self-consistent evolution the state of the field itself naturally accounts for the past history of the particle. In self-consistent evolution, the self-force takes into account the back-reaction that causes the particle to accelerate away from a geodesic as the particle evolves from one geodesic to the next. The adjacent geodesics are no longer tangent. This requires accounting for two additional effects, that have already been implemented: the mass evolution and the acceleration term in the self force. 
+By contrast, in the time domain, in the self-consistent evolution the state of the field itself naturally accounts for the past history of the particle. In self-consistent evolution, the self-force takes into account the back-reaction that causes the particle to accelerate away from a geodesic. This requires accounting for two additional effects, that have already been implemented: the mass evolution and the acceleration term in the self force. 
 
 
-Either the frequency or time domain initial data may be evolved in the time domain using two methods, the osculating orbits approach or the direct integration of the geodesic equation. The osculating orbits approach should have more accuracy due to the monotonic evolution of $\chi$ and $\phi$ and the slow evolution of $p$ and $e$, as opposed to the oscillating evolution of $r$ and $t$ in the integration of the geodesic equation. I will run Peter Diener's simulation using Niels Warburton's frequency domain initial conditions using Barry Wardell's effective source using the oscullating orbits evolution to analyze the physics of the self-consistent evolution. 
+Either the frequency or time domain initial data may be evolved in the time domain using two methods, the osculating orbits approach or the direct integration of the geodesic equation. The osculating orbits approach should have more accuracy due to the monotonic evolution of $\chi$ and $\phi$ and the slow evolution of $p$ and $e$, as opposed to the oscillating evolution of $r$ and $t$ in the integration of the geodesic equation. I will run Peter Diener's simulation using Niels Warburton's frequency domain initial conditions using Barry Wardell's effective source using the osculating orbits evolution to analyze the physics of the self-consistent evolution. 
 
 
 Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wardell_detwieler_2012} have previously published on self-consistent evolution of a particle around a Schwarzschild black-hole; however, it did not have sufficient accuracy. We are attempting to improve the accuracy using entirely different numerical methods.
@@ -27,9 +27,9 @@ The long term goal of the field is self-consistent evolution. To extend the wave
 \end{eqnarray}
 The second equation gives the back-reaction due to acceleration of the particle. Here, $\Psi^R$ is the regularized field. The third equation governs the self-consistent evolution of the mass of the particle.~\cite{WardellSelfForceReview}
 
-There are two methods for evolving the orbit that we may use, already implemented in the code by Peter Diener: geodesic evolution and osculating orbits~\cite{pound_poisson}.
+There are two methods for evolving the orbit that we may use, already implemented in the code by Peter Diener: direct integration of the geodesic equation and osculating orbits~\cite{pound_poisson}.
 
-\subsection{Direct integration of the eodesic evolution}
+\subsection{Direct integration of the geodesic equation}
 The geodesic equation is modified to include a force term on the right hand side in the presence of a self-force or external force~\cite{Carroll}.
 \begin{equation}
   \frac{d^2x^\mu}{d\tau^2}+\Gamma^\mu_{\rho\sigma}\frac{dx^\rho}{d\tau}\frac{dx^\sigma}{d\tau}=a^\mu
@@ -38,11 +38,11 @@ This equation, together with Equations~\ref{genericev}, provide the basis for th
 
 \subsection{Osculating orbits}
 
-An alternative approach is possible, based upon Reference~\cite{pound_poisson}. In a Schwarzschild spacetime, if the effect of the small black hole is neglected, there is a Killing vector along the time direction and along all three spatial directions, resulting in linear momentum conservation in all directions and hence angular momentum conservation. It is natural to evolve in a physical process that is closely related to these quantities. The eccentric orbit geodesic parameters $p$ and $e$ (semilatus rectum and eccentricity) are chosen (see Chapter~\ref{ellipticalorb}). In the self-consistent evolution, the orbit is accelerated from one geodesic to a neighboring geodesic, and gradually evolves through from one tangent geodesic to the next over time. In this process, $p$ and $e$ are updated via a series of ordinary differential equations with extraordinarily complicated right hand sides. This is done using the same RK4 routine that is used to solve the wave equation. It will hopefully be more accurate than the geodesic evolution scheme because angular parameters $\phi$ and $\chi$ monotonically and smoothly increase while $p$ and $e$ evolve slowly, reducing truncation error. This is in contrast to the accumulation of error introduced through oscillations in $r$ and $t$ in the geodesic method. In the self-consistent approach, the mass will also be evolved and the particle accelerated, eventually. 
+An alternative approach is possible, based upon Reference~\cite{pound_poisson}. In a Schwarzschild space-time, if the effect of the small black hole is neglected, there is a Killing vector along the time direction and along all three spatial directions, resulting in linear momentum conservation in all directions and hence angular momentum conservation. It is natural to evolve in a physical process that is closely related to these quantities. The eccentric orbit geodesic parameters $p$ and $e$ (semilatus rectum and eccentricity) are chosen (see Chapter~\ref{ellipticalorb}). In either the geodesic approach or the self-consistent approach, the particle is accelerated, though in the self-consistent approach, that acceleration takes into account the particle's entire past history. In this process, $p$ and $e$ are updated at each time-step via a series of ordinary differential equations with extraordinarily complicated right hand sides. This is done using the same RK4 routine that is used to solve the wave equation. It will hopefully be more accurate than the geodesic evolution scheme because angular parameters $\phi$ and $\chi$ monotonically and smoothly increase while $p$ and $e$ evolve slowly, reducing truncation error. This is in contrast to the accumulation of error introduced through oscillations in $r$ and $t$ in the geodesic method. In the self-consistent approach, mass will also ultimately be evolved.
 
 
 
-\section{Timeline}
+\section{Time line}
 
 I believe it will take me roughly one to four months to complete the re-evaluation of the methods in Chapter~\ref{lmode}. It may take substantially longer if it is necessary to obtain large amounts of data to examine the second order Richardson extrapolation or if it is necessary to use formal statistics for biased, correlated errors with hypothesis testing.
 
