@@ -3,7 +3,7 @@ First, I will continue to work toward a solution to the peak in the relative dif
 
 I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits including a back-reaction which causes the orbit to evolve away from a geodesic.
 
-This is distinct from Warburton's code, in which the self force is generated in the frequency domain. It is assumed that the particle has been on the same orbit for all time, an assumption made necessary due to periodicity requirements. The evolution then happens in the time domain from one tangent geodesic to the next. This approximation is valid when the timescale of the orbital parameter change is much greater than the period of an orbit. It neglects caustic effects due to the interaction of the orbit with its own past and the components of the tails due to the difference between the self-consistent and geodesic approach. 
+This is distinct from Warburton's code, in which the self force is generated in the frequency domain. It is assumed that the particle has been on the same orbit for all time, an assumption made necessary due to periodicity requirements. The evolution then happens in the time domain from one tangent geodesic to the next. This approximation is valid when the timescale of the orbital parameter change is much greater than the period of an orbit. Warburton's self-force does not include the evolving orbit and hence does not produce correct tails.
 
 By contrast, in the time domain, in the self-consistent evolution the state of the field itself naturally accounts for the past history of the particle. In self-consistent evolution, the self-force takes into account the back-reaction that causes the particle to accelerate away from a geodesic. This requires accounting for two additional effects, that have already been implemented: the mass evolution and the acceleration term in the self-force. 
 
@@ -20,7 +20,7 @@ Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wa
 The long term goal of the field is self-consistent evolution. For a particle on a self-consistent orbit, it is necessary to include several additional effects. In addition to the wave equation with a source, the orbit evolves according to the geodesic equation, with the right hand side equal to the acceleration. The particle also gains or loses mass equal to the work being done on it. 
 
 \begin{eqnarray}
-  \Box\Psi^{R} =S^{eff}
+  \Box\Psi^{R} &=S_{eff}\nonumber\\
     ma^\alpha=&q(g^{\alpha\beta}+u^\alpha u^\beta)\partial_\beta\Psi^{R}\nonumber\\
     \frac{\partial m}{\partial \tau}=&-q u^\alpha\partial_\alpha \Psi^R_\alpha
     \label{genericev}
