@@ -3,10 +3,12 @@ First, I will continue to work toward a solution to the peak in the relative dif
 
 I also plan to run Peter Diener's simulation of scalar self-force on a Schwarzschild background for generic orbits including a back-reaction which causes the orbit to evolve away from a geodesic.
 
-This is distinct from Niels Warburton's code, which uses frequency domain initial data that assumes the particle has been on the same geodesic for all time. Generating the initial data in the frequency domain gives high precision because the bandwidth of the orbit is narrow in a two dimensional frequency phase space controlled by $\phi$ and $\chi$. Because of a narrow bandwidth, finite bin sizes, and aliasing effects, it is difficult to evolve a gradual change in the orbit in the frequency domain. However, it is excellent for generating initial conditions, since the particle's past history must in principle be known for all time. 
+This is distinct from Warburton's code, in which the self force is generated in the frequency domain using the radiative approximation. In the radiative approximation, it is assumed that the particle has been on the same orbit for all time, an assumption made necessary due to periodicity requirements. The evolution then happens in the time domain from one tangent geodesic to the next.
+
+By contrast, in the time domain, in the self-consistent evolution the state of the field itself naturally accounts for the past history of the particle. In self-consistent evolution, the self-force takes into account the back-reaction that causes the particle to accelerate away from a geodesic as the particle evolves from one geodesic to the next. The adjacent geodesics are no longer tangent. This requires accounting for two additional effects, that have already been implemented: the mass evolution and the acceleration term in the self force. 
 
 
-In the time domain, the state of the field itself naturally accounts for the past history of the particle. It may be evolved using two methods, the osculating orbits approach or the geodesic evolution approach. The osculating orbits approach should have more accuracy due to the monotonic evolution of $\chi$ and $\phi$ and the slow evolution of $p$ and $e$, as opposed to the oscillating evolution of $r$ and $t$ in the geodesic approach. I will compare the osculating orbits approach with Niels Warburton's frequency domain initial conditions evolved in the time domain using the geodesic evolution approach. 
+Either the frequency or time domain initial data may be evolved in the time domain using two methods, the osculating orbits approach or the direct integration of the geodesic equation. The osculating orbits approach should have more accuracy due to the monotonic evolution of $\chi$ and $\phi$ and the slow evolution of $p$ and $e$, as opposed to the oscillating evolution of $r$ and $t$ in the integration of the geodesic equation. I will run Peter Diener's simulation using Niels Warburton's frequency domain initial conditions using Barry Wardell's effective source using the oscullating orbits evolution to analyze the physics of the self-consistent evolution. 
 
 
 Peter Diener, Ian Vega, Barry Wardell, and Steven Detweiler~\cite{diener_vega_wardell_detwieler_2012} have previously published on self-consistent evolution of a particle around a Schwarzschild black-hole; however, it did not have sufficient accuracy. We are attempting to improve the accuracy using entirely different numerical methods.
@@ -27,16 +29,16 @@ The second equation gives the back-reaction due to acceleration of the particle.
 
 There are two methods for evolving the orbit that we may use, already implemented in the code by Peter Diener: geodesic evolution and osculating orbits~\cite{pound_poisson}.
 
-\subsection{Geodesic evolution}
+\subsection{Direct integration of the eodesic evolution}
 The geodesic equation is modified to include a force term on the right hand side in the presence of a self-force or external force~\cite{Carroll}.
 \begin{equation}
   \frac{d^2x^\mu}{d\tau^2}+\Gamma^\mu_{\rho\sigma}\frac{dx^\rho}{d\tau}\frac{dx^\sigma}{d\tau}=a^\mu
 \end{equation}
-This equation, together with Equations~\ref{genericev}, provide the basis for the generic evolution code when the geodesic evolution method is used. 
+This equation, together with Equations~\ref{genericev}, provide the basis for the generic evolution code when direct integration of the geodesic evolution is used. 
 
 \subsection{Osculating orbits}
 
-An alternative approach is possible, based upon Reference~\cite{pound_poisson}. In a Schwarzschild spacetime, if the effect of the small black hole is neglected, there is a Killing vector along the time direction and along all three spatial directions, resulting in linear momentum conservation in all directions and hence angular momentum conservation. It is natural to evolve in a physical process that is closely related to these quantities. The eccentric orbit geodesic parameters $p$ and $e$ (semilatus rectum and eccentricity) are chosen (see Chapter~\ref{ellipticalorb}). In the self-consistent evolution, the orbit is accelerated from one geodesic to a neighboring geodesic, and gradually evolves through from one tangent geodesic to the next over time. In this process, $p$ and $e$ are updated via a series of ordinary differential equations with extraordinarily complicated right hand sides. This is done using the same RK4 routine that is used to solve the wave equation. It will hopefully be more accurate than the geodesic evolution scheme because angular parameters $\phi$ and $\chi$ monotonically and smoothly increase while $p$ and $e$ evolve slowly, reducing truncation error. This is in contrast to the accumulation of error introduced through oscillations in $r$ and $t$ in the geodesic method. In the self-consistent approach, the mass and acceleration will also be evolved, eventually. 
+An alternative approach is possible, based upon Reference~\cite{pound_poisson}. In a Schwarzschild spacetime, if the effect of the small black hole is neglected, there is a Killing vector along the time direction and along all three spatial directions, resulting in linear momentum conservation in all directions and hence angular momentum conservation. It is natural to evolve in a physical process that is closely related to these quantities. The eccentric orbit geodesic parameters $p$ and $e$ (semilatus rectum and eccentricity) are chosen (see Chapter~\ref{ellipticalorb}). In the self-consistent evolution, the orbit is accelerated from one geodesic to a neighboring geodesic, and gradually evolves through from one tangent geodesic to the next over time. In this process, $p$ and $e$ are updated via a series of ordinary differential equations with extraordinarily complicated right hand sides. This is done using the same RK4 routine that is used to solve the wave equation. It will hopefully be more accurate than the geodesic evolution scheme because angular parameters $\phi$ and $\chi$ monotonically and smoothly increase while $p$ and $e$ evolve slowly, reducing truncation error. This is in contrast to the accumulation of error introduced through oscillations in $r$ and $t$ in the geodesic method. In the self-consistent approach, the mass will also be evolved and the particle accelerated, eventually. 
 
 
 
@@ -44,10 +46,9 @@ An alternative approach is possible, based upon Reference~\cite{pound_poisson}. 
 
 I believe it will take me roughly one to four months to complete the re-evaluation of the methods in Chapter~\ref{lmode}. It may take substantially longer if it is necessary to obtain large amounts of data to examine the second order Richardson extrapolation or if it is necessary to use formal statistics for biased, correlated errors with hypothesis testing.
 
-I expect that extracting physics from, and helping to debug and possibly write code for, the Warburton/Diener simulations to obtain a comparison between the geodesic and osculating orbits approaches with the frequency domain initial data will take a year. Writing it into a paper and getting it published will take another year.
+I expect that extracting physics from, and helping to address stabilities, debug, and possibly write code for prior to running, the Warburton/Diener simulations to obtain a comparison between the geodesic and osculating orbits approaches with the frequency domain initial data will take one to two years. Writing it into a paper and getting it published will take another year.
 
-That totals about two years, when some leeway is allowed for writing the thesis. 
+That totals about two to three years, when some leeway is allowed for writing the thesis. 
 
-The self-consistent evolution, in the sense of mass evolution and an accelerating source, will not be included in the thesis unless things progress a lot faster than expected. 
 
 
