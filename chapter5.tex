@@ -1,4 +1,4 @@
-For eccentric orbits, there are two primary additional physical or computational effects to consider. One is the need for a way to describe relativistic eccentric orbits. The second is that in the presence of a source, it is necessary for the particle to be at an element boundary due to discontinuities at the location of the source because the singular source is not precisely regularized by the Detweiler-Whiting singular field. To keep the particle at an element boundary for all times by keeping the computational coordinate fixed, it is necessary to add a time dependent coordinate transformation region between tortoise layers in the middle of the computational grid~\cite{time_dependent_coordinate_transformation}. In this section, I describe Peter Diener's Fortran code, using Niels Warburton's exact initial conditions for l-modes 0 through 5, and Barry Wardell's effective source, which I have run to produce eccentric orbit output. 
+For eccentric orbits, there are two primary additional physical or computational effects to consider. One is the need for a way to describe relativistic eccentric orbits. The second is that in the presence of a source, it is necessary for the particle to be at an element boundary due to discontinuities in the derivatives of the effective source at the location of the particle. Discontinuities must be kept at element boundaries in the DG scheme to preserve the exponential convergence with DG order. To keep the particle at an element boundary for all times by keeping the computational coordinate fixed, it is necessary to add a time dependent coordinate transformation region between tortoise layers in the middle of the computational grid~\cite{time_dependent_coordinate_transformation}. In this section, I describe Peter Diener's Fortran code, using Niels Warburton's exact initial conditions for l-modes 0 through 5, and Barry Wardell's effective source, which I have run to produce eccentric orbit output. 
 
 \section{Orbital parameters}
 
@@ -9,7 +9,7 @@ The eccentricity of an eccentric orbit is defined such that the turning points a
 \begin{equation}
   L^2=\frac{p^2M^2}{p-3-e^2}
 \end{equation}
-For an eccentric orbit, $\chi$ and $\phi$ are evolved using a fourth order Runga Kutta integration using derivatives of $r$, $\chi$, $\phi$, and $t$, provided in Reference~\cite{pound_poisson}. For a self consistent evolving orbit with the back-reaction effect of the self-force, see future work in Chapter~\ref{futurework}. 
+For an eccentric orbit, $\chi$ and $\phi$ are evolved using a fourth order Runga Kutta integration using derivatives of $r$, $\chi$, $\phi$, and $t$, provided in Reference~\cite{pound_poisson}. 
 
 
 \section{Time dependent coordinate transformation}

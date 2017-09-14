@@ -30,7 +30,7 @@ A=
 \]
 \[B=
 \begin{bmatrix}
-  0 & 0 & 1\\
+  0 & 1 & 0\\
   0 & 0 & 0\\
   0 & 0 & 0
 \end{bmatrix}
@@ -84,7 +84,7 @@ Here steps two and three are repeated for $i=1-5$, first $k$, then $p$, then inc
 
 \section{Wave equation on flat space-time}
 
-Using Gaussian initial conditions in $\psi$ and setting the $\rho$ (Equation~\ref{stateev}) initial conditions to the derivative of that Gaussian, I have produced the evolution shown in Figure~\ref{gaussWave}. The Gaussian splits into two, evolves both left and right, hits the periodic boundary conditions, and re-enters the one-dimensional space on the opposite side, eventually returning to its original position and re-merging. A progression from left to right can be seen in Figure~\ref{sineWave} for sinusoidal initial conditions with a sinusoidal initial condition in $\psi$ and where I have set the boundary conditions of $\phi$ equal to the radial derivative of $\psi$ (Equation~\ref{stateev}). Again, periodic boundary conditions cause the wave to cross to the opposite side and re-enter.
+Using Gaussian initial conditions in $\psi$ and setting the $\phi$ (Equation~\ref{stateev}) initial conditions to the derivative of that Gaussian ($\rho=0$), I have produced the evolution shown in Figure~\ref{gaussWave}. The Gaussian splits into two, evolves both left and right, hits the periodic boundary conditions, and re-enters the one-dimensional space on the opposite side, eventually returning to its original position and re-merging. A progression from left to right can be seen in Figure~\ref{sineWave} for sinusoidal initial conditions with a sinusoidal initial condition in $\psi$ and where I have set the initial conditions of $\phi$ equal to the radial derivative of $\psi$  and $\rho$ equal to the time derivative of $\phi$ (Equation~\ref{stateev}). The wave moves to the right because the angular frequency is taken to be positive. Again, periodic boundary conditions cause the wave to cross to the opposite side and re-enter.
 
 \begin{figure}
   \includegraphics{gaussWave}
