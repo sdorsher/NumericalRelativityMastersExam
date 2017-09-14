@@ -1,0 +1,172 @@
+Abstract: We are not aiming for producing templates at roundoff precision. I'd
+          rather say just say that we are aiming to produce highly accurate
+          templates.
+
+Section 1.4: The word "on" is missing: "...which are thought to have raised
+          “mountains” on their surface."
+
+Section 1.5, after equation 1.1: Typo: Jacobean -> Jacobian.
+
+Section 1.5, page 6: The equation for the Schwarzschild metric is still
+          missing an equal sign.
+
+Section 2.1, page 8: The B matrix is wrong. With psi being the first element
+         of the state vector and rho being the second the 1 should be in
+         the first row and second column.
+
+Section 2.4, page 11: The initial data for Figure 2.1 is a gaussian in psi
+         rho=0 and phi = the radial derivative of psi.
+
+Section 2.4, page 11: The initial data for Figure 2.2 is sinusoidal. The
+         initial data for rho and phi are set so that the sinusoid moves
+         to the right. That is rho is set to the radial derivative of psi
+         (your wording "...I have set the boundary conditions of phi equal to
+         is incorrect. This is the initial condition). In addition the initial
+         data for rho is non-zero as well as it has to be set so that only
+         the right moving modes is present in the inital data.
+
+Section 3.1.1, hyperboloidal coordinates bullet point: Omega is one at either
+        of the boundaries between hyperboloidal regions and tortoise regions
+        and go to zero at the horizon in the inner region and zero at scri+
+        in the outer region.
+
+Section 3.1.1, hyperboloidal coordinates bullet point: Typo: principle part ->
+        principal part
+
+Section 3.1.1, hyperboloidal coordinates bullet point: equation (3.10) is
+        for both in- and outgoing waves in the outer hyperboloidal region.
+
+Section 3.2: Typo: white space missing between "initially," and "there".
+
+Section 3.2: As I replied to you by e-mail, we do this for code testing 
+        purposes, to ensure that the wave equation is implemented correectly
+        and that the different coordinates are taking correctly into account
+        at the boundary between coordinate regions. If there are bugs we
+        wouldn't get the right qnm frequencies and/or power law exponents for
+        the tails.
+
+Section 3.2.2, page 20: I wouldn't say t^{-(2 l+3)} matches best. Rather I 
+        would say that t^{-(2 l+3)} is expected.
+
+Section 4.1, page 23: Subtraction of the Detweiler-Whiting singular field does
+        not cancel the source. It cancles the delta function.
+
+Section 4.1, page 23: The approximation to the Detweiler-Whiting singular field
+        is exact at the location of the particle, which is why it can cancel
+        the delta function. It starts to deviate as soon as we move away from
+        the particle location.
+
+Section 4.1, page 23: I would place equation (4.6) just after the sentence
+        that starts with "This leads to the definition of an effective
+         source...".
+
+Chapter 5, page 27: The problem is not discontinuities at the location of the
+        particle (not the source; the source is extended). The current
+        effective source is continuous but not differentiable (i.e C^0),
+        leading to the field being C^2. However, that would be enough to
+        destroy the exponential convergence of the DG scheme if derivatives
+        were taken using information across the particle location.
+
+Chapter 6, page 33: When back reaction is taken into account we evolve the
+        mass and orbit (not acceleration) along with the field.
+
+Chapter 6, page 33: The sentence "Diener and Warburton have implemented a
+        preliminary simulation that uses initial conditions from the geodesic
+        case to as a consistency check of the low order modes in the 
+        self-consistent simulation." does not make sense from a grammar
+        viewpoint. Please reformulate. Also The code uses the effetive source
+        provided by Barry Wardell.
+
+Section 6.1, page 34: I don't think you need the comment about our belief that
+        this has been done before. This has certainly been done, but the
+        details will probably not be in a paper, as they are trivial.
+
+Section 6.2.1: I don't think you can come to the conclusion for the reason
+        why the extroplation fails with 28 as the starting order by looking
+        at figure 6.2. I think you'll have to look at the raw data instead
+        of data with some value of f_inf subtracted.
+
+Section 6.2.1, page 37: You write: "The values in Table 6.1 agree to seven
+        digits, which is on the order of 10^14." with values of 2.4 10^-5 and
+        7 digits of agreement that gives 10^-12.
+
+Section 6.2.2, page 37: There is no Figure 6.6. Instead page 42 is empty.
+
+Section 6.2.4, page 45: You mention trying to sum to l=24 instead which make
+        it sound like the overall error estimate is based on this, i.e. when
+        you refer to 6.11. However, 6.11 uses sums to l=30.
+
+Section 7.1, page 50: Typo: cation -> caution.
+
+Figure 7.4: The figure seem to be placed towards the right edge of the page.
+        can you center it more?
+
+Section 7.3: Please specify the values of lmin and lmax used in the main text.
+
+Section 8.1, page 62: You do not yet really describe the difference between
+        the "geodesic evolution" method and the self-consistent evolution
+        method. Your statmeent that: "Because of a narrow bandwidth, finite
+        bin sizes, and aliasing effects, it is difficult to evolve a gradual
+        change in the orbit in the frequency domain." almost makes sense,
+        but not quite and is not explaining the difference between the two
+        methods. Here is a very short description of the difference (hopefully
+        you'll absorb this written version bettern than my previous verbal
+        versions):
+
+        Frequency domain calculations of self-force can only
+        be done for geodesic as they require strict periodicity. In order
+        to do an evolution of the orbit, one then finds the change in orbital
+        parameters using the self-force from the instantaneous tangent geodesic
+        to the accelerated orbit. The self-force used is thus calculated (by
+        the frequency domain code) under the assumption that the particle has
+        been moving on that tangent geodesic for an infinite amount of time.
+        Hence the evolution neglects the contribution to the self-force coming
+        from the fact that the orbit was evolving in the past. In contrast
+        in the time domain self-force code, we can perform self-consistent
+        evolution, where we evolve the field and the orbit at the same time.
+        The effective source takes into account the current accelerated
+        motion and as we can extract the self-force at every timestep we
+        always obtain as self-force that is consistent with the past evolution
+        of the orbit. We therefore expect real physical differences between
+        the 2 types of evolutions.
+
+Section 8.1, page 62: In order to avoid confusion, it is probably better, when
+        discussing the different ways of evolving the orbit to talk
+        about the osculating orbits approach and direct integration of the
+        geodesic equations. This will reserve "geodesic evolution" to mean
+        the evolution based on geodesic self-force only.
+
+Section 8.1, page 62: In direct integration of the geodesics, t is not
+        oscillatory. The radial coordinate and time and radial components
+        of the 4-velocity are oscillatory.
+
+Section 8.1, page 62: The last sentence that starts with: "I will compare the
+        osculating orbits approach with Niels..." seem to mix overall concepts
+        of the "self-consistent" vs "geodesic" evolution with the method
+        used to integrate the orbit under the influence of the back reaction.
+
+Section 8.2, page 63: As mentioned above, use "direct integration of the
+        geodesic equation" instead of "geodesic evolution".
+
+Section 8.2.1,page 63: Same as above.
+
+Section 8.2.2, page 64: Here you're talking about evolving from a tangent
+        geodesic to another tangent geodesic in a self-consistent evolution.
+        This is incorrect. In a self-consistent evolution (where the
+        correct self-force is used at all times) the orbit is always an
+        accelerated orbit.
+
+Section 8.2.2, page 64: Same as further above: t is not oscillatory.
+
+Section 8.2.2, page 64: We are already evolving the orbit with an acceleration
+        so it does not make sense to say that the acceleration will be evolved.
+
+Section 8.3, page 64: The comparison we want to do is between the
+        self-consistent and geodesic evolutions. It shouldn't matter
+        whethet direct geodesic integration or osculating orbits are used.
+ 
+Section 8.3, page 65: The last statement in this section contradicts what
+        you say earlier about comparing the self-consistent and geodesic
+        evolution. I think it is possible to do this. True, there is still
+        the instability issue, but I'm hopeful that a method to overcome this
+        can be found.
