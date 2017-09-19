@@ -1,3 +1,5 @@
+Dr. Jon Cogburn (jcogbu1@lsu.edu) from the Department of Philosophy
+
 \section{ToDO}
 He also wants convergence plots of the fit data versus the median data for some bad times. I also want a plot that shows the raw data before the subtraction of the offset for some time. Modify code to use saved raw data.
 
